@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 13:53:48 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 15:06:41 by tbaker           ###   ########.fr       */
+/*   Created: 2023/07/26 17:22:40 by tbaker            #+#    #+#             */
+/*   Updated: 2023/07/26 17:37:11 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *str, int c, size_t n)
+char	**ft_split(char const *s, char c)
 {
-	size_t	i;
 
-	i = 0;
-	while (i < n)
-	{
-		((char *)str)[i] = c;
-		i++;
-	}
-	return (str);
 }
 /*
 int	main(void)
 {
-	char input[20]= "hello world again";
-	printf("%s\n", (char*)ft_memset(input, '$', 7));
-	printf("%s\n", (char*)memset(input, '$', 7));
+	char const *s_test1 = "hello$world$from$above";
+	char const *s_test2 = "$hello$world$from$above";
+	char const *s_test3 = "$helloworld$from$above";
+	char const *s_test4 = "";
+	char const *s_test5 = "$$above";
+	char		**test;
+	char c = '$';
+	int i = 0;
+
+	test = ft_split(s_test1, c);
+	while (test[i] != '\0')
+	{
+		printf("test 1 = %s\n", test);
+		i++;
+	}
 	return (0);
 }*/

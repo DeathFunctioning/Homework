@@ -1,19 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 13:09:12 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 13:10:12 by tbaker           ###   ########.fr       */
+/*   Created: 2023/07/26 17:17:41 by tbaker            #+#    #+#             */
+/*   Updated: 2023/07/26 17:17:44 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isupper(int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *str, int c)
 {
-	if (c >= 65 && c <= 90)
-		return (1);
-	else
-		return (0);
+	int	len;
+
+	len = ft_strlen(str);
+	len--;
+	while (len > 0)
+	{
+		if (str[len] == c)
+			return ((char *)(str + len));
+		len--;
+	}
+	return (NULL);
 }
+/*
+int   main(void)
+{
+        char *str = "hello world";
+        char c = 'o';
+
+        printf("%s\n", ft_strrchr(str, c));
+        printf("%s\n", strrchr(str, c));
+
+        return (0);
+}*/

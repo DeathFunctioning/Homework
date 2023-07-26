@@ -1,54 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 15:36:15 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 17:10:18 by tbaker           ###   ########.fr       */
+/*   Created: 2023/07/12 17:23:22 by tbaker            #+#    #+#             */
+/*   Updated: 2023/07/12 18:27:20 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*src1;
-	char	*dest1;
-	size_t	i;
+	size_t		i;
+	char		*dest2;
+	const char	*src2;
 
+	dest2 = (char *)dest;
+	src2 = (const char *)src;
 	i = 0;
-	src1 = (char *)src;
-	dest1 = (char *)dest;
-	while (i < n)
+	if (src2 < dest2)
 	{
-		dest1[i] = src1[i];
-		i++;
+		while (n > 0)
+		{
+			dest2[n - 1] = src2[n - 1];
+			n--;
+		}
 	}
-	return (dest1);
+	else
+	{
+		while (i > n)
+		{
+			dest2[i] = src2[i];
+			i++;
+		}
+	}
+	return (dest);
 }
 /*
 int main(void)
 {
-	char src[5] = { 's', 'a', '\0', 'c', 'h'};
-	char dest[5];
-	char dest1[5];
+//	char src[5] = { 's', 'a', '\0', 'c', 'h'};
+	char src[5] = "kkkkk";
+	char dest[7] = "hello!!";
+//	char dest1[6] = { 'k', '\0', 'k', 'k', 'k', 'k'};
+	char dest1[7] = "hello!!";
 	int	i = 0;
-	ft_memcpy(dest, src, 5);
-	while (i < 5)
+	ft_memmove(dest, src, 5);
+	while (i < 7)
 	{
 		printf("%c\n", dest[i]);
 		i++;
 	}
 	printf("----------------------");
 	printf("\n");
-	memcpy(dest1, src, 5);
+	memmove(dest1, src, 5);
 	i = 0;
-	while (i < 5)
+	while (i < 7)
 	{
 		printf("%c\n", dest1[i]);
 		i++;
 	}
+	printf("\n");
 	return (0);
 }*/

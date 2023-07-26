@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 13:09:12 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 13:10:12 by tbaker           ###   ########.fr       */
+/*   Created: 2023/07/26 17:14:28 by tbaker            #+#    #+#             */
+/*   Updated: 2023/07/26 17:14:33 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isupper(int c)
+#include "libft.h"
+
+void	*ft_calloc(size_t nitems, size_t size)
 {
-	if (c >= 65 && c <= 90)
-		return (1);
-	else
-		return (0);
+	void	*ptr;
+
+	ptr = malloc(nitems * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_memset(ptr, 0, nitems * size);
+	return (ptr);
 }

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 13:53:48 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 15:06:41 by tbaker           ###   ########.fr       */
+/*   Created: 2023/07/26 17:16:47 by tbaker            #+#    #+#             */
+/*   Updated: 2023/07/26 17:16:52 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *str, int c, size_t n)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < n)
+	while (str1[i] && str2[i] && i <= n)
 	{
-		((char *)str)[i] = c;
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 		i++;
 	}
-	return (str);
+	return (0);
 }
 /*
-int	main(void)
+int main(void)
 {
-	char input[20]= "hello world again";
-	printf("%s\n", (char*)ft_memset(input, '$', 7));
-	printf("%s\n", (char*)memset(input, '$', 7));
+	char str1[11] = "hello world";
+	char str2[11] = "hello World";
+	size_t n = 11;
+	printf("My strncmp = %d\n", ft_strncmp(str1, str2, n));
+	printf("C's strncmp = %d\n", ft_strncmp(str1, str2, n));
 	return (0);
 }*/

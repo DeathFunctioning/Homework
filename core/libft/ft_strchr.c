@@ -14,34 +14,25 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	int i;
-	int k;
+	int	i;
 
 	i = 0;
-	k = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == c)
-		{
-			while (str[i] != '\0')
-			{
-			str[k] = str[i];
-			i++;
-			k++;
-			}
-			str[k] = '\0';
-			return (str);
-		}
+			return ((char *)(str + i));
 		i++;
 	}
 	return (NULL);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char *str = "hello world";
 	char c = 'l';
+
 	printf("%s\n", ft_strchr(str, c));
 	printf("%s\n", strchr(str, c));
+
 	return (0);
-}
+}*/

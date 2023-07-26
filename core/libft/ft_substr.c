@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 13:53:48 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 15:06:41 by tbaker           ###   ########.fr       */
+/*   Created: 2023/07/26 17:18:25 by tbaker            #+#    #+#             */
+/*   Updated: 2023/07/26 17:18:29 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *str, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char			*substr;
+	unsigned int	i;
 
 	i = 0;
-	while (i < n)
+	substr = (char *) malloc(sizeof(char) * len + 1);
+	if (substr == NULL)
+		return (NULL);
+	while (s[start] != '\0' || i < len)
 	{
-		((char *)str)[i] = c;
+		substr[i] = s[start];
+		start++;
 		i++;
 	}
-	return (str);
+	substr[i] = '\0';
+	return (substr);
 }
-/*
-int	main(void)
+
+/*int	main(void)
 {
-	char input[20]= "hello world again";
-	printf("%s\n", (char*)ft_memset(input, '$', 7));
-	printf("%s\n", (char*)memset(input, '$', 7));
+	const char *s = "hello world";
+	unsigned int start = 1;
+	size_t len = 11;
+
+	printf("test 1 = %s\n", ft_substr(s, start, len));
+	free(
 	return (0);
 }*/

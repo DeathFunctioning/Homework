@@ -1,30 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 19:14:44 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 14:28:40 by tbaker           ###   ########.fr       */
+/*   Created: 2023/06/01 16:47:54 by tbaker            #+#    #+#             */
+/*   Updated: 2023/06/07 09:06:03 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strcpy(const char *str, char *str1)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
+	{
+		str1[i] = str[i];
 		i++;
-	return (i);
+	}
+	str1[i] = '\0';
+	return (str1);
 }
-/*
-int	main(void)
+
+char	*ft_strdup(const char *src)
 {
-	printf("%ld\n", ft_strlen("hello world"));
-	printf("%ld\n", strlen("hello world"));
-	return (0);
+	int		len;
+	char	*scopy;
+
+	len = ft_strlen(src);
+	scopy = (char *) malloc(sizeof(char) * len + 1);
+	if (scopy == NULL)
+		return (NULL);
+	ft_strcpy(src, scopy);
+	return (scopy);
+}
+/*int	main(int argc, char **argv)
+{
+	if (argc == 2)
+	{
+		printf("%s\n", argv[1]);
+		printf("%s\n", ft_strdup(argv[1]));
+		return (1);
+	}
+	else 
+		return (0);
 }*/
