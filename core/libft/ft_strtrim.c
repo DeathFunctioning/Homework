@@ -6,13 +6,13 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:18:01 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/26 17:18:07 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/07/30 16:15:50 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_notrim(char const *s1)
+static	char	*ft_notrim(char const *s1)
 {
 	char	*trimstr;
 	size_t	slen;
@@ -26,7 +26,7 @@ char	*ft_notrim(char const *s1)
 	return (trimstr);
 }
 
-char	*ft_trimstart(char const *s1, const char *set)
+static	char	*ft_trimstart(char const *s1, const char *set)
 {
 	char	*trimstr;
 	size_t	setlen;
@@ -42,7 +42,7 @@ char	*ft_trimstart(char const *s1, const char *set)
 	return (trimstr);
 }
 
-char	*ft_trimend(char const *s1, const char *set)
+static	char	*ft_trimend(char const *s1, const char *set)
 {
 	char	*trimstr;
 	size_t	setlen;
@@ -58,7 +58,7 @@ char	*ft_trimend(char const *s1, const char *set)
 	return (trimstr);
 }
 
-char	*ft_trimboth(char const *s1, const char *set)
+static	char	*ft_trimboth(char const *s1, const char *set)
 {
 	char	*trimstr;
 	size_t	setlen;

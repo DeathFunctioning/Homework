@@ -6,13 +6,13 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:47:54 by tbaker            #+#    #+#             */
-/*   Updated: 2023/06/07 09:06:03 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/07/30 16:08:26 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(const char *str, char *str1)
+static char	*ft_strcpy(const char *str, char *str1)
 {
 	int	i;
 

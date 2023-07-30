@@ -5,73 +5,61 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 11:35:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/06/07 09:07:05 by tbaker           ###   ########.fr       */
+/*   Created: 2023/07/30 16:24:40 by tbaker            #+#    #+#             */
+/*   Updated: 2023/07/30 17:16:45 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *scopy, char *str)
+static	char	*ft_catcopy(char const *s1, char const *s2, 
+		char *scopy, size_t tlen)
 {
-	int	i;
+	size_t	i;
+	size_t	j;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		scopy[i] = str[i];
-		i++;
-	}
-	scopy[i] = '\0';
-	return (scopy);
-}
-
-char	*ft_strcat(char *scopy, char *str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
 	j = 0;
-	while (scopy[i] != '\0')
+	i = 0;
+	while (s1[i] != '\0' && j < tlen)
 	{
-		i++;
-	}
-	while (str[j] != '\0')
-	{
-		scopy[i] = str[j];
+		scopy[j] = s1[i];
 		i++;
 		j++;
 	}
-	scopy[i] = '\0';
+	i = 0;
+	while (s2[i] != '\0' && j < tlen)
+	{
+		scopy[j] = s2[i];
+		i++;
+		j++;
+	}
+	scopy[j] = '\0';
+	printf("scopy = %s\n", scopy);
 	return (scopy);
 }
 
-char	*ft_strjoin(int size, char **strs, char *sep)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		new_strl;
-	int		i;
 	char	*scopy;
+	size_t	s1len;
+	size_t	s2len;
+	size_t	tlen;
 
-	i = 0;
-	if (size == 0)
-		return (scopy = (char *)malloc(sizeof(char) * 1));
-	new_strl = ft_strlen(sep) * (size - 1);
-	while (i < size)
-	{
-		new_strl = new_strl + ft_strlen(strs[i]);
-		i++;
-	}
-	scopy = (char *)malloc(sizeof(char) * new_strl + 1);
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	tlen = s1len + s2len;
+	printf("tlen = %lu\n", tlen);
+	scopy = (char *)malloc(sizeof(char) * (tlen + 1));
 	if (scopy == NULL)
 		return (NULL);
-	ft_strcpy(scopy, strs[0]);
-	i = 1;
-	while (i < size)
-	{
-		ft_strcat(scopy, sep);
-		ft_strcat(scopy, strs[i]);
-		i++;
-	}
+	ft_catcopy(s1, s2, scopy, tlen);
 	return (scopy);
 }
+/*
+int	main(void)
+{
+	char const *s1 = "Please be nice";
+	char const *s2 = " or no cake for you!";
+	printf("my result = %s\n", ft_strjoin(s1, s2));
+	return (0);
+}*/
