@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:22:40 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/30 19:04:42 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/07/30 22:27:33 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,25 +37,25 @@ static char	*ft_copyword(char const *s, int i, char c)
 {
 	char	*scopy;
 	int		len;
-	int		i_len;
+	int		i_pos;
 	int		j;
 
 	j = 0;
 	len = 0;
-	i_len = i;
-	while (s[i_len] != '\0' && s[i_len] != c)
+	i_pos = i;
+	while (s[i_pos] != '\0' && s[i_pos] != c)
 	{
 		len++;
-		i_len++;
+		i_pos++;
 	}
 	scopy = (char *)malloc(sizeof(char) * (len + 1));
 	if (scopy == NULL)
 		return (NULL);
-	i_len = i;
-	while (s[i_len] != '\0' && s[i_len] != c)
+	i_pos = i;
+	while (j < len)
 	{
-		scopy[j] = s[i_len];
-		i_len++;
+		scopy[j] = s[i_pos];
+		i_pos++;
 		j++;
 	}
 	scopy[j] = '\0';
@@ -65,49 +65,49 @@ static char	*ft_copyword(char const *s, int i, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
-	int		i;
+	int		jlen;
 	int		j;
+	int		i;
 
-	j = 0;
 	i = 0;
-	array = (char **)malloc(sizeof(char *) * (ft_wcount(s, c) + 1));
+	j = 0;
+	jlen = ft_wcount(s, c);
+	array = (char **)malloc(sizeof(char *) * (jlen + 1));
 	if (array == NULL)
 		return (NULL);
-	while (s[i] != '\0')
+	while (s[i] != '\0' && j < jlen)
 	{
-		while (s[i] != '\0' && s[i] == c)
-			i++;
-		if (s[i] != '\0' && s[i] != c)
+		if (s[i] != c && s[i] != '\0')
 		{
 			array[j] = ft_copyword(s, i, c);
 			j++;
-			i = i + (int)ft_strlen(ft_copyword(s, i, c));
+			while (s[i] != '\0' && s[i] != c)
+				i++;
 		}
-		while (s[i] != '\0' && s[i] == c)
+		if (s[i] != '\0' && s[i] == c && j < jlen)
 			i++;
 	}
-	array[j][0] = '\0';
+	array[j] = NULL;
 	return (array);
 }
 /*				
 int	main(void)
 {
-	char const *s_test1 = "$$$aaaaaa";
+	char const *s_test1 = "$$aaa$aaa$helpme";
 	char const *s_test2 = "$$i$hello$world$from$above";
-//	char const *s_test3 = "$helloworld$from$above";
-//	char const *s_test4 = "$$$";
-//	char const *s_test5 = "";
+	char const *s_test3 = "$helloworld$from$above";
+	char const *s_test4 = "$$$";
+	char const *s_test5 = "";
 	char		**test1;
 	char		**test2;
 	char c = '$';
-//	int i = 0;
 
 	test1 = ft_split(s_test1, c);
 	printf("test 1 = %s\n", test1[0]);
 	printf("test 1 = %s\n", test1[1]);
 	printf("test 1 = %s\n", test1[2]);
 	printf("test 1 = %s\n", test1[3]);
-	printf("test 1 = %s\n", test1[4]);
+//	printf("test 1 = %s\n", test1[4]);
 		
 	test2 = ft_split(s_test2, c);
 	printf("test 2 = %s\n", test2[0]);
@@ -117,12 +117,12 @@ int	main(void)
 	printf("test 2 = %s\n", test2[4]);
 	printf("test 2 = %s\n", test2[5]);
 		
-	
-	printf("copy word test3 = %s\n",ft_copyword(s_test3, 1, c));
-	ft_wcount(s_test1, c);
-	ft_wcount(s_test2, c);
-	ft_wcount(s_test3, c);
-	ft_wcount(s_test4, c);
-	ft_wcount(s_test5, c);
+//	printf("copy word test3 = %s\n",ft_copyword(s_test3, 1, c));
+	printf("test 1 = %d\n", ft_wcount(s_test1, c));
+	printf("test 2 = %d\n", ft_wcount(s_test2, c));
+	printf("test 3 = %d\n", ft_wcount(s_test3, c));
+	printf("test 4 = %d\n", ft_wcount(s_test4, c));
+	printf("test 4 = %d\n", ft_wcount(s_test5, c));
+
 	return (0);
 }*/
