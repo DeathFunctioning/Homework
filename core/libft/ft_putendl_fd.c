@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:52:16 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/27 16:41:50 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/07/30 19:11:45 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));
-	write(1, "\n", 1);
+	write(fd, "\n", 1);
 }
 /*
 int	main(void)

@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:13:08 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/26 17:14:14 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/07/30 18:09:53 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 {
 	size_t	i;
 
+	if (!dest && !destsize)
+		return (NULL);
 	i = 0;
 	while (src[i] && i < (destsize - 1))
 	{

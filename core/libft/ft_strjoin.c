@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:24:40 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/30 17:16:45 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/07/30 18:48:37 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static	char	*ft_catcopy(char const *s1, char const *s2,
 		j++;
 	}
 	scopy[j] = '\0';
-	printf("scopy = %s\n", scopy);
 	return (scopy);
 }
 
@@ -48,7 +47,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
 	tlen = s1len + s2len;
-	printf("tlen = %lu\n", tlen);
 	scopy = (char *)malloc(sizeof(char) * (tlen + 1));
 	if (scopy == NULL)
 		return (NULL);
