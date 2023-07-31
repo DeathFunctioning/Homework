@@ -14,11 +14,11 @@
 
 void	*ft_calloc(size_t nitems, size_t size)
 {
-	void	*ptr;
+	void	*scopy;
 
-	ptr = malloc(nitems * size);
-	if (ptr == NULL)
+	scopy = malloc(nitems * size);
+	if (scopy == NULL)
 		return (NULL);
-	ft_memset(ptr, 0, nitems * size);
-	return (ptr);
+	ft_bzero(scopy, nitems * size);
+	return (scopy);
 }
