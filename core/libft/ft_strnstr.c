@@ -16,22 +16,22 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t n)
 {
 	size_t	i;
 	size_t	j;
+	size_t	str2len;
 
 	i = 0;
-	if (str2[i] == '\0')
+	str2len = ft_strlen(str2);
+	if (str2 == NULL)
 		return ((char *)str1);
-	while (str1[i] != '\0' && i < n)
+	if (str2len == 0)
+		return ((char *)str1);
+	while (str1[i] != '\0' && i <= n)
 	{
-		if (str1[i] == str2[0])
+		j = 0;
+		while (str1[i + j] == str2[j] && i + j < n)
 		{
-			j = 0;
-			while (str1[i] == str2[j])
-			{
-				if (str2[j] == '\0')
-					return ((char *)str2);
-				j++;
-				i++;
-			}
+			if (str2[j + 1] == '\0')
+				return ((char *)&str1[i]);
+			j++;
 		}
 		i++;
 	}

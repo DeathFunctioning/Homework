@@ -18,18 +18,31 @@ static long	ft_nbrlen(long n)
 	int		nb;
 
 	nb = n;
-	count = 1;
+	count = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 	{
-		nb = n * -1;
 		count++;
+		nb = -n;
 	}
-	while (nb > 9) 
+	while (nb > 0) 
 	{
 		nb = nb / 10;
 		count++;
 	}
 	return (count);
+}
+
+char	*ft_minint(void)
+{
+	char	*value;
+
+	value = (char *)malloc(sizeof(char) * 12);
+	if (value == NULL)
+		return (NULL);
+	ft_strlcpy(value, "-2147483648", 12);
+	return (value);
 }
 
 char	*ft_itoa(int n)
@@ -39,6 +52,8 @@ char	*ft_itoa(int n)
 	long	ncopy;
 
 	ncopy = n;
+	if (n == -2147483648)
+		return (ft_minint());
 	len = ft_nbrlen(ncopy);
 	value = (char *)malloc(sizeof(char) * len + 1);
 	if (value == NULL)
