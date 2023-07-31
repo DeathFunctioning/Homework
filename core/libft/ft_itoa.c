@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-static int	ft_nbrlen(int n)
+static long	ft_nbrlen(long n)
 {
-	int	count;
-	int	nb;
+	long	count;
+	int		nb;
 
 	nb = n;
 	count = 1;
@@ -29,7 +29,6 @@ static int	ft_nbrlen(int n)
 		nb = nb / 10;
 		count++;
 	}
-	printf("count = %d\n", count);
 	return (count);
 }
 
@@ -37,10 +36,10 @@ char	*ft_itoa(int n)
 {
 	char	*value;
 	int		len;
-	int		ncopy;
+	long	ncopy;
 
 	ncopy = n;
-	len = ft_nbrlen(n);
+	len = ft_nbrlen(ncopy);
 	value = (char *)malloc(sizeof(char) * len + 1);
 	if (value == NULL)
 		return (NULL);
