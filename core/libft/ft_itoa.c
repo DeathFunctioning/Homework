@@ -34,7 +34,7 @@ static long	ft_nbrlen(long n)
 	return (count);
 }
 
-char	*ft_minint(void)
+static char	*ft_minint(void)
 {
 	char	*value;
 
