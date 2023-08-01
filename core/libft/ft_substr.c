@@ -6,25 +6,32 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:18:25 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/30 18:22:33 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/01 19:52:01 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static	char	*ft_norm(char *substr)
+{
+	substr = (char *) malloc(sizeof(char) * 1);
+	if (substr == NULL)
+		return (NULL);
+	substr[0] = '\0';
+	return (substr);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*substr;
 	unsigned int	i;
 
+	if (len > 1024 * 1024)
+		len = 1024 * 1024;
 	i = 0;
-	if (ft_strlen(s) <= start)
+	if (start >= ft_strlen(s))
 	{
-		substr = (char *) malloc(sizeof(char) * 1);
-		if (substr == NULL)
-			return (NULL);
-		substr[0] = '\0';
-		return (substr);
+		return (ft_norm(substr));
 	}
 	substr = (char *) malloc(sizeof(char) * len + 1);
 	if (substr == NULL)

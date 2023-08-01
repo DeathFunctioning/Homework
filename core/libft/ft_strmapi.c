@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:45:08 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/01 17:42:29 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/01 19:18:31 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 
 	i = 0;
-	scopy = ft_strdup(s);
+	scopy = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (scopy == NULL)
+		return (NULL);
 	while (s[i] != '\0')
 	{
 		scopy[i] = f(i, s[i]);

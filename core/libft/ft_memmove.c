@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:23:22 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/01 17:41:31 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/01 19:50:30 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	void	*ft_overlap(void *dest, const void *src, size_t n)
 {
-	unsigned char		*destcopy;
-	const unsigned char	*srccopy;
+	char		*destcopy;
+	const char	*srccopy;
 
 	destcopy = (char *)dest;
 	srccopy = (const char *)src;
