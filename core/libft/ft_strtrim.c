@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:18:01 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/30 16:15:50 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/01 16:03:49 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static	size_t	ft_trimstart(char const *s1, char const *set)
 
 	trim = 0;
 	i = 0;
+	if (s1 == NULL || set == NULL)
+		return (0);
 	while (set[i] != '\0' && s1[trim] != '\0')
 	{
 		if (s1[trim] == set[i])
@@ -39,6 +41,8 @@ static	size_t	ft_trimend(char const *s1, char const *set, size_t len)
 
 	trim = 0;
 	i = 0;
+	if (s1 == NULL || set == NULL)
+		return (0);
 	while (set[i] != '\0' && len > 0)
 	{
 		if (s1[len - 1] == set[i])
@@ -80,8 +84,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	total;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	start = ft_trimstart(s1, set);
 	total = start + ft_trimend(s1, set, ft_strlen(s1));
+	if (start >= ft_strlen(s1))
+		return (ft_strdup(""));
 	trimstr = ft_mcopy(s1, start, total);
 	return (trimstr);
 }
