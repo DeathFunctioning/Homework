@@ -20,14 +20,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (start > ft_strlen(s))
 	{
-		subs = malloc(1);
+		subs = (char *)malloc(1);
 		if (subs == NULL)
 			return (NULL);
 		subs[0] = '\0';
 		return (subs);
 	}
-	if (len > (ft_strlen(s)) - start)
+	if (len > (ft_strlen(s) - start))
 		len = (ft_strlen(s) - start);
+	subs = (char *)malloc(sizeof(char) * (len +1));
+	if (subs == NULL)
+		return (NULL);
 	while (i < len)
 	{
 		subs[i] = s[start + i];
