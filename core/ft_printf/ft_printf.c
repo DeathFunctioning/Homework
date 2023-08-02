@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 19:04:27 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/02 22:59:09 by tbaker           ###   ########.fr       */
+/*   Created: 2023/08/02 19:34:30 by tbaker            #+#    #+#             */
+/*   Updated: 2023/08/02 22:58:38 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdarg.h>
+int	ft_printf(const char *format, ...)
+{
 
-int	ft_printf(const char *format, ...);
+}
 
-#endif
+int	main(void)
+{
+	char	*test1;
+
+	test1 = "We make plans to kiss the sun at nigth"
+
+	printf("C's printf = %s\n", test1);
+	ft_printf("My ft_printf = %s\n", test1);
+	return (0);
+}
