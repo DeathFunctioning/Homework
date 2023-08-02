@@ -5,18 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tbaker <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/02 19:44:47 by tbaker            #+#    #+#              #
-#    Updated: 2023/08/02 19:44:58 by tbaker           ###   ########.fr        #
+#    Created: 2023/08/02 18:32:17 by tbaker            #+#    #+#              #
+#    Updated: 2023/08/02 19:01:03 by tbaker           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_strchr.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+NAME = libftprintf.a
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
 
-CC		=	gcc
-CFlAGS	=	-Wall -Wextra -Werror
-NAME	=	libft.a
-RM		=	rm -f
-OBJS	=	${SRCS:.c=.o}
+SRCS = 
+
+OBJS = ${SRCS:.c=.o}
 
 .SUFFIXES: .c .o
 
@@ -27,8 +28,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "WOW look at me mum!"
-	@echo "Also no bonus done"
+	@echo "Time to printf................."
+	@echo "....Its just beautiful dream/disaster....."
+	@echo "Also no bonus!"
 
 clean:
 	$(RM) $(OBJS)
@@ -38,4 +40,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re		
+.PHONY: all clean fclean re 
