@@ -6,36 +6,80 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:34:30 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/02 22:58:38 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/04 20:19:11 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	ft_format_output(va_list mod, char c)
+{
+	int		count;
+	char 	test;
+	char	*s1;
+
+	count = 0;
+	if (c == 'c')
+	{
+		test = va_arg(mod, int);
+		write(1, &test, 1);
+		count++;
+	}
+	else if (c == 's')
+	{
+		s1 = va_arg(mod, char*);
+		count = strlen(s1);
+		write(1, s1, count);
+	}
+	return (count);
+}
+
 int	ft_printf(const char *format, ...)
 {
+	va_list	mod;
+	int		i;
+	int		len;
 
+	i = 0;
+	len = 0;
+	va_start(mod, format);
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			len = len + ft_format_output(mod, format[i]);
+		}
+		else
+		{
+			write(1, &format[i], 1);
+			len++;
+		}
+		i++;
+	}
+	va_end(mod);
+	return(len);
 }
 
 int	main(void)
 {
-	char			c = '$'
+	char			c = '$';
 	char			*s = "We make plans to kiss the sun at nigth";
-	int				n = 42;
-	int				neg = -42;
-	unsigned int	un = 4242;
-	int				*ptr = &n;
-	float			fn = 42.42424242;
+//	int				n = 42;
+//	int				neg = -42;
+//	unsigned int	un = 4242;
+//	int				*ptr = &n;
+//	float			fn = 42.42424242;
 
 
 //		1st test 	
 	printf("C's printf = %c\n", c);
-	ft_printf("My ft_printf = % c\n", c);
+	ft_printf("My ft_printf = %c\n", c);
 
 //		Mandatory
-/*	printf("C's printf = %s\n", s);
+	printf("C's printf = %s\n", s);
 	ft_printf("My ft_printf = %s\n", s);
-	printf("C's printf = %p\n", (void*) ptr);
+/*	printf("C's printf = %p\n", (void*) ptr);
 	ft_printf("My ft_printf = %p\n", (void*) ptr);
 	printf("C's printf = %i\n", n);
 	ft_printf("My ft_printf = %i\n", n);
