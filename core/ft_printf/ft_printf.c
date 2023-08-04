@@ -89,8 +89,8 @@ int	main(void)
 	ft_printf("My ft_printf = %x\n", n);
 	printf("C's printf = %X\n", n);
 	ft_printf("My ft_printf = %X\n", n);
-	printf("C's printf = %%\n",);
-	ft_printf("My ft_printf = %%\n",);
+	printf("C's printf = %%\n");
+	ft_printf("My ft_printf = %%\n");
 */
 //		Bonus	
 /*	printf("C's printf = %-5i\n",n);
