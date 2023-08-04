@@ -77,8 +77,8 @@ int	main(void)
 	ft_printf("My ft_printf = %c\n", c);
 
 //		Mandatory
-	printf("C's printf = %s\n", s);
-	ft_printf("My ft_printf = %s\n", s);
+	printf("%i\n", printf("C's printf = %s\n", s));
+	printf("%i\n",ft_printf("My ft_printf = %s\n", s) - 2);
 /*	printf("C's printf = %p\n", (void*) ptr);
 	ft_printf("My ft_printf = %p\n", (void*) ptr);
 	printf("C's printf = %i\n", n);
