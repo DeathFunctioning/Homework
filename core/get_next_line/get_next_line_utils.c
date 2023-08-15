@@ -1,8 +1,12 @@
 
 #include "get_next_line.h"
 
-int ft_some_function(char *s, int fd)
+size_t	ft_strlen(char *s)
 {
+	int	i;
 
-	return(fd);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return(i);
 }
