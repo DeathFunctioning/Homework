@@ -4,10 +4,11 @@
 char	*get_next_line(int fd)
 {
 	char	*line;
-	char	buffer[1024];
+	char	buffer[10];
 	ssize_t	bytes_read;
 	int		i;
 	int		len;
+	static int count;
 
 	while ((bytes_read = read(fd, buffer, sizeof(buffer))) > 0)
 	{
@@ -30,6 +31,8 @@ char	*get_next_line(int fd)
 		line[i] = buffer[i];
 		i++;
 	}
+	count++;
+	printf("count = %i\n", i);
 	line[i] = '\0';
 	return (line);
 }
@@ -44,6 +47,8 @@ int	main(void)
 		perror("Why want this file open");
 		return (1);
 	}
+	printf("test1 = %s", get_next_line(fd));
+	printf("test new line\n");
 	printf("test1 = %s", get_next_line(fd));
 	printf("test new line\n");
 	close(fd);
