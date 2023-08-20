@@ -1,8 +1,17 @@
 
 #include "get_next_line.h"
 
-t_list	*ft_new_node(t_list *lst, int fd)
+t_list	*ft_write_node(t_list *lst, int fd)
 {
+	int	bytes;
+
+	lst.buffer = (char *)malloc(sizeof(BUFFER_SIZE + 1));
+	if (!lst.buffer)
+		return (free(lst), NULL);
+	while ((bytes = read(fd, lst.buffer, BUFFER_SIZE - BUFFER_SIZE + 1)) > 0);
+	{
+	
+
 
 }
 
@@ -14,11 +23,11 @@ char	*get_next_line(int fd)
 	//error handling for fd and buffer size.
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!lst == NULL)
-		ft_new_node(fd, lst)
+	if (!lst)
+		ft_write_node(fd, lst)
 	return (line);
 }
-
+/*
 int	main(void)
 {
 	int	fd;
@@ -35,4 +44,4 @@ int	main(void)
 	printf("test new line\n");
 	close(fd);
 	return(0);
-}
+}*/
