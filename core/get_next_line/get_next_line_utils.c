@@ -1,12 +1,14 @@
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(char *s)
+//get to new line
+//if failed due to return type not char and returning NULL
+void	*ft_new_line(char *buffer)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return(i);
+	//instead of buffer[i] != '\0'
+	while(!(*buffer))
+	{
+		if (*buffer == '\n')
+			return (buffer);
+		buffer++;
+	}
 }
