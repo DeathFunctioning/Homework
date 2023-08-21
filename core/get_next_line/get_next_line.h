@@ -12,10 +12,12 @@
 
 typedef struct s_list
 {
-	char			*buff;
+	char			*buffer;
 	struct s_list	*next;
 }	t_list;
 
 char	*get_next_line(int fd);
-void	*ft_new_line(char *buffer);
+char	*ft_new_line(char *buffer);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+
 #endif
