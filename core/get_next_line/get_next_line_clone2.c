@@ -1,6 +1,38 @@
 
 #include "get_next_line.h"
-	
+
+char	*ft_new_line_copy(t_list *lst)
+{
+	int len;
+	int i;
+	char *s;
+	t_list	*next;
+
+	printf("lst->buffer = %s\n", lst->buffer);//test
+	i = 0;
+	next = lst;
+	len = ft_get_len(next);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	while (i < len)
+	{
+		while (*next->buffer != '\0' && i < len) 
+		{
+			s[i] = *next->buffer;
+			i++;
+			next->buffer++;
+		}
+		i++;
+		next->buffer++;
+		next = next-> next;
+	}
+	s[i] = '\0';
+	printf("s = %s", s);
+	return (s);
+}
+
+// Creats new node in linked listed and adds to the back of the list
+// This makes it easy to read through the linked list. 
+
 t_list	*ft_new_node(t_list **lst)
 {
 	t_list	*new_node;
@@ -19,28 +51,8 @@ t_list	*ft_new_node(t_list **lst)
 	return (new_node);
 }
 
-char 	*ft_new_line_copy(t_list *lst)
-{
-	char	*s;
-	int		len;
-	t_list	*temp_node;
-	int		i;
-
-	i = 0;
-	temp_node = lst;
-	len = ft_get_len(lst);
-	s = (char *)malloc(sizeof(char) * (len + 1));
-	if (!s)
-		return (NULL);
-	while (temp_node && i < 1)
-	{
-		s[i] = temp_node->buffer[i];
-		i++;		
-	}
-	s[i] = '\0';
-	return (s);
-}
-
+//Reads from file and copys to buffer in linked list
+//Remove test!!!!!!!!!!!!
 char	*ft_read_buffer(t_list *lst, int fd)
 {
 	int		bytes ;
@@ -56,15 +68,14 @@ char	*ft_read_buffer(t_list *lst, int fd)
 	while ((bytes = read(fd, lst->buffer, BUFFER_SIZE)) > 0)
 	{
 		count++;//testing
-	//	printf("Times read = [%i]\n%s\n",count, lst->buffer);//testing
+	//	printf("buffer = %s\n", lst->buffer);
 		lst->buffer[bytes] = '\0';
-		if (ft_new_line(lst->buffer))
-			return (ft_new_line_copy(lst));
+		if (!ft_new_line(lst->buffer))
+			break;
 		else 
 			lst = ft_new_node(&lst);
-
 	}
-	return (lst->buffer);
+	return (ft_new_line_copy(lst));
 }
 
 char	*get_next_line(int fd)
@@ -77,6 +88,7 @@ char	*get_next_line(int fd)
 	//error handling for fd and buffer size.
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	//1st step
 	return (ft_read_buffer(lst, fd));
 }
 
