@@ -8,7 +8,7 @@ char	*ft_new_line_copy(t_list *lst)
 	char *s;
 	t_list	*next;
 
-	printf("lst->buffer = %s\n", lst->buffer);//test
+	printf("lst->buffer = %s", lst->buffer);//test
 	i = 0;
 	next = lst;
 	len = ft_get_len(next);
@@ -18,6 +18,7 @@ char	*ft_new_line_copy(t_list *lst)
 		while (*next->buffer != '\0' && i < len) 
 		{
 			s[i] = *next->buffer;
+			*next->buffer = '\0';
 			i++;
 			next->buffer++;
 		}
@@ -78,9 +79,11 @@ char	*ft_read_buffer(t_list *lst, int fd)
 	return (ft_new_line_copy(lst));
 }
 
+
 char	*get_next_line(int fd)
 {
 	static t_list	*lst = NULL;
+	char			*s;
 
 	lst = (t_list  *)malloc(sizeof(t_list));
 	if (!lst)
@@ -89,7 +92,9 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	//1st step
-	return (ft_read_buffer(lst, fd));
+	s = ft_read_buffer(lst, fd);
+	//lst = ft_new_start(lst);
+	return (s);
 }
 
 
@@ -104,9 +109,9 @@ int	main(void)
 		return (1);
 	}
 	printf("test1 = %s", get_next_line(fd));
-	printf("\n");
-	printf("test1 = %s", get_next_line(fd));
-	printf("\n");
+	printf("test2 = %s", get_next_line(fd));
+//	printf("test3 = %s", get_next_line(fd));
+//	printf("test4 = %s", get_next_line(fd));
 //	printf("test new line\n");
 	close(fd);
 	return(0);
