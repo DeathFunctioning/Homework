@@ -1,15 +1,15 @@
 
 #include "get_next_line.h"
 //get to new line
-char	*ft_new_line(char *buffer)
+int	ft_new_line(char *buffer)
 {
-	while(!(*buffer))
+	while(*buffer != '\0')
 	{
 		if (*buffer == '\n')
-			return (buffer);
+			return (1);
 		buffer++;
 	}
-	return (NULL);
+	return (0);
 }
 
 int	ft_get_len(t_list *lst)
@@ -20,19 +20,21 @@ int	ft_get_len(t_list *lst)
 
 	next = lst;
 	len = 0;
-	while (next)
+	while (next != NULL)
 	{
 	i = 0;
-		while (next->buffer[i] != '\n' && next->buffer[i] != '\0')
-		{	
+		while (next->buffer[i] != '\0')
+		{
+			if (next->buffer[i] == '\n')
+			{
+				len++;
+				break;
+			}	
 			i++;
 			len++;
 		}
 		if (next->buffer[i] == '\n')
-		{
-			len++;
 			break;
-		}
 		next = next->next;
 	}
 	printf("len = %i\n", len);//test

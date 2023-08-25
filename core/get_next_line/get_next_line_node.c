@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:37:57 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/25 15:57:51 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/25 15:17:12 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_new_line_copy(t_list *lst)
 	i = 0;
 	j = 0;
 	next = lst;
-	len = ft_get_len(next);
+	len = ft_get_len(lst);
 	s = (char *)malloc(sizeof(char) * (len + 1));
 	s2 = (char *)malloc(sizeof(char) * (len + 1));
 	while (i < len)
@@ -33,7 +33,7 @@ char	*ft_new_line_copy(t_list *lst)
 		while (*next->buffer != '\0' && i < len) 
 		{
 			s[i] = *next->buffer;
-			*next->buffer = '\0';
+		//	*next->buffer = '\0';
 			if (*next->buffer == '\n')
 			{
 				s[i] = *next->buffer;
@@ -54,8 +54,6 @@ char	*ft_new_line_copy(t_list *lst)
 			i++;
 			next->buffer++;
 		}
-		i++;
-		next->buffer++;
 		next = next-> next;
 	}
 	s[i] = '\0';
@@ -101,7 +99,7 @@ char	*ft_read_buffer(t_list *lst, int fd)
 	while ((bytes = read(fd, lst->buffer, BUFFER_SIZE)) > 0)
 	{
 		count++;//testing
-	//	printf("buffer = %s\n", lst->buffer);
+		printf("buffer = %s\n", lst->buffer);
 		lst->buffer[bytes] = '\0';
 		if (ft_new_line(lst->buffer) == 1)
 			break;
