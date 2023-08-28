@@ -1,13 +1,17 @@
 
 #include "get_next_line.h"
 //get to new line
+
 int	ft_new_line(char *buffer)
 {
-	while(*buffer != '\0')
+	char *temp;
+
+	temp = buffer;
+	while(*temp != '\0')
 	{
-		if (*buffer == '\n')
+		if (*temp == '\n')
 			return (1);
-		buffer++;
+		temp++;
 	}
 	return (0);
 }
@@ -39,7 +43,7 @@ int	ft_get_len(t_list *lst)
 	}
 	printf("len = %i\n", len);//test
 	return (len);
-}
+} 
 
 void    ft_lstadd_back(t_list **lst, t_list *new)
 {

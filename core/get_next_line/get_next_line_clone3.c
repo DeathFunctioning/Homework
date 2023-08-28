@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_clone2.c                             :+:      :+:    :+:   */
+/*   get_next_line_clone3.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 17:37:57 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/25 16:41:55 by tbaker           ###   ########.fr       */
+/*   Created: 2023/08/28 21:22:39 by tbaker            #+#    #+#             */
+/*   Updated: 2023/08/28 21:25:32 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_new_line_copy(t_list *lst)
 	char	*s_start;
 	t_list	*next;
 
-	printf("lst->buffer = %s", lst->buffer);//test
 	next = lst;
 	len = ft_get_len(next);
 	s = (char *)malloc(sizeof(char) * (len + 1));
@@ -49,7 +48,6 @@ char	*ft_new_line_copy(t_list *lst)
 		}
 		next = next->next;
 	}
-	printf("s = %s", s);
 	*s2 = '\0';
 	lst->buffer = s2;
 	*s = '\0';
@@ -82,7 +80,6 @@ t_list	*ft_new_node(t_list **lst)
 char	*ft_read_buffer(t_list *lst, int fd)
 {
 	int	bytes ;
-	int	count = 0; //test remove
 	t_list	*new;
 	t_list  *new_node;
 
@@ -95,10 +92,8 @@ char	*ft_read_buffer(t_list *lst, int fd)
 		free (lst);
 		return (NULL);
 	}
-	while ((bytes = read(fd, new->buffer, BUFFER_SIZE)) > 0)
+	while ((bytes = read(fd, new->buffer, 1)) > 0)
 	{
-		count++;//testing
-	//	printf("buffer = %s\n", lst->buffer);
 		lst->buffer[bytes] = '\0';
 		if (ft_new_line(new->buffer) == 1)
 			break;
@@ -109,7 +104,6 @@ char	*ft_read_buffer(t_list *lst, int fd)
 				return (NULL);
 			new = new_node;
 		}
-
 	}
 	return (ft_new_line_copy(lst));
 }
@@ -123,15 +117,12 @@ char	*get_next_line(int fd)
 	lst = (t_list  *)malloc(sizeof(t_list));
 	if (!lst)
 		return (NULL);
-	//error handling for fd and buffer size.
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	//1st step
 	s = ft_read_buffer(lst, fd);
-	//lst = ft_new_start(lst);
 	return (s);
 }
-
+/*
 
 int	main(void)
 {
@@ -150,4 +141,4 @@ int	main(void)
 //	printf("test new line\n");
 	close(fd);
 	return (0);
-}
+}*/

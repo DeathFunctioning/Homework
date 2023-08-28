@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 17:37:57 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/25 15:17:12 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/28 20:48:35 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,27 @@ char	*ft_new_line_copy(t_list *lst)
 	{
 		while (*next->buffer != '\0' && i < len) 
 		{
-			s[i] = *next->buffer;
 		//	*next->buffer = '\0';
 			if (*next->buffer == '\n')
 			{
+
 				s[i] = *next->buffer;
 				i++;
 				next->buffer++;
 				while (*next->buffer != '\0')
 				{
-					*s2 = *next->buffer;
-					s2++;
+					s2[j] = *next->buffer;
+					j++;
 					next->buffer++;
 				}
-				*s2 = '\0';
-				next->buffer = s2;
-				s[i] = '\0';
+				s2[j] = '\0';
 				printf("s2 = %s", s2);
+				strcpy(next->buffer,s2);
+				//lst->buffer = lst->buffer + strlen(s2) + 1;
+				s[i] = '\0';
 				return (s);
 			}
+			s[i] = *next->buffer;
 			i++;
 			next->buffer++;
 		}
