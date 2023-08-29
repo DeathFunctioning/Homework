@@ -15,11 +15,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS = 
+SRCS = ft_printf.c
 
 OBJS = ${SRCS:.c=.o}
-
-.SUFFIXES: .c .o
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
