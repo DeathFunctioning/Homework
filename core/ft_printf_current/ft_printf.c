@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:34:30 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/04 20:19:11 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/30 15:40:17 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ int	ft_format_sort(va_list mod, const char c, int len)
 		len = len + ft_unsigned(va_arg(mod, unsigned int));
 	else if (c == 'x' || c == 'X')
 		len = len + ft_hexadecimal(va_arg(mod, unsigned int), c);
-//	else if (c == 'p')
-//		len = len + ft_pointer(va_arg(mod, long long), len);
+	else if (c == 'p')
+	{
+		len = len + write(1, "0x", 2);
+		len = len + ft_pointer(va_arg(mod, unsigned long));
+	}
 	else if (c == '%')
 		len = len + write(1, "%", 1);
 	return (len);
@@ -67,16 +70,16 @@ int	ft_printf(const char *format, ...)
 	va_end(mod);
 	return (len);
 }
-
+/*
 int	main(void)
 {
 //	char	c = '$';
 //	int		value;
 	char			*s = "hello world";
 //	char			*s = "We make plans to kiss the sun at nigth";
-	int				n = 42;
+	int				n = -424242;
 //	int				neg = -42;
-	unsigned int	un = 0;
+	unsigned int	un = 4242424242;
 //	int				*ptr = &n;
 //	float			fn = 42.42424242;
 
@@ -104,11 +107,15 @@ int	main(void)
 	printf("\n");
 	printf("%i\n",ft_printf("My ft_printf = %X\n", un));
 	printf("\n");
+	printf("%i\n", printf("C'sss printf = %p\n", &s));
+	printf("\n");
+	printf("%i\n",ft_printf("My ft_printf = %p\n", &s));
+	printf("\n");
 
 	return (0);
-}
-//		Mandatory
-/*	printf("%i\n", printf("C's printf = %s\n", s));
+}*/
+/*		Mandatory
+	printf("%i\n", printf("C's printf = %s\n", s));
 	printf("%i\n",ft_printf("My ft_printf = %s\n", s) - 2);
 	printf("C's printf = %p\n", (void*) ptr);
 	ft_printf("My ft_printf = %p\n", (void*) ptr);
@@ -123,10 +130,10 @@ int	main(void)
 	printf("C's printf = %%\n");
 	ft_printf("My ft_printf = %%\n");
 	return (0);
-}*/
+}
 
 //		Bonus	
-/*	printf("C's printf = %-5i\n",n);
+	printf("C's printf = %-5i\n",n);
 	ft_printf("My ft_printf = %-5i\n",n);
 	printf("C's printf = %05i\n",n);
 	ft_printf("My ft_printf = %05i\n",n);
@@ -139,8 +146,6 @@ int	main(void)
 	printf("C's printf = %#x\n",n);
 	ft_printf("My ft_printf = %#x\n",n);
 */
-
-
 //			Conversions
 // %c = char
 // %s = string

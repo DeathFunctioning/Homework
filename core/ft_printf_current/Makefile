@@ -6,7 +6,7 @@
 #    By: tbaker <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/02 18:32:17 by tbaker            #+#    #+#              #
-#    Updated: 2023/08/02 19:01:03 by tbaker           ###   ########.fr        #
+#    Updated: 2023/08/30 15:13:19 by tbaker           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_printf_utils.c
 
 OBJS = ${SRCS:.c=.o}
 
