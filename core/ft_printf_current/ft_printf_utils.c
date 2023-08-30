@@ -9,7 +9,6 @@ int	ft_string(char *s)
 	while (s[i] != '\0')
 		i++;
 	write(1, s, i);
-//	printf("i = %i\n", i);
 	return (i);
 }
 
@@ -27,22 +26,9 @@ int	ft_integer(int nbr)
 	{
 		len = len + write(1, "-", 1);
 		nbr = -nbr;
-		//len++;
 	}
 	else
 		len = len + ft_unsigned(nbr);
-/*	
-	{
-		if (nbr >= 10)
-		{
-			len++;
-			nbr = nbr / 10;
-			ft_interger(nbr);
-		}
-		nbr = nbr % 10 + 48;
-		len++;
-		write(1, &nbr, 1);
-	}*/
 	return (len);
 }
 
@@ -57,24 +43,58 @@ int	ft_unsigned(unsigned int nbr)
 	write(1, &nbr, 1);
 	return (len);
 }
-/*
-int	ft_hexadecimal(unsigned int nbr, const char c, int len)
+
+int	ft_hexadecimal(unsigned int nbr, const char c)
 {
-	if (nbr > 16)
+	int	len;
+
+	len = 0;
+	if (nbr == 0)
+		return (ft_putchar('0'));
+	if (nbr >= 16)
 	{
-		len++;
-		ft_hexadecimal(nbr / 16, c, len);
-		ft_hexadecimal(nbr % 16, c, len);
+		len = len + ft_hexadecimal(nbr / 16, c);
+		len = len + ft_hexadecimal(nbr % 16, c);
+	}
+	else
+	{
+		if (nbr <= 9)
+			len = len + ft_putchar(nbr + 48);
+		else 
+		{
+			if (c == 'x')
+				len = len + ft_putchar(nbr + 87);
+			if (c == 'X')
+				len = len + ft_putchar(nbr + 55);
+		}
+	}
+	return (len);
+}
+/*
+int	ft_hexadecimal(unsigned int nbr, const char c)
+{
+	int	len;
+
+	len = 0;
+	if (nbr == 0)
+	{
+		len = len + write(1, "0", 1);
+		return (len);
+	}
+	if (nbr >= 16)
+	{
+		ft_hexadecimal(nbr / 16, c);
+		ft_hexadecimal(nbr % 16, c);
 	}
 	len++;
 	if (nbr < 10)
-		write(1, &nbr + 48, 1);
+		len = len + ft_putchar(nbr + '0');
 	else 
 	{
-		if (c == 'x' || c == 'p')
-			write(1, nbr - 10 + 'a', 1);
+		if (c == 'x')
+			len = len + ft_putchar(nbr - 10 + 'a');
 		if (c == 'X')
-			write(1, nbr - 10 + 'A', 1);
+			len = len + ft_putchar(nbr - 10 + 'A');
 	}
 	return (len);
 }

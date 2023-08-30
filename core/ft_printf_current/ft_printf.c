@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+int	ft_putchar(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
 int	ft_format_sort(va_list mod, const char c, int len)
 {
 	char	c_return;
@@ -27,13 +33,12 @@ int	ft_format_sort(va_list mod, const char c, int len)
 		len = len + ft_integer(va_arg(mod, int));
 	else if (c == 'u')
 		len = len + ft_unsigned(va_arg(mod, unsigned int));
-//	else if (c == 'x' || c == 'X')
-//		len = len + ft_hexadecimal(va_arg(mod, unsigned int), c, len);
+	else if (c == 'x' || c == 'X')
+		len = len + ft_hexadecimal(va_arg(mod, unsigned int), c);
 //	else if (c == 'p')
 //		len = len + ft_pointer(va_arg(mod, long long), len);
 	else if (c == '%')
 		len = len + write(1, "%", 1);
-	printf("len = %i\n", len);
 	return (len);
 }
 
@@ -54,7 +59,6 @@ int	ft_printf(const char *format, ...)
 			i++;
 			c = format[i];
 			len = ft_format_sort(mod, c, len);
-			printf("test len = %i\n", len);
 		}
 		else
 			len = len + write(1, &format[i], 1);
@@ -72,7 +76,7 @@ int	main(void)
 //	char			*s = "We make plans to kiss the sun at nigth";
 	int				n = 42;
 //	int				neg = -42;
-	unsigned int	un = 4242;
+	unsigned int	un = 0;
 //	int				*ptr = &n;
 //	float			fn = 42.42424242;
 
@@ -91,6 +95,14 @@ int	main(void)
 	printf("%i\n", printf("C'sss printf = %i", n));
 	printf("\n");
 	printf("%i\n",ft_printf("My ft_printf = %i", n));
+	printf("\n");
+	printf("%i\n", printf("C'sss printf = %x\n", un));
+	printf("\n");
+	printf("%i\n",ft_printf("My ft_printf = %x\n", un));
+	printf("\n");
+	printf("%i\n", printf("C'sss printf = %X\n", un));
+	printf("\n");
+	printf("%i\n",ft_printf("My ft_printf = %X\n", un));
 	printf("\n");
 
 	return (0);
