@@ -6,18 +6,21 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:34:30 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/30 15:40:17 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/30 15:54:26 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+// Allow write and perform addition on nbr in function in one line of code
 int	ft_putchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
+// Sorts mod into correct functions
+// Handles %c %% and adds "0x" to %P
 int	ft_format_sort(va_list mod, const char c, int len)
 {
 	char	c_return;
@@ -45,6 +48,8 @@ int	ft_format_sort(va_list mod, const char c, int len)
 	return (len);
 }
 
+// Writes char and finds %
+// Counts times writen and returns total printf size
 int	ft_printf(const char *format, ...)
 {
 	va_list	mod;

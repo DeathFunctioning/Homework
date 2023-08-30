@@ -6,12 +6,13 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:47:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/30 15:38:44 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/30 15:53:17 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+// Writes string and handles NULL strings
 int	ft_string(char *s)
 {
 	int		i;
@@ -28,6 +29,8 @@ int	ft_string(char *s)
 	return (i);
 }
 
+// Handles negative number and max negative int
+// Then sends the rest to ft_unsigned int
 int	ft_integer(int nbr)
 {
 	int	len;
@@ -47,6 +50,8 @@ int	ft_integer(int nbr)
 	return (len);
 }
 
+// Handles %i %d %u 
+// With unsigned dont need to handle negative numbers
 int	ft_unsigned(unsigned int nbr)
 {
 	int	len;
@@ -59,6 +64,9 @@ int	ft_unsigned(unsigned int nbr)
 	return (len);
 }
 
+// Converts to hex using base 16
+// If its between 1 and 9 its just base 10 
+// If its between 10 and 15 you add the ascii of a or A - 10
 int	ft_hexadecimal(unsigned int nbr, const char c)
 {
 	int	len;
@@ -86,6 +94,7 @@ int	ft_hexadecimal(unsigned int nbr, const char c)
 	return (len);
 }
 
+// Same as hexa but uses long 
 int	ft_pointer(unsigned long nbr)
 {
 	int	len;
