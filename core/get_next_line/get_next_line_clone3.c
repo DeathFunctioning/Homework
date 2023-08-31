@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:22:39 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/28 21:25:32 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/30 16:11:24 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	*ft_read_buffer(t_list *lst, int fd)
 		free (lst);
 		return (NULL);
 	}
-	while ((bytes = read(fd, new->buffer, 1)) > 0)
+	while ((bytes = read(fd, new->buffer, BUFFER_SIZE)) > 0)
 	{
 		lst->buffer[bytes] = '\0';
 		if (ft_new_line(new->buffer) == 1)
@@ -122,7 +122,7 @@ char	*get_next_line(int fd)
 	s = ft_read_buffer(lst, fd);
 	return (s);
 }
-/*
+
 
 int	main(void)
 {
@@ -141,4 +141,4 @@ int	main(void)
 //	printf("test new line\n");
 	close(fd);
 	return (0);
-}*/
+}
