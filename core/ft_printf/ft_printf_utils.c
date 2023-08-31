@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:47:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/30 16:25:06 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/08/31 16:10:15 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	ft_hexadecimal(unsigned int nbr, const char c)
 	{
 		if (nbr < 10)
 			len = len + ft_putchar(nbr + 48);
-		else 
+		else
 		{
 			if (c == 'x')
 				len = len + ft_putchar(nbr + 87);
@@ -111,7 +111,7 @@ int	ft_pointer(unsigned long nbr)
 	{
 		if (nbr < 10)
 			len = len + ft_putchar(nbr + 48);
-		else 
+		else
 			len = len + ft_putchar(nbr + 87);
 	}
 	return (len);
