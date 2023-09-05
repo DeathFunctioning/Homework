@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 19:34:30 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/30 16:25:12 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/09/05 14:37:52 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,15 @@ int	ft_printf(const char *format, ...)
 /*
 int	main(void)
 {
-//	char	c = '$';
-//	int		value;
-	char			*s = "hello world";
-//	char			*s = "We make plans to kiss the sun at nigth";
-	int				n = -424242;
+	char	c = '$';
+	char			*s = "We make plans to kiss the sun at nigth";
+	int				n = 424242;
 //	int				neg = -42;
 	unsigned int	un = 4242424242;
-//	int				*ptr = &n;
 //	float			fn = 42.42424242;
 
 
-//	printf("C's printf = %c\n", c);
-//	value = ft_printf("My ft_printf = %c\n", c);
-//	printf("V = %i\n", value);
+	printf("C's printf = %c\n", c);
 	printf("%i\n", printf("C'sss printf = %s", s));
 	printf("\n");
 	printf("%i\n",ft_printf("My ft_printf = %s", s));
@@ -100,10 +95,8 @@ int	main(void)
 	printf("\n");
 	printf("%i\n",ft_printf("My ft_printf = %u", un));
 	printf("\n");
-	printf("%i\n", printf("C'sss printf = %i", n));
-	printf("\n");
-	printf("%i\n",ft_printf("My ft_printf = %i", n));
-	printf("\n");
+	printf("%i\n", printf("C'sss printf = %i, = %s\n", n, s));
+	ft_printf("%i\n", ft_printf("My ft_printf = %i, = %s\n", n, s));
 	printf("%i\n", printf("C'sss printf = %x\n", un));
 	printf("\n");
 	printf("%i\n",ft_printf("My ft_printf = %x\n", un));
