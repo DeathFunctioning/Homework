@@ -1,0 +1,72 @@
+- /bin = ls, cat and other basic binaries/programs 
+
+- /sbin = system only tools
+
+- /boot = all your boot loaders don't touch
+
+- /dev = all your devices are located storage, keyboard and what not.
+
+- /etc = stores all you system configs 
+
+- /lib = where lib is store for use for the /bin and /sbin
+
+- /mnt = where mount storage device like USB
+
+- /media = 
+
+- /opt = user stored software
+
+- /proc = is wherew find sudo file that contain information about system 
+process and resources
+
+- /root = root user home folder
+
+- /run = tempfs file system runs in ram.
+
+- /srv = server data is stored 
+
+- /sys = system folder 
+
+- /temp = where files are stored temp
+
+- /usr = 
+
+- /home = user stored personal files 
+
+- single user mode = boots you in a root user to allow to system repairs and upgrades, networking is generally disabled. 
+
+- lsblk = list information on block devices/storage 
+
+- ls -l / = list root file system 
+
+- sudo fdisk -l = information listing for storage an partitions
+
+- sudo umount /dev/{device name} = ejects/unmounts storage device through the command line.
+
+- 
+
+- grep(Global Regular Expression Print)
+
+- grep [options] pattern [file...]
+
+- Options:	-i Ignore case = a == A.
+			-r or -R Recursively search dir.
+			-l Only display the names of files containing the pattern.
+			-n Show line numbers with the matching lines
+			-v Invert the match display lines that != to pattern. 
+- pattern = search term. 
+- file = files search through. 
+
+- apt (Advanced Package Tool) = Handles package install, upgrades, removal and other package-related tasks.
+		- apt list --installed = List all installed packages.
+		- sudo apt update = Updates list of avaliable packages
+		- sudo apt upgrade = Upgrades installed packages 
+		- sudo apt install package-name = Installs new package
+		- apt show package-name = details information about package 
+- apt config files located in /etc/apt/.
+
+- df - h = its going show how much space is used on any mount device
+
+- sudo mkdir = to create folder in root dir.
+
+
