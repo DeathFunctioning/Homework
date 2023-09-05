@@ -1,0 +1,35 @@
+- lsblk = 
+
+- ls -l / = list root file system 
+
+- sudo fdisk -l = information listing for storage an partications
+
+- sudo umount /dev/{device name} = ejects/unmounts storage divce through the command line.
+
+- 
+
+- grep(Global Regualar Expression Print)
+
+- grep [options] pattern [file...]
+
+- Options:	-i Ignore case = a == A.
+			-r or -R Recursively searchs dir.
+			-l Only display the names of files containing the pattern.
+			-n Show line numbers with the matching lines
+			-v Invert the match display lines that != to pattern. 
+- pattern = search term. 
+- file = files search through. 
+
+- apt (Advanced Package Tool) = Handles package install, upgrades, removal and other package-related tasks.
+		- apt list --installed = List all installed packages.
+		- sudo apt update = Updates list of avaliable packages
+		- sudo apt upgrade = Upgrades installed packages 
+		- sudo apt install package-name = Installs new package
+		- apt show package-name = details information about package 
+- apt config files located in /etc/apt/.
+
+- df - h = its going show how much space is used on any mount device
+
+- sudo mkdir = to create folder in root dir.
+
+
