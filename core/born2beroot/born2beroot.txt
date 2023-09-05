@@ -1,19 +1,84 @@
-- lsblk = 
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    born2beroot.txt                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tbaker <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/05 20:44:36 by tbaker            #+#    #+#              #
+#    Updated: 2023/09/05 22:44:32 by tbaker           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+
+- apt vs aptitude 
+	Both are package management tools
+	- apt: 
+			- Simpler and concise
+			- Has better dependency handling 
+			- Is preferred in scripting due to simplicity
+			- Considered more stable 
+	- aptitude 
+			- Is more interactive with text based terminal can be searched easer 
+			- Can be more aggressive with resolving dependency 
+			- Less preferred pack manager 
+			
+- -y = automates yes to all prompts during update or install
+
+- /bin = ls, cat and other basic binaries/programs 
+
+- /sbin = system only tools
+
+- /boot = all your boot loaders don't touch
+
+- /dev = all your devices are located storage, keyboard and what not.
+
+- /etc = stores all you system configs 
+
+- /lib = where lib is store for use for the /bin and /sbin
+
+- /mnt = where mount storage device like USB
+
+- /media = 
+
+- /opt = user stored software
+
+- /proc = is wherew find sudo file that contain information about system 
+process and resources
+
+- /root = root user home folder
+
+- /run = tempfs file system runs in ram.
+
+- /srv = server data is stored 
+
+- /sys = system folder 
+
+- /temp = where files are stored temp
+
+- /usr = 
+
+- /home = user stored personal files 
+
+- single user mode = boots you in a root user to allow to system repairs and upgrades, networking is generally disabled. 
+
+- lsblk = list information on block devices/storage 
 
 - ls -l / = list root file system 
 
-- sudo fdisk -l = information listing for storage an partications
+- sudo fdisk -l = information listing for storage an partitions
 
-- sudo umount /dev/{device name} = ejects/unmounts storage divce through the command line.
+- sudo umount /dev/{device name} = ejects/unmounts storage device through the command line.
 
 - 
 
-- grep(Global Regualar Expression Print)
+- grep(Global Regular Expression Print)
 
 - grep [options] pattern [file...]
 
 - Options:	-i Ignore case = a == A.
-			-r or -R Recursively searchs dir.
+			-r or -R Recursively search dir.
 			-l Only display the names of files containing the pattern.
 			-n Show line numbers with the matching lines
 			-v Invert the match display lines that != to pattern. 
