@@ -1,0 +1,8 @@
+getent group 
+adduser
+groupadd
+usermod -aG 
+groups 
+chage -l
+hostnamectl
+
