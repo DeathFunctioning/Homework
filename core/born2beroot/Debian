@@ -1,8 +1,52 @@
-getent group 
-adduser
-groupadd
-usermod -aG 
-groups 
-chage -l
-hostnamectl
+lsblk
+sudo reboot
+sudo usermod -aG sudo user
+sudo visudo
 
+how a virtual machine works:
+Emulates a Computer!!! 
+Virtual environment that emulates a computer, simulating virtual hardware.
+Run different types of operating systems.
+Run multiple VM at once.   
+
+I choose Debain 
+Debain new user friendly Rocky more suit to server usage and more complicated 
+Great for test and teach, can simulate large networks can provide privacy and security 
+aptitude and apt are package managers 
+appamor = like windows defender linux security module 
+
+UFW 
+- sudo ufw status numbered
+SSH
+	- sudo service ssh status 
+Hostname
+	- hostnamectl
+-------pam.d
+-------security
+-------login.defs
+
+sudo groupdel 
+sudo userdel
+
+getent group sudo
+getent group user42
+sudo adduser
+sudo groupadd
+sudo usermod -aG
+groups
+check pwrule for user: sudo chage -l 
+
+What is ssh 
+	- secure shell protocol
+	- secure remote login 
+	- allows operating systems to communicate
+ssh <user>@127.0.0.1 -p 4242
+
+-------cat /usr/local/bin/monitoring.sh
+sudo crontab -u root -e 
+sudo /etc/init.d/cron start || stop
+
+sudo visudo 
+cat /var/log/sudo/sudo.log
+
+sudo hostnnamectl set-hostname
