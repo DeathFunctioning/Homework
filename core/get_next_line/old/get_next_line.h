@@ -10,6 +10,15 @@
 # include <stdarg.h>
 # include <stddef.h>
 
+typedef struct s_list
+{
+	char			*buffer;
+	struct s_list	*next;
+}	t_list;
+
 char	*get_next_line(int fd);
+int		ft_new_line(char *buffer);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+int		ft_get_len(t_list *lst);
 
 #endif
