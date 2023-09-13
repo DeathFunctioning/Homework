@@ -6,23 +6,22 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:52:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/10 17:24:43 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/09/13 16:43:40 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_find_next_line(char *buffer)
+int ft_find_nl(char *buffer)
 {
 	int 	i;
 	char	*temp;
 
 	i = 0;
 	temp = buffer;
-	while(*temp != '\0')
+	while(temp[i] != '\0')
 	{
-		if (*temp == '\n')
+		if (temp[i] == '\n')
 			return (i + 1);
 		i++;
 	}
 	return (0);
 }
-
