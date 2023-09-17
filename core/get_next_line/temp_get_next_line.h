@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   temp_get_next_line.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/17 15:52:29 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/17 15:54:23 by tbaker           ###   ########.fr       */
+/*   Created: 2023/09/17 15:55:30 by tbaker            #+#    #+#             */
+/*   Updated: 2023/09/17 15:56:06 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef TEMP_GET_NEXT_LINE_H
+# define TEMP_GET_NEXT_LINE_H
 
 # include <unistd.h>
 # include <fcntl.h>
