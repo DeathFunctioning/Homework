@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+/*
 char	*ft_split_buffer(char *buffer, char *line, int bytes)
 {
 	char	*left_over;
@@ -26,7 +26,7 @@ char	*ft_split_buffer(char *buffer, char *line, int bytes)
 
 
 
-}
+}*/
 
 char	*ft_copy_line(char *buffer, char *line, int bytes)
 {
@@ -43,20 +43,18 @@ char	*ft_copy_line(char *buffer, char *line, int bytes)
 		i++;
 	}
 	temp[i] = '\0';
-ft
-
-
-
-
+	line = strjoin(line, temp);
 	printf("ft_copy_line_test-b = %s\n", buffer);
 	printf("ft_copy_line_test-l = %s\n", line);
+	printf("ft_copy_line_test-l = %s\n", temp);
 	printf("ft_copy_line_test-by = %i\n", bytes);
+	free(temp, buffer);
 	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*left_over = NULL;
+//	static char	*left_over = NULL;
 	char		buffer[BUFFER_SIZE + 1];
 	char		*line;
 	int			bytes;
@@ -71,14 +69,15 @@ char	*get_next_line(int fd)
 		if (bytes < 0)
 			break;
 		buffer[bytes] = '\0';
-		if (ft_find_nl(buffer) > 0)
+/*		if (ft_find_nl(buffer) > 0)
 			left_over = ft_split_buffer(buffer, line, bytes);
-		else
-			line = ft_copy_line(buffer, line, bytes);
+		else*/
+		line = ft_copy_line(buffer, line, bytes);
 	}
 	return (line);
 }
 
+int	main(viod)
 {
 	int	fd;
 

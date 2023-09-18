@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+# include "get_next_line.h"
+
 int ft_find_nl(char *buffer)
 {
 	int 	i;
@@ -26,4 +28,4 @@ int ft_find_nl(char *buffer)
 	return (0);
 }
 
-char	*gnl_strcat(
+//char	*gnl_strcat(

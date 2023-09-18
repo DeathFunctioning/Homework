@@ -11,5 +11,6 @@
 # include <stddef.h>
 
 char	*get_next_line(int fd);
+int		ft_find_nl(char *buffer);
 
 #endif
