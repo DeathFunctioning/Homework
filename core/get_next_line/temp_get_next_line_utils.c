@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:52:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/17 16:42:29 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/09/24 18:55:58 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	ft_find_nl(char *buffer)
 	while (temp[i] != '\0')
 	{
 		if (temp[i] == '\n')
-			return (i + 1);
+			return (i);
 		i++;
 	}
 	return (0);
 }
 
-int	ft_strlen(char *s)
+int	ft_strlen(char const *s)
 {
 	int	i;
 
@@ -37,8 +37,36 @@ int	ft_strlen(char *s)
 		i++;
 	return (i);
 }
-
+/*
 char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*join;
+	int		len;
+	int		j;
+	int		i;
+
+	i = 0;
+	j = 0;
+	len = ft_strlen(s1) + ft_strlen(s2);
+	join = (char *)malloc(sizeof(char) * len + 1);
+	if (!join)
+		return (NULL);
+	while (s1[i])
+	{
+		join[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		join[i] = s2[j];
+		j++;
+		i++;
+	}
+	join[i + j]= '\0';
+	return (join);
+}*/
+
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*join;
 	int		len;
