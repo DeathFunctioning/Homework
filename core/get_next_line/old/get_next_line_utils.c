@@ -1,64 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/10 16:52:31 by tbaker            #+#    #+#             */
+/*   Updated: 2023/09/16 17:51:30 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "get_next_line.h"
-//get to new line
+# include "get_next_line.h"
 
-int	ft_new_line(char *buffer)
+int ft_find_nl(char *buffer)
 {
-	char *temp;
+	int 	i;
+	char	*temp;
 
+	i = 0;
 	temp = buffer;
-	while(*temp != '\0')
+	while(temp[i] != '\0')
 	{
-		if (*temp == '\n')
-			return (1);
-		temp++;
+		if (temp[i] == '\n')
+			return (i + 1);
+		i++;
 	}
 	return (0);
 }
 
-int	ft_get_len(t_list *lst)
-{
-	int	i;
-	int len;
-	t_list *next;
-
-	next = lst;
-	len = 0;
-	while (next != NULL)
-	{
-	i = 0;
-		while (next->buffer[i] != '\0')
-		{
-			if (next->buffer[i] == '\n')
-			{
-				len++;
-				break;
-			}	
-			i++;
-			len++;
-		}
-		if (next->buffer[i] == '\n')
-			break;
-		next = next->next;
-	}
-	printf("len = %i\n", len);//test
-	return (len);
-} 
-
-void    ft_lstadd_back(t_list **lst, t_list *new)
-{
-        t_list  *temp_lst;
-
-//		temp_lst = (t_list *)malloc(sizeof(t_list));
-//        if (!lst || !new)
-//                return ;
-        if (!(*lst))
-                *lst = new;
-        else
-        {
-                temp_lst = *lst;
-                while (temp_lst->next)
-                        temp_lst = temp_lst->next;
-                temp_lst->next = new;
-        }
-}
+//char	*gnl_strcat(

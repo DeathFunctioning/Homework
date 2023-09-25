@@ -6,78 +6,91 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:22:39 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/16 17:51:40 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/09/24 18:55:52 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-/*
-char	*ft_split_buffer(char *buffer, char *line, int bytes)
+
+char	*ft_end_line(char *line, char *buffer)
 {
-	char	*left_over;
-	char	*temp_line:
-	int 	i;
-
-	i = 0;
-	temp = (char *)malloc(sizeof(char) * (bytes - ft_find_nl(buffer)));
-	if (!temp || !line)
-		return (NULL);
-
-
-
-
-}*/
-
-char	*ft_copy_line(char *buffer, char *line, int bytes)
-{
-	int		i;
 	char	*temp;
+	char	*temp2;
+	int		end;
+	int		i;
 
 	i = 0;
-	temp = (char *)malloc(sizeof(char) * bytes);
-	if (!line)
+	end = ft_find_nl(buffer);
+	temp = (char *)malloc(sizeof(char) * (end + 1));
+	if (!temp)
 		return (NULL);
-	while (i < bytes)
+	while (i < end)
 	{
 		temp[i] = buffer[i];
 		i++;
 	}
 	temp[i] = '\0';
-	line = strjoin(line, temp);
-	printf("ft_copy_line_test-b = %s\n", buffer);
-	printf("ft_copy_line_test-l = %s\n", line);
-	printf("ft_copy_line_test-l = %s\n", temp);
-	printf("ft_copy_line_test-by = %i\n", bytes);
-	free(temp, buffer);
-	return (line);
+	temp2 = ft_strjoin(line, temp);
+	return (temp2);
+}
+
+char	*ft_buffer_next(char *buffer)
+{
+	char	*temp;
+	int		start;
+	int		i;
+
+	i = 0;
+	start = ft_find_nl(buffer) + 1;
+	temp = (char *)malloc(sizeof(char) * (ft_strlen(buffer) - start + 1));
+	if (!temp)
+		return (NULL);
+	while (buffer[start] != '\0')
+	{
+		temp[i] = buffer[start];
+		i++;
+		start++;
+	}
+	temp[i] = '\0';
+	return (temp);
 }
 
 char	*get_next_line(int fd)
 {
-//	static char	*left_over = NULL;
+	static char	*left = NULL;
 	char		buffer[BUFFER_SIZE + 1];
-	char		*line;
+	char		*line = NULL;
 	int			bytes;
 
 	bytes = 1;
-	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	if (ft_find_nl(left) > 0)
+	{
+		line = ft_end_line(line, left);
+		left = ft_buffer_next(left);
+		return (line);
+	}
 	while (bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes < 0)
-			break;
 		buffer[bytes] = '\0';
-/*		if (ft_find_nl(buffer) > 0)
-			left_over = ft_split_buffer(buffer, line, bytes);
-		else*/
-		line = ft_copy_line(buffer, line, bytes);
+		if (left)
+			left = ft_strjoin(left, buffer);
+		if (ft_find_nl(buffer) > 0)
+		{
+			line = ft_end_line(line, buffer);
+			left = ft_buffer_next(buffer);
+			break;
+		}
+		line = ft_strjoin(line, buffer);
+		if (bytes == 0)
+			break;
 	}
 	return (line);
 }
 
-int	main(viod)
+int	main(void)
 {
 	int	fd;
 
@@ -87,10 +100,7 @@ int	main(viod)
 		printf("Why want this file open");
 		return (1);
 	}
-	printf("test1 = %s", get_next_line(fd));
-	printf("test2 = %s", get_next_line(fd));
-	printf("test3 = %s", get_next_line(fd));
-	printf("test4 = %s", get_next_line(fd));
+	printf("test1 = \n%s\n", get_next_line(fd));
 	close(fd);
 	return (0);
 }
