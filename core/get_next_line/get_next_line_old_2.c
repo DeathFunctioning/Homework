@@ -12,6 +12,36 @@
 
 #include "get_next_line.h"
 
+/*char	*ft_left(char **left, char *line)
+{
+	int	nl;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	nl = ft_find_nl(*left);
+	line = (char *)malloc(sizeof(char) * (nl + 1));
+	if (!line)
+		return(NULL);//-- may need to free here
+	while(i < nl)
+	{
+		line[i] = *left[i];
+	//	left[i] = '\0';
+		i++;
+	}
+	line[i] = '\0';
+	i++;
+	while (*left[i])
+	{
+		*left[j] =  *left[i];
+	//	left[i] = '\0';
+		i++;
+		j++;
+	}
+	return (line);
+}*/
+
 char	*ft_line(char *left, char *line)
 {
 	int		nl;
@@ -29,6 +59,9 @@ char	*ft_line(char *left, char *line)
 		i++;
 	}
 	temp[i] = '\0';
+//	printf("test point line = %s\n", line);//
+//	printf("test point temp = %s\n", temp);//
+//	printf("test point left = %s\n", left);//
 	if (!line)
 		line = strdup("");
 	line = ft_strjoin(line, temp);
@@ -74,6 +107,11 @@ char	*get_next_line(int fd)
 		left = ft_left(left);
 		return (line);
 	}
+	/*if (ft_find_nl(left) > 0)
+	{
+		line = ft_left(&left, line);
+		return(line);
+	}*/
 	while(bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
@@ -88,10 +126,11 @@ char	*get_next_line(int fd)
 			return (line);
 		}
 	}
+	free(line);
 	return (left);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	fd;
 
@@ -106,4 +145,4 @@ int	main(void)
 	printf("test 3 = %s\n", get_next_line(fd));
 	close(fd);
 	return (0);
-}
+}*/
