@@ -17,10 +17,12 @@ int	ft_find_nl(char *buffer)
 	int		i;
 
 	i = 0;
-	while (buffer[i] != '\0')
+	if (!buffer)
+		return (0);
+	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-			return (i);
+			return (i++);//i++? or i + 1
 		i++;
 	}
 	return (0);

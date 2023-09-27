@@ -12,54 +12,90 @@
 
 #include "get_next_line.h"
 
-char	*ft_end_line(char *line, char *buffer)
+/*char	*ft_left(char **left, char *line)
 {
-	char	*temp;
-	char	*temp2;
-	int		end;
-	int		i;
+	int	nl;
+	int	i;
+	int	j;
 
 	i = 0;
-	end = ft_find_nl(buffer);
-	temp = (char *)malloc(sizeof(char) * (end + 1));
-	if (!temp)
-		return (NULL);
-	while (i < end)
+	j = 0;
+	nl = ft_find_nl(*left);
+	line = (char *)malloc(sizeof(char) * (nl + 1));
+	if (!line)
+		return(NULL);//-- may need to free here
+	while(i < nl)
 	{
-		temp[i] = buffer[i];
+		line[i] = *left[i];
+	//	left[i] = '\0';
+		i++;
+	}
+	line[i] = '\0';
+	i++;
+	while (*left[i])
+	{
+		*left[j] =  *left[i];
+	//	left[i] = '\0';
+		i++;
+		j++;
+	}
+	return (line);
+}*/
+
+char	*ft_line(char *left, char *line)
+{
+	int		nl;
+	int		i;
+	char	*temp;
+
+	i = 0;
+	nl = ft_find_nl(left);
+	temp = (char *)malloc(sizeof(char) * (nl + 1));
+	if (!temp)
+		return(NULL);//-- may need to free here
+	while (i < nl)
+	{
+		temp[i] = left[i];
 		i++;
 	}
 	temp[i] = '\0';
-	temp2 = ft_strjoin(line, temp);
-	return (temp2);
+//	printf("test point line = %s\n", line);//
+//	printf("test point temp = %s\n", temp);//
+//	printf("test point left = %s\n", left);//
+	if (!line)
+		line = strdup("");
+	line = ft_strjoin(line, temp);
+	free (temp);
+	return (line);
 }
 
-char	*ft_buffer_next(char *buffer)
+char	*ft_left(char *left)
 {
-	char	*temp;
-	int		start;
+	int		nl;
 	int		i;
+	char	*temp;
 
+	nl = ft_find_nl(left);
 	i = 0;
-	start = ft_find_nl(buffer) + 1;
-	temp = (char *)malloc(sizeof(char) * (ft_strlen(buffer) - start + 1));
+	temp = (char *)malloc(sizeof(char) * (ft_strlen(left) - nl + 1));
 	if (!temp)
-		return (NULL);
-	while (buffer[start] != '\0')
+		return(NULL);//-- may need to free here
+	while (left[i])
 	{
-		temp[i] = buffer[start];
+		temp[i] = left[nl + 1 + i];
 		i++;
-		start++;
 	}
 	temp[i] = '\0';
-	return (temp);
+	left = ft_strjoin("", temp);
+	free (temp);
+	return (left);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*left = NULL;
-	char		buffer[BUFFER_SIZE + 1];
 	char		*line = NULL;
+	char		buffer[BUFFER_SIZE + 1];
 	int			bytes;
 
 	bytes = 1;
@@ -67,27 +103,31 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (ft_find_nl(left) > 0)
 	{
-		line = ft_end_line(line, left);
-		left = ft_buffer_next(left);
+		line = ft_line(left, line);
+		left = ft_left(left);
 		return (line);
 	}
-	while (bytes > 0)
+	/*if (ft_find_nl(left) > 0)
+	{
+		line = ft_left(&left, line);
+		return(line);
+	}*/
+	while(bytes > 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		buffer[bytes] = '\0';
-		if (left)
-			left = ft_strjoin(left, buffer);
-		if (ft_find_nl(buffer) > 0)
+		if (!left)
+			left = strdup("");//
+		left = ft_strjoin(left, buffer);
+		if (ft_find_nl(left) > 0)
 		{
-			line = ft_end_line(line, buffer);
-			left = ft_buffer_next(buffer);
-			break;
+			line = ft_line(left, line);
+			left = ft_left(left);
+			return (line);
 		}
-		line = ft_strjoin(line, buffer);
-		if (bytes == 0)
-			break;
 	}
-	return (line);
+	free(line);
+	return (left);
 }
 
 int	main(void)
@@ -100,7 +140,9 @@ int	main(void)
 		printf("Why want this file open");
 		return (1);
 	}
-	printf("test1 = \n%s\n", get_next_line(fd));
+	printf("test 1 = %s\n", get_next_line(fd));
+	printf("test 2 = %s\n", get_next_line(fd));
+	printf("test 3 = %s\n", get_next_line(fd));
 	close(fd);
 	return (0);
 }
