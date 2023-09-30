@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:52:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/24 18:55:58 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/09/30 17:47:55 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_find_nl(char *buffer)
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-			return (i++);//i++? or i + 1
+			return (i++);
 		i++;
 	}
 	return (0);
