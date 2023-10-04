@@ -6,30 +6,11 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:22:39 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/30 17:49:26 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/10/04 19:52:33 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-void	ft_free(char **s)
-{
-	if (*s)
-	{
-		free(*s);
-		*s = NULL;
-	}
-}
-
-char	*ft_empty_string(void)
-{
-	char	*s_temp;
-
-	s_temp = (char *)malloc(sizeof(char) * 1);
-	if (!s_temp)
-		return (NULL);
-	*s_temp = '\0';
-	return (s_temp);
-}
 
 static	char	*ft_line(char *left, char *line)
 {
@@ -49,14 +30,10 @@ static	char	*ft_line(char *left, char *line)
 	}
 	temp[i] = '\0';
 	if (!line)
-		line = ft_empty_string();
+		line = strdup("");
 	line = ft_strjoin(line, temp);
-<<<<<<< HEAD:core/get_next_line.c
 	temp = NULL;
 	free (temp);
-=======
-	ft_free(&temp);
->>>>>>> b70eb43fb1e20456fa1fbb8c5268e997ba775369:core/get_next_line/get_next_line.c
 	return (line);
 }
 
@@ -68,7 +45,7 @@ static char	*ft_left(char *left)
 
 	nl = ft_find_nl(left);
 	i = 0;
-	temp = (char *)malloc(sizeof(char) * (ft_strlen(left) - nl + 1));
+	temp = malloc((ft_strlen(left) - nl + 1) * sizeof(*temp));
 	if (!temp)
 		return (NULL);
 	while (left[i])
@@ -78,12 +55,8 @@ static char	*ft_left(char *left)
 	}
 	temp[i] = '\0';
 	left = ft_strjoin("", temp);
-<<<<<<< HEAD:core/get_next_line.c
 	temp = NULL;
 	free (temp);
-=======
-	ft_free(&temp);
->>>>>>> b70eb43fb1e20456fa1fbb8c5268e997ba775369:core/get_next_line/get_next_line.c
 	return (left);
 }
 
@@ -108,8 +81,10 @@ char	*get_next_line(int fd)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		buffer[bytes] = '\0';
-		if (!left)
-			left = ft_empty_string();
+		if (bytes == 0)
+			return (NULL);
+		if (!left) 
+			left = strdup("");
 		left = ft_strjoin(left, buffer);
 		if (ft_find_nl(left) > 0)
 		{

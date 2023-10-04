@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:52:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/30 17:47:55 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/10/04 19:52:29 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ int	ft_find_nl(char *buffer)
 	i = 0;
 	if (!buffer)
 		return (0);
+	if (buffer[0] == '\n')
+	   return (1);	
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
+		{
 			return (i++);
+		}
 		i++;
 	}
 	return (0);
@@ -44,7 +48,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		len;
 
 	len = ft_strlen(s1) + ft_strlen(s2);
-	join = (char *)malloc(sizeof(char) * len + 1);
+	join = malloc((len + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
 	while (*s1)
