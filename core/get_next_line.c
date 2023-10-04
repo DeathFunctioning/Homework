@@ -20,7 +20,7 @@ char	*ft_line(char *left, char *line)
 
 	i = 0;
 	nl = ft_find_nl(left);
-	temp = (char *)malloc(sizeof(char) * (nl + 1));
+	temp = malloc((nl + 1) * sizeof(*temp));
 	if (!temp)
 		return(NULL);//-- may need to free here
 	while (i < nl)
@@ -32,6 +32,7 @@ char	*ft_line(char *left, char *line)
 	if (!line)
 		line = strdup("");
 	line = ft_strjoin(line, temp);
+	temp = NULL;
 	free (temp);
 	return (line);
 }
@@ -54,6 +55,7 @@ char	*ft_left(char *left)
 	}
 	temp[i] = '\0';
 	left = ft_strjoin("", temp);
+	temp = NULL;
 	free (temp);
 	return (left);
 }
