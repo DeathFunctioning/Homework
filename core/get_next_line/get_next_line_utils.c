@@ -6,11 +6,33 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 16:52:31 by tbaker            #+#    #+#             */
-/*   Updated: 2023/10/04 19:52:29 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/10/07 14:04:35 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strndup(char const *src, unsigned int n)
+{
+	char			*scopy;
+	unsigned int	i;
+
+	i = 0;
+	scopy = malloc((n + 1) * sizeof(*scopy));
+	if (!scopy)
+		return (NULL);
+	while (src[i] && i < n)
+	{
+		scopy[i] = src[i];
+		i++;
+	}
+	while (i < n) //or <=
+	{
+		scopy[i] = '\0';//[i++]
+		i++;
+	}
+	return (scopy);
+}
 
 int	ft_find_nl(char *buffer)
 {
