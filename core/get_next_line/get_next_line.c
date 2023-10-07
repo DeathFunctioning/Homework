@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	}
 	return (left);
 }
-/*
+
 int	main(void)
 {
 	int	fd;
@@ -118,4 +118,4 @@ int	main(void)
 	printf("test 10 = %s\n", get_next_line(fd));
 	close(fd);
 	return (0);
-}*/
+}

@@ -24,9 +24,7 @@ int	ft_find_nl(char *buffer)
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-		{
 			return (i++);
-		}
 		i++;
 	}
 	return (0);
