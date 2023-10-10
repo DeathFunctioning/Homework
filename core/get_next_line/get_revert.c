@@ -6,68 +6,94 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:22:39 by tbaker            #+#    #+#             */
-/*   Updated: 2023/10/07 17:56:30 by tbaker           ###   ########.fr       */
+/*   Updated: 2023/10/04 19:52:33 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char *ft_line_return(char **left, int nl)
+static	char	*ft_line(char *left, char *line)
 {
-	char	*line;
+	int		nl;
+	int		i;
 	char	*temp;
 
-	line = NULL;
-	if (!*left)
+	i = 0;
+	nl = ft_find_nl(left);
+	temp = malloc((nl + 1) * sizeof(*temp));
+	if (!temp)
 		return (NULL);
-	line = strndup(*left, nl);
+	while (i < nl)
+	{
+		temp[i] = left[i];
+		i++;
+	}
+	temp[i] = '\0';
 	if (!line)
-		return (NULL);
-	temp = ft_strndup(*left + nl + 1, (ft_strlen(*left) - (nl + 1)));
-	free(*left);
-	*left = temp;
-	return (temp);
+		line = strdup("");
+	line = ft_strjoin(line, temp);
+	temp = NULL;
+	free (temp);
+	return (line);
 }
 
-int	ft_read(int fd, char *buffer[])
+static char	*ft_left(char *left)
 {
-	int bytes;
+	int		nl;
+	int		i;
+	char	*temp;
 
-	bytes = read(fd, *buffer, BUFFER_SIZE);
-	*buffer[bytes] = '\0';
-	if (bytes == 0)
-		return (-1);
-	return (bytes);
+	nl = ft_find_nl(left);
+	i = 0;
+	temp = malloc((ft_strlen(left) - nl + 1) * sizeof(*temp));
+	if (!temp)
+		return (NULL);
+	while (left[i])
+	{
+		temp[i] = left[nl + 1 + i];
+		i++;
+	}
+	temp[i] = '\0';
+	left = ft_strjoin("", temp);
+	temp = NULL;
+	free (temp);
+	return (left);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*left = NULL;
-	char		buffer[BUFFER_SIZE + 1];
-	int			nl;
 	char		*line;
+	char		buffer[BUFFER_SIZE + 1];
+	int			bytes;
 
 	line = NULL;
+	bytes = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	nl = ft_find_nl(left);
-	if (nl > 0)
-		return (ft_line_return(&left, nl));
-	while (ft_read(fd, &buffer) > 0)
+	if (ft_find_nl(left) > 0)
 	{
-		if (!left)
-			left = ft_strndup("", 1);
+		line = ft_line(left, line);
+		left = ft_left(left);
+		return (line);
+	}
+	while (bytes > 0)
+	{
+		bytes = read(fd, buffer, BUFFER_SIZE);
+		buffer[bytes] = '\0';
+		if (bytes == 0)
+			return (NULL);
+		if (!left) 
+			left = strdup("");
 		left = ft_strjoin(left, buffer);
 		if (ft_find_nl(left) > 0)
-			return (ft_line_return(&left, nl));
+		{
+			line = ft_line(left, line);
+			left = ft_left(left);
+			return (line);
+		}
 	}
-	if (left)
-	{
-		line = ft_strndup(left, ft_strlen(left));
-		free (left);
-		left = NULL;
-	}
-	return (line);
+	return (left);
 }
 
 int	main(void)
