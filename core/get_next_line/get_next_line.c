@@ -23,13 +23,13 @@ static char *ft_line_return(char **left, int nl)
 	line = strndup(*left, nl);
 	if (!line)
 		return (NULL);
-	temp = ft_strndup(*left + nl + 1, (ft_strlen(*left) - (nl + 1)));
+	temp = ft_strndup(*left + nl + 1, ft_strlen(*left) - (nl + 1));
 	free(*left);
 	*left = temp;
-	return (temp);
+	return (line);
 }
 
-int	ft_read(int fd, char *buffer[])
+int	ft_read(int fd, char **buffer)
 {
 	int bytes;
 
@@ -37,18 +37,22 @@ int	ft_read(int fd, char *buffer[])
 	*buffer[bytes] = '\0';
 	if (bytes == 0)
 		return (-1);
+	(*buffer)[bytes] = '\0';
 	return (bytes);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*left = NULL;
-	char		buffer[BUFFER_SIZE + 1];
+	char		*buffer;
 	int			nl;
 	char		*line;
 
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer));
+	if (!buffer)
 		return (NULL);
 	nl = ft_find_nl(left);
 	if (nl > 0)
@@ -58,7 +62,8 @@ char	*get_next_line(int fd)
 		if (!left)
 			left = ft_strndup("", 1);
 		left = ft_strjoin(left, buffer);
-		if (ft_find_nl(left) > 0)
+		nl = ft_find_nl(left); 
+		if (nl > 0)
 			return (ft_line_return(&left, nl));
 	}
 	if (left)
@@ -67,6 +72,7 @@ char	*get_next_line(int fd)
 		free (left);
 		left = NULL;
 	}
+	free (buffer);
 	return (line);
 }
 
