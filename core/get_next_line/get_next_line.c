@@ -23,19 +23,21 @@ static char *ft_line_return(char **left, int nl)
 	line = strndup(*left, nl);
 	if (!line)
 		return (NULL);
-	temp = ft_strndup(*left + nl + 1, ft_strlen(*left) - (nl + 1));
+	temp = ft_strndup(*left + nl, ft_strlen(*left) - (nl));
 	free(*left);
 	*left = temp;
+	temp = NULL;
 	return (line);
 }
 
 int	ft_read(int fd, char **buffer)
 {
 	int bytes;
-
+	*buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer));
+	if (!*buffer)
+		return (-1);
 	bytes = read(fd, *buffer, BUFFER_SIZE);
-	*buffer[bytes] = '\0';
-	if (bytes == 0)
+	if (bytes == -1)
 		return (-1);
 	(*buffer)[bytes] = '\0';
 	return (bytes);
@@ -51,9 +53,6 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer));
-	if (!buffer)
 		return (NULL);
 	nl = ft_find_nl(left);
 	if (nl > 0)
@@ -79,7 +78,7 @@ char	*get_next_line(int fd)
 	free (buffer);
 	return (line);
 }
-
+/*
 int	main(void)
 {
 	int	fd;
@@ -90,16 +89,16 @@ int	main(void)
 		printf("Why want this file open");
 		return (1);
 	}
-	printf("test 1 = %s\n", get_next_line(fd));
-	printf("test 2 = %s\n", get_next_line(fd));
-	printf("test 3 = %s\n", get_next_line(fd));
-	printf("test 4 = %s\n", get_next_line(fd));
-	printf("test 5 = %s\n", get_next_line(fd));
-	printf("test 6 = %s\n", get_next_line(fd));
-	printf("test 7 = %s\n", get_next_line(fd));
-	printf("test 8 = %s\n", get_next_line(fd));
-	printf("test 9 = %s\n", get_next_line(fd));
-	printf("test 10 = %s\n", get_next_line(fd));
+	printf("test 1 = %s", get_next_line(fd));
+	printf("test 2 = %s", get_next_line(fd));
+	printf("test 3 = %s", get_next_line(fd));
+	printf("test 4 = %s", get_next_line(fd));
+	printf("test 5 = %s", get_next_line(fd));
+	printf("test 6 = %s", get_next_line(fd));
+	printf("test 7 = %s", get_next_line(fd));
+	printf("test 8 = %s", get_next_line(fd));
+	printf("test 9 = %s", get_next_line(fd));
+	printf("test 10 = %s", get_next_line(fd));
 	close(fd);
 	return (0);
-}
+}*/
