@@ -46,6 +46,7 @@ char	*get_next_line(int fd)
 	static char	*left = NULL;
 	char		*buffer;
 	int			nl;
+	int			bytes;
 	char		*line;
 
 	line = NULL;
@@ -57,8 +58,11 @@ char	*get_next_line(int fd)
 	nl = ft_find_nl(left);
 	if (nl > 0)
 		return (ft_line_return(&left, nl));
-	while (ft_read(fd, &buffer) > 0)
+	while (1)
 	{
+		bytes = ft_read(fd, &buffer);
+		if (bytes <= 0)
+			break;
 		if (!left)
 			left = ft_strndup("", 1);
 		left = ft_strjoin(left, buffer);
