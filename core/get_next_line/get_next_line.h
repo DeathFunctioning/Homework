@@ -22,9 +22,9 @@
 # include <stddef.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strndup(char const *src, unsigned int n);
-int		ft_strlen(char const *s);
-int		ft_find_nl(char *buffer);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strndup(const char *src, int n);
+int		ft_strlen(const char *s);
+char	*ft_strchr(const char *src, int c);
 
 #endif
