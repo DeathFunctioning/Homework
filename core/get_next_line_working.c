@@ -45,36 +45,31 @@ char	*ft_split_left(char **left)
 	return (temp);
 }
 
-int	ft_t(int fd, char *buffer, char **left)
-{
-	int		bytes;
-	char	*temp;
-
-	bytes = read(fd, buffer, BUFFER_SIZE);
-	if (bytes <= 0)
-	{
-		if (bytes == -1)
-			ft_free(left);
-		return (bytes);
-	}
-	buffer[bytes] = '\0';
-	temp = *left;
-	*left = ft_strjoin(temp, buffer, 0, 0);
-	ft_free(&temp);
-	return (bytes);
-}
-
 char	*ft_read(char **left, int fd)
 {
 	int		bytes;
+	char	*temp;
 	char	*buffer;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	bytes = ft_t(fd, buffer, left);
-	while (bytes > 0 && !ft_strchr(*left, '\n'))
-		bytes = ft_t(fd, buffer, left);
+	while (1)
+	{
+		bytes = read(fd, buffer, BUFFER_SIZE);
+		if (bytes <= 0)
+		{
+			if (bytes == -1)
+				ft_free(left);
+			break ;
+		}
+		buffer[bytes] = '\0';
+		temp = *left;
+		*left = ft_strjoin(temp, buffer, 0, 0);
+		ft_free(&temp);
+		if (ft_strchr(*left, '\n'))
+			break ;
+	}
 	ft_free(&buffer);
 	if (*left && **left)
 		return (ft_split_left(left));

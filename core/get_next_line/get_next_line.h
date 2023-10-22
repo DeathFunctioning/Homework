@@ -22,7 +22,7 @@
 # include <stddef.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strjoin(const char *s1, const char *s2, int i, int j);
 char	*ft_strndup(const char *src, int n);
 int		ft_strlen(const char *s);
 char	*ft_strchr(const char *src, int c);
