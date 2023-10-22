@@ -12,71 +12,80 @@
 
 #include "get_next_line.h"
 
-static char *ft_line_return(char **left, int nl)
+void	ft_free(char **s)
 {
-	char	*line;
-	char	*temp;
-
-	line = NULL;
-	if (!*left)
-		return (NULL);
-	line = strndup(*left, nl);
-	if (!line)
-		return (NULL);
-	temp = ft_strndup(*left + nl, ft_strlen(*left) - (nl));
-	free(*left);
-	*left = temp;
-	temp = NULL;
-	return (line);
+	free(*s);
+	*s = NULL;
 }
 
-int	ft_read(int fd, char **buffer)
+char	*ft_split_left(char **left)
 {
-	int bytes;
-	*buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer));
-	if (!*buffer)
-		return (-1);
-	bytes = read(fd, *buffer, BUFFER_SIZE);
-	if (bytes == -1)
-		return (-1);
-	(*buffer)[bytes] = '\0';
-	return (bytes);
+	char	*temp;
+	int		i;
+	char	*new_left;
+
+	if (!*left)
+		return (NULL);
+	i = 0;
+	while ((*left)[i] != '\0' && (*left)[i] != '\n')
+		i++;
+	if ((*left)[i] == '\n')
+	{
+		i++;
+		temp = ft_strndup(*left, i);
+		new_left = ft_strndup(&(*left)[i], ft_strlen(&(*left)[i]));
+		ft_free(left);
+		*left = new_left;
+	}
+	else
+	{
+		temp = ft_strndup(*left, i);
+		ft_free(left);
+	}
+	return (temp);
+}
+
+char	*ft_read(char **left, int fd)
+{
+	int		bytes;
+	char	*buffer;
+	char	*temp;
+
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	while (1)
+	{
+		if (ft_strchr(*left, '\n'))
+			break ;
+		bytes = read(fd, buffer, BUFFER_SIZE);
+		if (bytes <= 0)
+		{
+			if (bytes == -1)
+				ft_free(left);
+			break ;
+		}
+		buffer[bytes] = '\0';
+		temp = *left;
+		*left = ft_strjoin(temp, buffer);
+		ft_free(&temp);
+		if (ft_strchr(*left, '\n'))
+			break ;
+	}
+	ft_free(&buffer);
+	if (*left && **left)
+		return (ft_split_left(left));
+	ft_free(left);
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*left = NULL;
-	char		*buffer;
-	int			nl;
-	int			bytes;
-	char		*line;
 
-	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	nl = ft_find_nl(left);
-	if (nl > 0)
-		return (ft_line_return(&left, nl));
-	while (1)
-	{
-		bytes = ft_read(fd, &buffer);
-		if (bytes <= 0)
-			break;
-		if (!left)
-			left = ft_strndup("", 1);
-		left = ft_strjoin(left, buffer);
-		nl = ft_find_nl(left); 
-		if (nl > 0)
-			return (ft_line_return(&left, nl));
-	}
-	if (left)
-	{
-		line = ft_strndup(left, ft_strlen(left));
-		free (left);
-		left = NULL;
-	}
-	free (buffer);
-	return (line);
+	return (ft_read(&left, fd));
 }
 /*
 int	main(void)
