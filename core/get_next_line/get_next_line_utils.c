@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 
+//Same as strdup but up to n
 char	*ft_strndup(const char *src, int n)
 {
 	char			*scopy;
@@ -57,6 +58,7 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
+//allows s1 as NULL and gets the iterators i and j as args
 char	*ft_strjoin(const char *s1, const char *s2, int i, int j)
 {
 	char	*join;
