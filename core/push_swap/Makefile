@@ -6,7 +6,9 @@ INCS		= -I ./includes/
 SRC_PATH	= src/
 OBJ_PATH	= obj/
 
-SRC			= push_swap.c 
+SRC			= push_swap.c \
+			  init.c \
+			  utils.c \
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 OBJ			= $(SRC:.c=.o)

@@ -11,8 +11,13 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+//	init
 
+t_stack	*create_stack(int data);
 
+// utils
+
+int	ft_atoi(const char *s);
 
 #endif
 
