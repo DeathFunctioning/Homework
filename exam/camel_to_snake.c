@@ -2,25 +2,24 @@
 
 int	main(int argc, char **argv)
 {
-	char	r;
+	int		i;
 	char	c;
-	char	rw;
-	int	i;
 
 	i = 0;
-	if(argc == 4 && !argv[2][i + 1] && !argv[3][i + 1])
+	if (argc == 2)
 	{
-		r = argv[2][i];
-		rw = argv[3][i];	
 		while(argv[1][i])
 		{
 			c = argv[1][i];
-			if (c == r)
-				c = rw;
+			if (c >= 65 && c <= 90)
+			{
+				write(1, "_", 1);
+				c += 32;
+			}
 			write(1, &c, 1);
 			i++;
 		}
 	}
 	write(1, "\n", 1);
-	return (0);		
+	return (0);
 }

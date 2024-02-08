@@ -2,45 +2,43 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	flag;
+	int		i;
+	int		j;
+	int		flag;
+	char	*s1;
+	char	*s2;
 
 	i = 0;
-	j = 0;
 	if (argc == 3)
 	{
-		 while(argv[1][i])
-		 {
-			 j = 0;
-			 while(argv[2][j])
-			 {
-				 if(argv[1][i] == argv[2][j])
-				 {
-					 flag = 0;
-					 k = 0;
-					 while(k < i)
-					 {
-						 if(argv[1][k] == argv[1][i])
-						 {
-							 flag = 1;
-							 break ;
-						 }
-						 k++;
-					 }
-					 if(flag == 0) 
-					 {
-						write(1, &argv[1][i], 1);
-					 	j++;
-					 	break ;
-					 }
-				 }
-				 j++;
-			 }
-			 i++;
-		 }
+		s1 = argv[1];
+		s2 = argv[2];
+		while (s1[i])
+		{
+			j = 0;
+			flag = 0;
+			while(j < i)
+			{
+				if (s1[j] == s1[i])
+					flag = 1;
+				j++;
+			}
+			j = 0;
+			while (s2[j] && flag == 0)  
+			{
+
+
+				if(s1[i] == s2[j])
+				{
+					write(1, &s1[i], 1);
+					break ;
+				}
+				j++;
+
+			}
+			i++;
+		}
 	}
-	write(1, "\n" , 1);
+	write(1, "\n", 1);
 	return (0);
 }
