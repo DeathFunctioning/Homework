@@ -9,6 +9,7 @@ OBJ_PATH	= obj/
 SRC			= push_swap.c \
 			  init.c \
 			  utils.c \
+			  rotate_stack.c \
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 OBJ			= $(SRC:.c=.o)
