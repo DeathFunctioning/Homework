@@ -12,30 +12,36 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-//	init
+//	init.c
 
 t_list	*ft_lstnew(int data);
 void	ft_lstadd_back(t_list **list, t_list *new);
 void	ft_print_list(t_list *list); //remove test
 
-// utils
+// utils.c
 
 int	ft_atoi(const char *s);
 
-// rotate stack
+// rotate_stack.c
 
 void		rotate_list(t_list **list);
 void		ra(t_list **list);
 void		rb(t_list **list);
 void		rr(t_list **list_a, t_list **list_b);
 
-// reverse rotate stack
+// reverse_rotate_stack.c
 
 void		reverse_rotate_list(t_list **list);
 void		rra(t_list **list);
 void		rrb(t_list **list);
 void		rrr(t_list **list_a, t_list **list_b);
 
+// swap_stack.c
+
+void		swap_node(t_list **list);
+void		sa(t_list **list);
+void		sb(t_list **list);
+void		ss(t_list **list_a, t_list **list_b);
 
 #endif
 

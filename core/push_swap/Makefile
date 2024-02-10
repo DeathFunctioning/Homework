@@ -11,6 +11,7 @@ SRC			= push_swap.c \
 			  utils.c \
 			  rotate_stack.c \
 			  reverse_rotate_stack.c \
+			  swap_stack.c \
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 OBJ			= $(SRC:.c=.o)

@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 		ft_print_list(stack_a);//remove testing
 		rra(&stack_a);
 		ft_print_list(stack_a);//remove testing
+		sa(&stack_a);
+		ft_print_list(stack_a);//remove testing
 		return (0);
 	}
 		write(1, "Error\n", 6);
