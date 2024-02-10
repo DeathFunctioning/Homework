@@ -31,6 +31,11 @@ void		rr(t_list **list_a, t_list **list_b);
 
 // reverse rotate stack
 
+void		reverse_rotate_list(t_list **list);
+void		rra(t_list **list);
+void		rrb(t_list **list);
+void		rrr(t_list **list_a, t_list **list_b);
+
 
 #endif
 
