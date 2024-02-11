@@ -2,28 +2,48 @@
 
 int	main(int argc, char **argv)
 {
-	int		j;
-	t_list	*stack_a; 
+	int			i;
+	long long	nb;
+	t_list		*stack_a;
+	t_list		*stack_b;
 
-	j = 1;
+	i = 1;
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc > 1)
 	{
-		while(argv[j])
+		while (argv[i])
 		{
-			if (j == 1)
-				stack_a = ft_lstnew(ft_atoi(argv[j]));
+			if (ft_isdigit(argv[i]) == -1)
+				error (&stack_a);
+			nb = ft_atoi(argv[i]);
+			if (nb < -2147483648 || nb > 2147483647)
+				error (&stack_a);
+			if (i == 1)
+				stack_a = ft_lstnew((int)nb);
 			else
-				ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(argv[j])));
-			j++;
+			{
+				ft_lstadd_back(&stack_a, ft_lstnew((int)nb));
+				if (check_double((int)nb, &stack_a) == -1)
+					error (&stack_a);
+			}
+			i++;
 		}
-		//remove testing swap functions
-
-		ft_print_list(stack_a);//remove testing
+		ft_print_list(stack_a);
 		ra(&stack_a);
-		ft_print_list(stack_a);//remove testing
+		ft_print_list(stack_a);
+		rra(&stack_a);
+		ft_print_list(stack_a);
+		sa(&stack_a);
+		ft_print_list(stack_a);
+		pb(&stack_a, &stack_b);
+		pb(&stack_a, &stack_b);
+		pb(&stack_a, &stack_b);
+		pa(&stack_a, &stack_b);
+		ft_print_list(stack_a);
+		ft_print_list(stack_b);
 		return (0);
 	}
-		write(1, "Error\n", 6);
-		return (1);
+	else
+		error (&stack_a);
 }
-

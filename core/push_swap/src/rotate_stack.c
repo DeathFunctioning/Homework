@@ -2,13 +2,13 @@
 
 void	rotate_list(t_list **list)
 {
-	t_list *temp_list;
-	t_list *swap_list;
+	t_list	*temp_list;
+	t_list	*swap_list;
 
 	swap_list = *list;
 	temp_list = *list;
 	*list = (*list)->next;
-	while(temp_list->next)
+	while (temp_list->next)
 		temp_list = temp_list->next;
 	swap_list->next = NULL;
 	temp_list->next = swap_list;
