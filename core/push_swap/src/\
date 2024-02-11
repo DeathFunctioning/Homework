@@ -22,11 +22,7 @@ int	main(int argc, char **argv)
 			if (i == 1)
 				stack_a = ft_lstnew((int)nb);
 			else
-			{
 				ft_lstadd_back(&stack_a, ft_lstnew((int)nb));
-				if (check_double((int)nb, &stack_a) == -1)
-					error (&stack_a);
-			}
 			i++;
 		}
 		ft_print_list(stack_a);

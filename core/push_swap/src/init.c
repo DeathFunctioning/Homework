@@ -1,7 +1,7 @@
 #include <push_swap.h>
 
 //creates and add data to stack link list stru
-t_list *ft_lstnew(int data)
+t_list	*ft_lstnew(int data)
 {
 	t_list	*new;
 
@@ -28,16 +28,17 @@ void	ft_lstadd_back(t_list **list, t_list *new)
 		*list = new;
 }
 
+//need to remove
 void	ft_print_list(t_list *list)
 {
-	int	i = 0;
-	
-	while(list)
+	int	i;
+
+	i = 0;
+	while (list)
 	{
-		printf("%i   %i   \n",i , list->data);
+		printf("%i   %i   \n", i, list->data);
 		list = list->next;
 		i++;
 	}
-		printf(" stack_a \n");
-
+	printf(" stack_a \n");
 }

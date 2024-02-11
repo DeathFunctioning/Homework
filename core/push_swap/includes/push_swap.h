@@ -1,4 +1,4 @@
-#ifndef	PUSH_SWAP_H
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <unistd.h>
@@ -14,13 +14,13 @@ typedef struct s_list
 
 //	init.c
 
-t_list	*ft_lstnew(int data);
-void	ft_lstadd_back(t_list **list, t_list *new);
-void	ft_print_list(t_list *list); //remove test
+t_list		*ft_lstnew(int data);
+void		ft_lstadd_back(t_list **list, t_list *new);
+void		ft_print_list(t_list *list); //remove test
 
 // utils.c
 
-int	ft_atoi(const char *s);
+long long	ft_atoi(const char *s);
 
 // rotate_stack.c
 
@@ -43,5 +43,16 @@ void		sa(t_list **list);
 void		sb(t_list **list);
 void		ss(t_list **list_a, t_list **list_b);
 
-#endif
+// push_stack.c
 
+void		push_node(t_list **list_a, t_list **list_b);
+void		pa(t_list **list_a, t_list **list_b);
+void		pb(t_list **list_a, t_list **list_b);
+
+// error.c
+
+void		error(t_list **list);
+int			ft_isdigit(char *s);
+int			check_double(int nb, t_list **list);
+
+#endif
