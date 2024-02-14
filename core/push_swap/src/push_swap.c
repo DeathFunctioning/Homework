@@ -12,6 +12,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc > 1)
 	{
+		//move this loop
 		while (argv[i])
 		{
 			if (ft_isdigit(argv[i]) == -1)
@@ -29,6 +30,9 @@ int	main(int argc, char **argv)
 			}
 			i++;
 		}
+		if (argc <= 6)//argc is the leng of list - 2;
+			small_sort(&stack_a);
+		//-----4-testing----------------------------------------->
 		ft_print_list(stack_a);
 		if (check_sort(&stack_a) == -1)
 			write(1, "not sorted\n", 11);
