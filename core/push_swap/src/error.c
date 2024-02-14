@@ -14,7 +14,6 @@ void	error(t_list **list)
 	while (temp_list)
 	{
 		next_node = temp_list->next;
-		//free(&temp_list->data);
 		free(temp_list);
 		temp_list = next_node;
 	}
@@ -56,3 +55,18 @@ int	check_double(int nb, t_list **list)
 	}
 	return (0);
 }
+
+int	check_sort(t_list **list)
+{
+	t_list	*temp_list;
+
+	temp_list = *list;
+	while(temp_list->next)
+	{
+		if(temp_list->data > temp_list->next->data)
+			return (-1);
+		temp_list = temp_list->next;
+	}
+	return (0);
+}
+

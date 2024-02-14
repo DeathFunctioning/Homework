@@ -54,5 +54,6 @@ void		pb(t_list **list_a, t_list **list_b);
 void		error(t_list **list);
 int			ft_isdigit(char *s);
 int			check_double(int nb, t_list **list);
+int			check_sort(t_list **list);
 
 #endif

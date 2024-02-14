@@ -30,6 +30,11 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		ft_print_list(stack_a);
+		if (check_sort(&stack_a) == -1)
+			write(1, "not sorted\n", 11);
+		else
+			write(1, "sorted\n", 7);
+		ft_print_list(stack_a);
 		ra(&stack_a);
 		ft_print_list(stack_a);
 		rra(&stack_a);
