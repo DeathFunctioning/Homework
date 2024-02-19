@@ -13,7 +13,7 @@ void	push_node(t_list **list_a, t_list **list_b)
 void	pa(t_list **list_a, t_list **list_b)
 {
 	push_node(list_b, list_a);
-	write(1, "pb\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_list **list_a, t_list **list_b)

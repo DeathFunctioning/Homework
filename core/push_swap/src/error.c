@@ -64,9 +64,9 @@ int	check_sort(t_list **list)
 	while(temp_list->next)
 	{
 		if(temp_list->data > temp_list->next->data)
-			return (-1);
+			return (0);
 		temp_list = temp_list->next;
 	}
-	return (0);
+	return (1);
 }
 
