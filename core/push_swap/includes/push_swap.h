@@ -58,6 +58,7 @@ int			check_sort(t_list **list);
 
 // sort.c
 
-void		small_sort(t_list **list);
+void		sort_3(t_list **list);
+void		sort_5(t_list **list);
 
 #endif
