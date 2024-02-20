@@ -2,26 +2,22 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int		i;
 	char	c;
 
 	i = 0;
 	if (argc == 2)
 	{
-		while(argv[1][i])
+		while (argv[1][i])
 		{
 			c = argv[1][i];
-			if((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-			{
-				if(c >= 65 && c <= 90)
-					c += 32;
-				else
-					c -= 32;
-			}
+			if (c >= 65 && c <= 90)
+				c += 32;
+			else if (c >= 97 && c <= 122)
+				c -= 32;
 			write(1, &c, 1);
 			i++;
 		}
-
 	}
 	write(1, "\n", 1);
 	return (0);
