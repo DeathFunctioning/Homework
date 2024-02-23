@@ -34,12 +34,14 @@ int	main(int argc, char **argv)
 			ft_print_list(stack_a);
 			return (0);
 		}
+		ft_print_list(stack_a);//test
 		if (argc == 3)
 			sa(&stack_a);
 		else if (argc == 4)
 			sort_3(&stack_a);
 		else 
 			sort_5(&stack_a);
+		ft_print_list(stack_a);//test
 		return (0);
 	}
 	else
