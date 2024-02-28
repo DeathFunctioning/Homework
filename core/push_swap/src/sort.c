@@ -62,18 +62,19 @@ void	index_value(t_list **list, int len)
 	i = 0;
 	temp_list = *list;
 	//need to build a functoin that will find the max value and then asign it the index value of len - 1 then i could maybe update my conditional loops to include max if to clean up this mess of code. 
-	while (i < len - 1)
+	while (i < len)
 	{
 		min = temp_list->data;
-		//moved own function 
 		while(temp_list)
 		{
+			if (i == (len - 1) && temp_list->idx_v == -1)
+				 min = temp_list->data;
 			if (temp_list->data < min && temp_list->idx_v == -1)
 				 min = temp_list->data;
 			temp_list = temp_list->next;
 		}
+		// can build ft_that sends i vaule min and list added value to node correct node 
 		temp_list = *list;
-		//move to own function for norminatte 
 		while(temp_list)
 		{
 			if (temp_list->data == min)
