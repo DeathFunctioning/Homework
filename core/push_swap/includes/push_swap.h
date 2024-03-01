@@ -6,9 +6,15 @@
 # include <stdlib.h>
 # include <stdio.h> //remove test
 
+//data = arg int value
+//ind_p = position in the list from head to tail 
+//ind_v = relative value of int value
+
 typedef struct s_list
 {
 	int				data;
+	int				idx_p;
+	int				idx_v;
 	struct s_list	*next;
 }	t_list;
 
@@ -16,7 +22,8 @@ typedef struct s_list
 
 t_list		*ft_lstnew(int data);
 void		ft_lstadd_back(t_list **list, t_list *new);
-void		ft_print_list(t_list *list); //remove test
+int			lst_size_index(t_list **list);
+void		ft_print_list(t_list *stack_a, t_list *stack_b); //remove test
 
 // utils.c
 
@@ -59,6 +66,8 @@ int			check_sort(t_list **list);
 // sort.c
 
 void		sort_3(t_list **list);
-void		sort_5(t_list **list);
+void		sort_5(t_list **list_a, t_list **list_b);
+void		pb_min_values(t_list **list_a, t_list **list_b);
+void		index_value(t_list **list, int len);
 
 #endif
