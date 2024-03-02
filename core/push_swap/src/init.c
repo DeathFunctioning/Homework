@@ -1,11 +1,22 @@
-#include <push_swap.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 16:48:05 by tbaker            #+#    #+#             */
+/*   Updated: 2024/03/02 16:58:18 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <push_swap.h>
 
 t_list	*ft_lstnew(int data)
 {
 	t_list	*new;
 
-	new = malloc(sizeof(new));
+	new = malloc(sizeof(t_list));//changed from new to *new maybe just t_list
 	if (!new)
 		return (NULL);
 	new->data = data;
@@ -63,7 +74,6 @@ int	lst_size_index(t_list **list)
 	t_list	*temp_list;
 	int		lst_len;
 
-
 	lst_len = 0;
 	temp_list = *list;
 	while (temp_list)
@@ -75,44 +85,3 @@ int	lst_size_index(t_list **list)
 	printf("list length = %i\n", lst_len);//test remove 
 	return (lst_len);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 16:45:11 by tbaker            #+#    #+#             */
+/*   Updated: 2024/03/02 17:11:21 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_3(t_list **list)
@@ -37,6 +49,8 @@ void	sort_5(t_list **list_a, t_list **list_b)
 	pb_min_values(list_a, list_b);
 	sort_3(list_a);
 	ft_print_list(*list_a, *list_b);//test remove
+	if ((*list_b)->data < (*list_b)->next->data)
+		sb(list_b);
 	pa(list_a, list_b);
 	pa(list_a, list_b);
 	ft_print_list(*list_a, *list_b);//test remove
@@ -60,7 +74,8 @@ void	pb_min_values(t_list **list_a, t_list **list_b)
 			pb(list_a, list_b);
 			i++;
 		}
-		ra(list_a);
+		else
+			ra(list_a);
 	}
 }
 
@@ -101,7 +116,4 @@ void	index_value(t_list **list, int len)
 		i++;
 	}
 }
-
-
-
 
