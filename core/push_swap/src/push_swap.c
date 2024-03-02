@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:48:51 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/02 16:48:54 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/02 17:00:55 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 			sa(&stack_a);
 		else if (argc == 4)
 			sort_3(&stack_a);
-		else 
+		else
 			sort_5(&stack_a, &stack_b);
 		ft_print_list(stack_a, stack_b);//test
 		return (0);

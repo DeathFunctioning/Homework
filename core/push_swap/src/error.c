@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:47:45 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/02 16:47:53 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/02 16:56:37 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,11 @@ int	check_sort(t_list **list)
 	t_list	*temp_list;
 
 	temp_list = *list;
-	while(temp_list->next)
+	while (temp_list->next)
 	{
-		if(temp_list->data > temp_list->next->data)
+		if (temp_list->data > temp_list->next->data)
 			return (0);
 		temp_list = temp_list->next;
 	}
 	return (1);
 }
-
