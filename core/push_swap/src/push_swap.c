@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 16:48:51 by tbaker            #+#    #+#             */
+/*   Updated: 2024/03/02 16:48:54 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 int	main(int argc, char **argv)
@@ -20,7 +32,7 @@ int	main(int argc, char **argv)
 			nb = ft_atoi(argv[i]);
 			if (nb < -2147483648 || nb > 2147483647)
 				error (&stack_a);
-			if (!stack_a)//this was changed from i = 1 may need to change back 
+			if (i == 1)//this was changed from i = 1 may need to change back 
 				stack_a = ft_lstnew((int)nb);
 			else
 			{

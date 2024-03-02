@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 16:48:05 by tbaker            #+#    #+#             */
+/*   Updated: 2024/03/02 16:48:11 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 
@@ -5,7 +17,7 @@ t_list	*ft_lstnew(int data)
 {
 	t_list	*new;
 
-	new = malloc(sizeof(new));
+	new = malloc(sizeof(t_list));//changed from new to *new maybe just t_list
 	if (!new)
 		return (NULL);
 	new->data = data;

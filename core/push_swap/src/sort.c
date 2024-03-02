@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 16:45:11 by tbaker            #+#    #+#             */
+/*   Updated: 2024/03/02 16:49:28 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_3(t_list **list)
@@ -29,8 +41,10 @@ void	sort_3(t_list **list)
 
 void	sort_5(t_list **list_a, t_list **list_b)
 {
-
-	sort_3(list_a);
+	//pb_min works for 5 now to sort if 5 and pa till stack_b empty should i build sort 2/swap if > or try in corperate into swap 3
+	//if i do this i can sort 6 in this sort do i want to add complexity to improve effectance in steaD OF JUST ra 
+	//list_a i could rra if idx_v is at the bottom half of the list but i think sorting 5 or 6 lioke this is below the
+	//threshold for operations
 	ft_print_list(*list_a, *list_b);//test remove
 	pb_min_values(list_a, list_b);
 	sort_3(list_a);
@@ -44,13 +58,22 @@ void	sort_5(t_list **list_a, t_list **list_b)
 void	pb_min_values(t_list **list_a, t_list **list_b)
 {
 	int	len;
-	int	limit;
+	int	i;
+	t_list	*temp_list;
 
+	temp_list = *list_a;
 	len = lst_size_index(list_a);
-	limit = len - 3;
-	//remove and replace with pb relative values < limit so for sort 4 i would only relative value 0 if sort 5 0 && 1 values need to be pushed to stack b then swap them if not sorted then do sort 3 the pa whats left in b easy the hard part is i know have to index values 
-	while (limit--)
-		pb(list_a, list_b);
+	i = 0;
+	while (i < len - 3)
+	{
+		temp_list = *list_a;
+		if (temp_list->idx_v < len - 3)
+		{
+			pb(list_a, list_b);
+			i++;
+		}
+		ra(list_a);
+	}
 }
 
 void	index_value(t_list **list, int len)
@@ -61,14 +84,12 @@ void	index_value(t_list **list, int len)
 
 	i = 0;
 	temp_list = *list;
+	min = temp_list->data;
 	//need to build a functoin that will find the max value and then asign it the index value of len - 1 then i could maybe update my conditional loops to include max if to clean up this mess of code. 
 	while (i < len)
 	{
-		min = temp_list->data;
 		while(temp_list)
 		{
-			if (i == (len - 1) && temp_list->idx_v == -1)
-				 min = temp_list->data;
 			if (temp_list->data < min && temp_list->idx_v == -1)
 				 min = temp_list->data;
 			temp_list = temp_list->next;
@@ -77,15 +98,19 @@ void	index_value(t_list **list, int len)
 		temp_list = *list;
 		while(temp_list)
 		{
-			if (temp_list->data == min)
+			if (temp_list->data == min && temp_list->idx_v == -1)
 				temp_list->idx_v = i;
+			temp_list = temp_list->next;
+		}
+		temp_list = *list;
+		while(temp_list)
+		{
+			if (temp_list->data > min && temp_list->idx_v == -1)
+				min = temp_list->data;
 			temp_list = temp_list->next;
 		}
 		temp_list = *list;
 		i++;
 	}
 }
-
-
-
 
