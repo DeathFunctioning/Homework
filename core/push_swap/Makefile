@@ -14,6 +14,7 @@ SRC			= push_swap.c \
 			  swap_stack.c \
 			  push_stack.c \
 			  error.c \
+			  sort_10.c \
 			  sort.c \
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))

@@ -63,6 +63,10 @@ int			ft_isdigit(char *s);
 int			check_double(int nb, t_list **list);
 int			check_sort(t_list **list);
 
+// sort_10.c
+
+void		sort_10(t_list **list_a, t_list **list_b);
+
 // sort.c
 
 void		sort_3(t_list **list);
