@@ -63,15 +63,13 @@ int			ft_isdigit(char *s);
 int			check_double(int nb, t_list **list);
 int			check_sort(t_list **list);
 
-// sort_10.c
-
-void		sort_10(t_list **list_a, t_list **list_b);
-
 // sort.c
 
 void		sort_3(t_list **list);
-void		sort_5(t_list **list_a, t_list **list_b);
-void		pb_min_values(t_list **list_a, t_list **list_b);
+void		sort(t_list **list_a, t_list **list_b);
+void		pb_min_descending_order(t_list **list_a, t_list **list_b);
+void		pa_till_stack_b_empty(t_list **list_a, t_list **list_b);
+int			get_idx_p(t_list **list, int i);
 void		index_value(t_list **list, int len);
 
 #endif

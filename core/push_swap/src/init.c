@@ -82,6 +82,5 @@ int	lst_size_index(t_list **list)
 		lst_len++;
 		temp_list = temp_list->next;
 	}
-	printf("list length = %i\n", lst_len);//test remove 
 	return (lst_len);
 }

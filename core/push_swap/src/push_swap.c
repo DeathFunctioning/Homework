@@ -44,19 +44,19 @@ int	main(int argc, char **argv)
 		}
 		if (check_sort(&stack_a)) //is sort retun value changed 
 		{
-			write(1, "1sorted\n", 8);
-			ft_print_list(stack_a, NULL);
+			//write(1, "1sorted\n", 8);
+			//ft_print_list(stack_a, NULL);
 			return (0);
 		}
 		index_value(&stack_a, argc - 1);
-		ft_print_list(stack_a, stack_b);//test
+		//sort 2?
 		if (argc == 3)
 			sa(&stack_a);
 		else if (argc == 4)
 			sort_3(&stack_a);
 		else
-			sort_5(&stack_a, &stack_b);
-		ft_print_list(stack_a, stack_b);//test
+			sort(&stack_a, &stack_b);
+//		ft_print_list(stack_a, stack_b);
 		return (0);
 	}
 	else

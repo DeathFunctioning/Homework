@@ -39,46 +39,68 @@ void	sort_3(t_list **list)
 		ra(list);
 }
 
-void	sort_5(t_list **list_a, t_list **list_b)
-{
 	//pb_min works for 5 now to sort if 5 and pa till stack_b empty should i build sort 2/swap if > or try in corperate into swap 3
 	//if i do this i can sort 6 in this sort do i want to add complexity to improve effectance in steaD OF JUST ra 
 	//list_a i could rra if idx_v is at the bottom half of the list but i think sorting 5 or 6 lioke this is below the
 	//threshold for operations
-	ft_print_list(*list_a, *list_b);//test remove
-	pb_min_values(list_a, list_b);
+void	sort(t_list **list_a, t_list **list_b)
+{
+	pb_min_descending_order(list_a, list_b);
 	sort_3(list_a);
-	ft_print_list(*list_a, *list_b);//test remove
-	if ((*list_b)->data < (*list_b)->next->data)
-		sb(list_b);
-	pa(list_a, list_b);
-	pa(list_a, list_b);
-	ft_print_list(*list_a, *list_b);//test remove
-	write(1, "sort_5\n", 7);//test remove
+	pa_till_stack_b_empty(list_a, list_b);
 }
 
-void	pb_min_values(t_list **list_a, t_list **list_b)
+void	pb_min_descending_order(t_list **list_a, t_list **list_b)
 {
 	int	len;
+	int	idx_a;
 	int	i;
-	t_list	*temp_list;
 
-	temp_list = *list_a;
 	len = lst_size_index(list_a);
 	i = 0;
 	while (i < len - 3)
 	{
-		temp_list = *list_a;
-		if (temp_list->idx_v < len - 3)
+		idx_a = get_idx_p(list_a, i);//need to make while through list till it gets idx_v and returns idx_p
+		if ((*list_a)->idx_v == i)
 		{
 			pb(list_a, list_b);
+			lst_size_index(list_a);
 			i++;
 		}
-		else
+		else if (idx_a < len / 2)
 			ra(list_a);
+		else
+			rra(list_a);
 	}
 }
 
+void	pa_till_stack_b_empty(t_list **list_a, t_list **list_b)
+{
+	int	len;
+
+	len = lst_size_index(list_b);
+	while (len > 0)
+	{
+		pa(list_a, list_b);
+		len--;
+	}
+}
+
+int	get_idx_p(t_list **list, int i)
+{
+	t_list	*temp_list;
+
+	temp_list = *list;
+	while (temp_list)
+	{
+		if (temp_list->idx_v == i)
+			return (temp_list->idx_p);
+		temp_list = temp_list->next;
+	}
+	return (1);//need to make function better
+}
+//-------------------------move to init-----------------------------------------------------
+	//need to build a functoin that will find the max value and then asign it the index value of len - 1 then i could maybe update my conditional loops to include max if to clean up this mess of code. 
 void	index_value(t_list **list, int len)
 {
 	t_list	*temp_list;
@@ -88,7 +110,6 @@ void	index_value(t_list **list, int len)
 	i = 0;
 	temp_list = *list;
 	min = temp_list->data;
-	//need to build a functoin that will find the max value and then asign it the index value of len - 1 then i could maybe update my conditional loops to include max if to clean up this mess of code. 
 	while (i < len)
 	{
 		while(temp_list)
@@ -97,7 +118,6 @@ void	index_value(t_list **list, int len)
 				 min = temp_list->data;
 			temp_list = temp_list->next;
 		}
-		// can build ft_that sends i vaule min and list added value to node correct node 
 		temp_list = *list;
 		while(temp_list)
 		{
@@ -116,4 +136,3 @@ void	index_value(t_list **list, int len)
 		i++;
 	}
 }
-
