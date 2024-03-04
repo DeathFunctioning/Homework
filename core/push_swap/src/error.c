@@ -14,24 +14,22 @@
 
 void	error(t_list **list)
 {
-	t_list	*temp_list;
 	t_list	*next_node;
 
-	if (!list || !*list)
+	if (!list || !(*list))
 	{
-		write(1, "error\n", 6);
-		exit (-1);
+		write(2, "Error\n", 6);
+		exit (1);
 	}
-	temp_list = *list;
-	while (temp_list)
+	while (*list)
 	{
-		next_node = temp_list->next;
-		free(temp_list);
-		temp_list = next_node;
+		next_node = (*list)->next;
+		free(*list);
+		*list = next_node;
 	}
 	*list = NULL;
-	write (1, "error\n", 6);
-	exit (-1);
+	write (2, "Error\n", 6);
+	exit (1);
 }
 
 int	ft_isdigit(char *s)
