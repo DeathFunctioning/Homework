@@ -6,12 +6,14 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:48:51 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/02 17:00:55 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/02 18:23:51 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+//if (i == 1)//this was changed from i = 1 may need to change back 
+//		ft_print_list(stack_a, stack_b);
 int	main(int argc, char **argv)
 {
 	int			i;
@@ -24,7 +26,6 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc > 1)
 	{
-		//move this loop
 		while (argv[i])
 		{
 			if (ft_isdigit(argv[i]) == -1)
@@ -32,31 +33,25 @@ int	main(int argc, char **argv)
 			nb = ft_atoi(argv[i]);
 			if (nb < -2147483648 || nb > 2147483647)
 				error (&stack_a);
-			if (i == 1)//this was changed from i = 1 may need to change back 
-				stack_a = ft_lstnew((int)nb);
+			if (i == 1)
+				stack_a = ft_lstnew(&stack_a, (int)nb);
 			else
 			{
-				ft_lstadd_back(&stack_a, ft_lstnew((int)nb));
+				ft_lstadd_back(&stack_a, ft_lstnew(&stack_a, (int)nb));
 				if (check_double((int)nb, &stack_a) == -1)
 					error (&stack_a);
 			}
 			i++;
 		}
-		if (check_sort(&stack_a)) //is sort retun value changed 
-		{
-			write(1, "1sorted\n", 8);
-			ft_print_list(stack_a, NULL);
+		if (check_sort(&stack_a))
 			return (0);
-		}
-		index_value(&stack_a, argc - 1);
-		ft_print_list(stack_a, stack_b);//test
+		index_value(&stack_a, argc - 1, stack_a->data);
 		if (argc == 3)
 			sa(&stack_a);
 		else if (argc == 4)
 			sort_3(&stack_a);
 		else
-			sort_5(&stack_a, &stack_b);
-		ft_print_list(stack_a, stack_b);//test
+			sort(&stack_a, &stack_b);
 		return (0);
 	}
 	else
