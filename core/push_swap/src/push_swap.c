@@ -34,10 +34,10 @@ int	main(int argc, char **argv)
 			if (nb < -2147483648 || nb > 2147483647)
 				error (&stack_a);
 			if (i == 1)
-				stack_a = ft_lstnew(list, (int)nb);
+				stack_a = ft_lstnew(&stack_a, (int)nb);
 			else
 			{
-				ft_lstadd_back(&stack_a, ft_lstnew(list, (int)nb));
+				ft_lstadd_back(&stack_a, ft_lstnew(&stack_a, (int)nb));
 				if (check_double((int)nb, &stack_a) == -1)
 					error (&stack_a);
 			}

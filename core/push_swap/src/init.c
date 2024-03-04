@@ -19,8 +19,8 @@ t_list	*ft_lstnew(t_list **list, int data)
 
 	new = malloc(sizeof(t_list));
 	if (!new)
-		error (&list);
-	new->datza = data;
+		error (list);
+	new->data = data;
 	new->next = NULL;
 	new->idx_p = 0;
 	new->idx_v = -1;

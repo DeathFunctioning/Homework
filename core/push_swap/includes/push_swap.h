@@ -20,7 +20,7 @@ typedef struct s_list
 
 //	init.c
 
-void		index_value(t_list **list, int len);
+void		index_value(t_list **list, int len, int min);
 void		index_assign_value(t_list **list, int i, int min);
 t_list		*ft_lstnew(t_list **list, int data);
 void		ft_lstadd_back(t_list **list, t_list *new);
