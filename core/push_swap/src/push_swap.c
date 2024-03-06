@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:48:51 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/02 18:23:51 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/06 16:32:21 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ int	main(int argc, char **argv)
 			sort(&stack_a, &stack_b);
 		return (0);
 	}
-	else
-		error (&stack_a);
+	return (1);
 }

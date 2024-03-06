@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 14:50:58 by tbaker            #+#    #+#             */
+/*   Updated: 2024/03/06 14:51:55 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -20,7 +32,7 @@ typedef struct s_list
 
 //	main
 
-void		main_loop(t_list **list_a,char **argv);
+void		main_loop(t_list **list_a, char **argv);
 
 //	init.c
 
