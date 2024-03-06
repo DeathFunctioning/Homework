@@ -18,6 +18,10 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+//	main
+
+void		main_loop(t_list **list_a,char **argv);
+
 //	init.c
 
 void		index_value(t_list **list, int len, int min);
