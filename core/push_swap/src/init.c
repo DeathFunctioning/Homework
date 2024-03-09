@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:48:05 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/02 16:58:18 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/09 18:35:46 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@ t_list	*ft_lstnew(t_list **list, int data)
 
 	new = malloc(sizeof(t_list));
 	if (!new)
-		error (list);
+	{
+		free_list(list);
+		exit (-1);
+	}
 	new->data = data;
 	new->next = NULL;
 	new->idx_p = 0;
 	new->idx_v = -1;
+	new->max = 0;
+	new->min = 0;
+	new->target_p = 0;
+	new->cost = 0;
 	return (new);
 }
 
