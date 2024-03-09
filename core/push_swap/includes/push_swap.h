@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:50:58 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/06 14:51:55 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/09 18:43:46 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@
 
 typedef struct s_list
 {
-	int				data;
+	int				data;//one off update
 	int				idx_p;
-	int				idx_v;
-	struct s_list	*next;
+	int				idx_v;//one off update
+	int				max;//do i need
+	int				min;//do i need 
+	int				target_p;
+	int				cost;
+	struct s_list	*next;//should double or cycle the list or just keep it singuler 
 }	t_list;
 
 //	main
@@ -80,6 +84,7 @@ void		pb(t_list **list_a, t_list **list_b);
 // error.c
 
 void		error(t_list **list);
+void		free_list(t_list **list);
 int			ft_isdigit(char *s);
 int			check_double(int nb, t_list **list);
 int			check_sort(t_list **list);

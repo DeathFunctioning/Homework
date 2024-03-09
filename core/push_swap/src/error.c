@@ -6,21 +6,41 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:47:45 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/02 16:56:37 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/09 18:43:45 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	free_list(t_list **list)
+{
+	t_list	*next_node;
+	while (*list)
+		{
+			next_node = (*list)->next;
+			free(*list);
+			*list = next_node;
+		}
+		*list = NULL;//do i need the loop should null both
+		next_node = NULL;
+}
+
+void	error(t_list **list)
+{
+	free_list(list);
+	write (2, "Error\n", 6);
+	exit (-1);
+}
+
+/*
 void	error(t_list **list)
 {
 	t_list	*next_node;
+	int		flag;
 
+	flag = 1;
 	if (!list || !(*list))
-	{
-		write(2, "Error\n", 6);
-		exit (1);
-	}
+		flag = 0;
 	while (*list)
 	{
 		next_node = (*list)->next;
@@ -28,9 +48,10 @@ void	error(t_list **list)
 		*list = next_node;
 	}
 	*list = NULL;
-	write (2, "Error\n", 6);
-	exit (1);
-}
+	if (flag)
+		write (1, "Error\n", 6);
+	exit (-1);
+}*/
 
 int	ft_isdigit(char *s)
 {
