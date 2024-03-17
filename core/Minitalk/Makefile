@@ -1,48 +1,51 @@
-CC			= gcc
-CFLAGS 		= -Wall -Werror -Wextra
-NAME		= push_swap
-INCS		= -I ./includes/
+CC				= gcc
+CFLAGS 			= -Wall -Werror -Wextra 
 
-SRC_PATH	= src/
-OBJ_PATH	= obj/
+CLIENT			= client
+SERVER			= server
 
-SRC			= push_swap.c \
-			  init.c \
-			  utils.c \
-			  rotate_stack.c \
-			  reverse_rotate_stack.c \
-			  swap_stack.c \
-			  push_stack.c \
-			  error.c \
-			  delete_remove_this.c \
-			  sort.c \
+LIBFT_DIR 		= $(SRC_DIR)/libft
+FT_PRINTF_DIR 	= $(SRC_DIR)/ft_printf
+SRC_DIR			= src
+OBJ_DIR			= objs
 
-SRCS		= $(addprefix $(SRC_PATH), $(SRC))
-OBJ			= $(SRC:.c=.o)
-OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
+INCS			= -I./includes -I$(LIBFT_DIR) -I$(FT_PRINTF_DIR)
 
-all:	$(OBJ_PATH) $(NAME)
+SRCS			= $(SRC_DIR)/client.c $(SRC_DIR)/server.c 
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
+OBJS			= $(SRCS:$(SRC_DIR)/%.c=$(OB_DIR)/%.o)
 
-$(OBJ_PATH):
-	@mkdir -p $(OBJ_PATH)
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+all:	$(OBJ_DIR) libft ft_printf $(CLIENT) $(SERVER)
+
+$(CLIENT): $(OBJ_DIR)/client.o
+	@$(CC) $(CFLAGS) $(INCS) -o $@ $^ -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf 
+
+$(SERVER): $(OBJ_DIR)/server.o
+	@$(CC) $(CFLAGS) $(INCS) -o $@ $^ -L$(LIBFT_DIR) -lft -L$(FT_PRINTF_DIR) -lftprintf 
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+libft:
+	@$(MAKE) -C $(LIBFT_DIR)
+
+ft_printf:
+	@$(MAKE) -C $(FT_PRINTF_DIR)
 
 clean:
-	@rm -rf $(OBJ_PATH)
+	@rm -rf $(OBJ_DIR)
+	@make -C $(LIBFT_DIR) clean
+	@make -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf $(CLIENT) $(SERVER)
+	@make -C $(LIBFT_DIR) fclean
+	@make -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
-# make run ARGS="arg1 arg2" 
-run: all
-	@./$(NAME) $(ARGS)
-	@echo Exit code:$$?
-
-.PHONY: all clean fclean re
+.PHONY: all libft ft_printf clean fclean re

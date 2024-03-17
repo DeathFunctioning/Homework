@@ -2,27 +2,26 @@
 
 void	signal_handler(int sig)
 {
-	unsigned char	bit;
-	static int		bitcount = 0;
-	char			c;
+	static unsigned char	bit = 0x00;
+	static int				bitcount = 0;
 
+	bit >>= 1;
 	if (sig == SIGUSR2)
-		c = c | 1;
-	else
-		c = 0;
+		bit |= 0x80;
 	bitcount++;
 	if (bitcount == 8)
 	{
-		bit = (char) c;
 		if (bit == '\0')
 		{
 			ft_printf("\n");
-			return (0);
+			bitcount = 0;
+			bit = 0x00;
+			return ;
 		}
 		ft_printf("%c", bit);
 		bitcount = 0;
+		bit = 0x00;
 	}
-	c = c << 1;
 }
 
 //while used as an event handler
@@ -37,5 +36,5 @@ int	main(void)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-		usleep (50);
+		usleep (100000);
 }

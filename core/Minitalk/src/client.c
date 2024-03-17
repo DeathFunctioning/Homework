@@ -7,12 +7,13 @@ void	send_signal(int pid, char c)
 	bit = 7;
 	while (bit >= 0)
 	{
-		if (((c >> bit) & 1) == 0)
-			kill (pid, SIGUSR1);
-		else
+		usleep(100000);
+		if (c & (1 << bit))
 			kill (pid, SIGUSR2);
-		usleep(50);
+		else
+			kill (pid, SIGUSR1);
 		bit--;
+	}
 }
 
 void	send_message(int pid, char *message)
@@ -21,7 +22,7 @@ void	send_message(int pid, char *message)
 	int	len;
 
 	i = 0;
-	len = ft_stlen(message);
+	len = ft_strlen(message);
 	while (i <= len)
 	{
 		send_signal(pid, message[i]);
@@ -38,9 +39,9 @@ int	main(int argc, char **argv)
 	{
 		pid = ft_atoi(argv[1]);
 		message = argv[2];
-		send_signal(pid, message); 
+		send_message(pid, message);
 		return (0);
 	}
-	ft_printf("Error! \n Enter [PID] [Message] next time ;-}\n"); 
+	ft_printf("Error! \n Enter [PID] [Message] next time ;-}\n");
 	return (1);
 }

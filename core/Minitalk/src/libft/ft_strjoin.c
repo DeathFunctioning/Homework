@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static	char	*ft_catcopy(char const *s1, char const *s2, 
+static	char	*ft_catcopy(char const *s1, char const *s2,
 		char *scopy, size_t tlen)
 {
 	size_t	i;

@@ -26,7 +26,7 @@ static long	ft_nbrlen(long n)
 		count++;
 		nb = -n;
 	}
-	while (nb > 0) 
+	while (nb > 0)
 	{
 		nb = nb / 10;
 		count++;
