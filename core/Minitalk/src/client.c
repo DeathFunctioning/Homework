@@ -7,12 +7,12 @@ void	send_signal(int pid, char c)
 	bit = 7;
 	while (bit >= 0)
 	{
-		usleep(100000);
 		if (c & (1 << bit))
 			kill (pid, SIGUSR2);
 		else
 			kill (pid, SIGUSR1);
 		bit--;
+		usleep(250);
 	}
 }
 

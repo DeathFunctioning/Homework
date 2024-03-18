@@ -1,5 +1,5 @@
-#ifndef	MINITALK_H
-# define MINMTALK_H
+#ifndef MINITALK_H
+# define MINITALK_H
 
 # include <unistd.h>
 # include <signal.h>

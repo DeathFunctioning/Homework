@@ -2,12 +2,11 @@
 
 void	signal_handler(int sig)
 {
-	static unsigned char	bit = 0x00;
+	static unsigned char	bit = 0;
 	static int				bitcount = 0;
 
-	bit >>= 1;
 	if (sig == SIGUSR2)
-		bit |= 0x80;
+		bit = bit | 1;
 	bitcount++;
 	if (bitcount == 8)
 	{
@@ -15,13 +14,14 @@ void	signal_handler(int sig)
 		{
 			ft_printf("\n");
 			bitcount = 0;
-			bit = 0x00;
+			bit = 0;
 			return ;
 		}
 		ft_printf("%c", bit);
 		bitcount = 0;
-		bit = 0x00;
+		bit = 0;
 	}
+	bit = bit << 1;
 }
 
 //while used as an event handler
@@ -29,12 +29,14 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	ft_printf("Welcome to my server ...");
+	ft_printf("Welcome to my server ...; )");
 	ft_printf("Server PID: %d\n", getpid());
 	sa.sa_handler = &signal_handler;
 	sa.sa_flags = 0;
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
-		usleep (100000);
+	{
+		sigaction(SIGUSR1, &sa, NULL);
+		sigaction(SIGUSR2, &sa, NULL);
+		pause();
+	}
 }
