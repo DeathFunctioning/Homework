@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:23:22 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/01 19:50:30 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:49:41 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,30 +52,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-int main(void)
-{
-//	char src[5] = { 's', 'a', '\0', 'c', 'h'};
-	char src[5] = "kkkkk";
-	char dest[7] = "hello!!";
-//	char dest1[6] = { 'k', '\0', 'k', 'k', 'k', 'k'};
-	char dest1[7] = "hello!!";
-	int	i = 0;
-	ft_memmove(dest, src, 5);
-	while (i < 7)
-	{
-		printf("%c\n", dest[i]);
-		i++;
-	}
-	printf("----------------------");
-	printf("\n");
-	memmove(dest1, src, 5);
-	i = 0;
-	while (i < 7)
-	{
-		printf("%c\n", dest1[i]);
-		i++;
-	}
-	printf("\n");
-	return (0);
-}*/

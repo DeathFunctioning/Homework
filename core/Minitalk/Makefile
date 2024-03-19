@@ -1,4 +1,4 @@
-CC				= gcc
+CC= gcc
 CFLAGS 			= -Wall -Werror -Wextra 
 
 CLIENT			= client

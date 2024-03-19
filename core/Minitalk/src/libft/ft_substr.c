@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:18:25 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/26 20:40:53 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:56:02 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	subs[i] = '\0';
 	return (subs);
 }
-/*
-int	main(void)
-{
-	const char *s = "hello world";
-	unsigned int start = 1;
-	size_t len = 11;
-
-	printf("test 1 = %s\n", ft_substr(s, start, len));
-	free(
-	return (0);
-}*/

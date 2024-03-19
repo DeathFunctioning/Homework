@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:36:15 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/01 17:01:50 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:48:40 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest1);
 }
-/*
-int main(void)
-{
-	char src[5] = { 's', 'a', '\0', 'c', 'h'};
-	char dest[5];
-	char dest1[5];
-	int	i = 0;
-	ft_memcpy(dest, src, 5);
-	while (i < 5)
-	{
-		printf("%c\n", dest[i]);
-		i++;
-	}
-	printf("----------------------");
-	printf("\n");
-	memcpy(dest1, src, 5);
-	i = 0;
-	while (i < 5)
-	{
-		printf("%c\n", dest1[i]);
-		i++;
-	}
-	return (0);
-}*/
