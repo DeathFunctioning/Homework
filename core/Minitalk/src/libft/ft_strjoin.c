@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:24:40 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/17 15:12:48 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:56:34 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_catcopy(s1, s2, scopy, tlen);
 	return (scopy);
 }
-/*
-int	main(void)
-{
-	char const *s1 = "Please be nice";
-	char const *s2 = " or no cake for you!";
-	printf("my result = %s\n", ft_strjoin(s1, s2));
-	return (0);
-}*/

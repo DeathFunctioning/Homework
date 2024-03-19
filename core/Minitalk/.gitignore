@@ -1,0 +1,13 @@
+# object files
+*.o
+
+# libraries
+*.a
+*.lib
+
+# excutables
+*.exe
+*.out
+
+# bash file
+*.swp

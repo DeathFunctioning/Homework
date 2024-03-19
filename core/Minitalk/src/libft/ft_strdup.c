@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 16:47:54 by tbaker            #+#    #+#             */
-/*   Updated: 2023/09/24 16:55:57 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:53:44 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,3 @@ char	*ft_strdup(const char *src)
 	ft_strcpy(src, scopy);
 	return (scopy);
 }
-/*int	main(int argc, char **argv)
-{
-	if (argc == 2)
-	{
-		printf("%s\n", argv[1]);
-		printf("%s\n", ft_strdup(argv[1]));
-		return (1);
-	}
-	else 
-		return (0);
-}*/

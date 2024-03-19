@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:17:41 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/26 17:17:44 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:53:16 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,3 @@ char	*ft_strrchr(const char *str, int c)
 		return ((char *)&str[len]);
 	return (NULL);
 }
-/*
-int   main(void)
-{
-        char *str = "hello world";
-        char c = 'o';
-
-        printf("%s\n", ft_strrchr(str, c));
-        printf("%s\n", strrchr(str, c));
-
-        return (0);
-}*/

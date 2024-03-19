@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:18:01 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/27 21:38:21 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:57:06 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,21 +93,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimstr = ft_mcopy(s1, start, total);
 	return (trimstr);
 }
-/*
-int	main(void)
-{
-	char const *s1_test1 = "|bhello worldcaba";
-	char const *s1_test2 = "hello world$$$";
-	char const *s1_test3 = "$$$hello world";
-	char const *s1_test4 = "hello $$$ world$$$";
-	char const *s1_test5 = "hello world";
-	char const *set = "abc|";
-//	printf("test 1 = %lu\n", ft_trimstart(s1_test1, set));
-//	printf("test 1 = %lu\n", ft_trimend(s1_test1, set, ft_strlen(s1_test1)));
-	printf("test 1 = %s\n", ft_strtrim(s1_test1, set));
-	printf("test 2 = %s\n", ft_strtrim(s1_test2, set));
-	printf("test 3 = %s\n", ft_strtrim(s1_test3, set));
-	printf("test 4 = %s\n", ft_strtrim(s1_test4, set));
-	printf("test 5 = %s\n", ft_strtrim(s1_test5, set));
-	return (0);
-}*/

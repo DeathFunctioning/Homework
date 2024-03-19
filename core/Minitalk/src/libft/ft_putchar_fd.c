@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:48:57 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/30 16:17:41 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:59:48 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,3 @@ void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
-/*
-int	main(void)
-{
-	int fd = 1;
-	char c = 'x';
-
-	ft_putchar_fd(c, fd);
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:15:20 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/26 17:15:23 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:47:18 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,3 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	char *str1 = "hello World";
-	char *str2 = "hello WorlD";
-	size_t n = 11;
-	printf("My memcmp = %d\n", ft_memcmp(str1, str2, n));
-	printf("C's memcmp = %d\n", memcmp(str1, str2, n));
-	return (0);
-}*/

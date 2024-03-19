@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:07:07 by tbaker            #+#    #+#             */
-/*   Updated: 2023/07/12 15:32:07 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/03/19 16:45:58 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,3 @@ void	ft_bzero(void *str, size_t n)
 		i++;
 	}
 }
-/*
-int main(void)
-{
-	char input[20] = "hello world again";
-	char input2[20] = "hello world again";
-	printf("%s\n", input);
-	printf("%s\n", input2);
-	ft_bzero(input, 3);
-	bzero(input2, 3);
-	printf("%s\n", input);
-	printf("%s\n", input2);
-	return (0);
-}
-*/
