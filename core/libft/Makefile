@@ -22,28 +22,21 @@ OBJS	=	${SRCS:.c=.o}
 OBJS_BONUS	=	$(OBJS) ${BONUS:.c=.o}
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
+	@$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@echo "WOW look at me mum!"
-	@echo "Also no or is there bonus done?"
 
 bonus:	$(OBJS_BONUS)
 	@ar rcs $(NAME) $(OBJS_BONUS)
-	@echo "Here comes the"
-	@echo "BOOM"
-	@echo "Here comes the"
-	@echo "BOOM"
-	@echo "Ready for the bonus"
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	@$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
