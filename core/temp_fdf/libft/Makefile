@@ -15,7 +15,7 @@ NAME		=	libft.a
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
-INCLUDES	=	-I includes
+INCLUDES	=	-I includes/
 
 SRC_DIR		=	src/
 SRC_FILES	=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c \
@@ -40,7 +40,7 @@ $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c | $(OBJS_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $^
 
 clean:
 	@$(RM) $(OBJS_DIR)

@@ -1,12 +1,25 @@
-# includes "fdf.h"
+# include "fdf.h"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	if (argc = 3)
+	int		y;
+	int		x;
+	void	*mlx_connection;
+	void	*mlx_window;
+
+	y = HEIGHT * 0.1;
+	mlx_connection = mlx_init();
+	mlx_window = mlx_new_window(mlx_connection, WIDTH, HEIGHT, "My first window");
+	while (y < HEIGHT * 0.9)
 	{
-
-
-		return (0);
+		x = WIDTH * 0.1;
+		while (x < WIDTH * 0.9)
+		{
+			mlx_pixel_put(mlx_connection, mlx_window, x, y, rand() % 0x1000000);
+			x++;
+		}
+		y++;
 	}
-	return (1);
+	mlx_loop(mlx_connection);
+	return (0);
 }
