@@ -1,5 +1,24 @@
-# include "fdf.h"
+#include "fdf.h"
 
+int	main(int argc, char **argv)
+{
+	t_display	*display;
+
+	if (argc == 2)
+	{
+		display = malloc(sizeof(t_display));
+		if (!display)
+		{
+			ft_printf("error malloc display");
+			return (1);
+		}
+		init(display, argv[1]);
+		return (0);
+	}
+	ft_printf("error args error");
+	return (1);
+}
+/*
 int	main(void)
 {
 	int		y;
@@ -22,4 +41,4 @@ int	main(void)
 	}
 	mlx_loop(mlx_connection);
 	return (0);
-}
+}*/

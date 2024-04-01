@@ -1,4 +1,4 @@
-NAME		= fdf.a
+NAME		= fdf
 
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -g
@@ -6,7 +6,7 @@ RM			= rm -rf
 INCLUDES	= -Iincludes -I$(MLX_DIR) -I$(LIB_DIR)includes/
 
 SRC_DIR		= src/
-SRC_FILES	= main.c
+SRC_FILES	= main.c init.c matrix.c test_remove.c
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 MLX_DIR		= mlx_linux/
@@ -24,11 +24,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS) mlx libft
 	@echo "run it"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(MLX_FLAGS) $(LIBFT_FLAGS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(MLX_FLAGS) $(LIBFT_FLAGS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 libft:
 	@make -C $(LIB_DIR)
