@@ -2,21 +2,19 @@
 
 int	main(int argc, char **argv)
 {
-	t_display	*display;
+	t_data	data;
 
-	if (argc == 2)
+	if (argc != 2)
 	{
-		display = malloc(sizeof(t_display));
-		if (!display)
-		{
-			ft_printf("error malloc display");
-			return (1);
-		}
-		init(display, argv[1]);
-		return (0);
+		ft_printf("Only two arguments = ./fdf file.fdf\n");
+		return (1);
 	}
-	ft_printf("error args error");
-	return (1);
+	init(&data, argv[1]);
+	print_matrix(&data);
+	data.mlx_connection = mlx_init();
+	data.mlx_window = mlx_new_window(data.mlx_connection, WIDTH, HEIGHT,"my first window");
+	mlx_loop(data.mlx_connection);
+	return (0);
 }
 /*
 int	main(void)

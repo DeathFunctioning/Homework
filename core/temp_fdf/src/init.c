@@ -51,7 +51,7 @@ int	word_count(char *s)
 	return (wc + 1);
 }
 
-void	check_map_get_x_y(t_display *display, char *file)
+void	check_map_get_x_y(t_data *data, char *file)
 {
 	char	*line;
 	int		fd;
@@ -63,30 +63,20 @@ void	check_map_get_x_y(t_display *display, char *file)
 		exit (1);
 	}
 	line = get_next_line(fd);
-	display->x_axis_len = word_count(line);
+	data->x_axis_len = word_count(line);
+	data->y_axis_len = 0;
 	while (line)
 	{
-		display->y_axis_len++;
-		//free (&line);
+		data->y_axis_len++;
 		line = get_next_line(fd);
 	}
-	ft_printf("y_axis = %i\n", display->y_axis_len);//remov <----------------------------------------------------------------
-	//free (&line);
+	free (line);
 	close(fd);
 }
 
-void	init(t_display	*display, char *file)
+void	init(t_data	*data, char *file)
 {
 	check_file_name(file);
-	display = malloc(sizeof(t_display));
-	if (!display)
-	{
-		ft_printf("some malloc error need add real error handler");//remove<---------------------------------------
-		exit (1);
-	}
-	check_map_get_x_y(display, file);
-	init_matrix(display, file);
-	print_matrix(display);
-	display->mlx_connection = mlx_init();
-	display->mlx_window = mlx_new_window(display->mlx_connection, WIDTH, HEIGHT, "fdf");
+	check_map_get_x_y(data, file);
+	init_matrix(data, file);
 }

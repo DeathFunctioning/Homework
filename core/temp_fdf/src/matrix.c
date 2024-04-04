@@ -59,28 +59,28 @@ void	init_matrix_data(t_x_y_info *matrix, int fd, int len)
 	//free (&line);
 }
 
-void	init_matrix(t_display *display, char *file)
+void	init_matrix(t_data *data, char *file)
 {
 	int	y;
 	int	fd;
 
 	y = 0;
 	fd = open(file, O_RDONLY);
-	display->matrix = malloc(display->y_axis_len * sizeof(t_x_y_info));
-	if (!display->matrix)
+	data->matrix = malloc(data->y_axis_len * sizeof(t_x_y_info));
+	if (!data->matrix)
 	{
 		ft_printf("matrix malloc error");//<--------- remove add error handler function
 		exit (1);
 	}
-	while (y < display->y_axis_len)
+	while (y < data->y_axis_len)
 	{
-		display->matrix[y] = malloc(display->x_axis_len * sizeof(t_x_y_info));
-		if (!display->matrix)
+		data->matrix[y] = malloc(data->x_axis_len * sizeof(t_x_y_info));
+		if (!data->matrix)
 		{
 			ft_printf("matrix malloc error");//<--------- remove add error handler function
 			exit (1);
 		}
-		init_matrix_data(display->matrix[y], fd, display->x_axis_len);
+		init_matrix_data(data->matrix[y], fd, data->x_axis_len);
 		y++;
 	}
 	close (fd);
