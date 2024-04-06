@@ -4,7 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include "../mlx_linux/mlx.h"
+# include "../mlx/mlx.h"
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"

@@ -1,20 +1,52 @@
-#
-#
+NAME		= fdf
 
-NOM=libmlx.a
-SRC= mlx_shaders.c mlx_new_window.m mlx_init_loop.m mlx_new_image.m mlx_xpm.c mlx_int_str_to_wordtab.c
-OBJ1=$(SRC:.c=.o)
-OBJ=$(OBJ1:.m=.o)
-CFLAGS+=-O2
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror -g
+RM			= rm -rf
+INCLUDES	= -Iincludes -I$(MLX_DIR) -I$(LIB_DIR)includes/
 
-all: $(NOM)
+SRC_DIR		= src/
+SRC_FILES	= main.c init.c matrix.c test_remove.c
+SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
-$(NOM):	$(OBJ)
-	ar -r $(NOM) $(OBJ)
-	ranlib $(NOM)
+MLX_DIR		= mlx/
+MLX			= $(MLX_DIR)linux.a 
+MLX_FLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit 
+
+OBJ_DIR		= objs/
+
+OBJS		= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+
+LIB_DIR		= libft/
+LIBFT		= $(LIB_DIR)libft.a
+LIBFT_FLAGS	= -L$(LIB_DIR) -lft
+
+all: $(NAME)
+
+$(NAME): $(OBJS) mlx libft
+	@echo "run it"
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(MLX_FLAGS) $(LIBFT_FLAGS)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+libft:
+	@make -C $(LIB_DIR)
+
+mlx:
+	@make -C $(MLX_DIR)
 
 clean:
-	rm -f $(NOM) $(OBJ) *~
-	rm -f mlx_app
+	@echo "clean"
+	@$(RM) $(OBJ_DIR)
+	@$(MAKE) -C $(LIB_DIR) clean
+	@$(MAKE) -C $(MLX_DIR) clean
 
-re: clean all
+fclean: clean
+	@echo "fclean"
+	@$(RM) $(NAME) $(LIBFT) $(MLX)
+
+re: fclean all
+
+.PHONY: all clean fclean re libft mlx
