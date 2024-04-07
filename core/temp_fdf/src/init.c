@@ -74,9 +74,25 @@ void	check_map_get_x_y(t_data *data, char *file)
 	close(fd);
 }
 
+//need to distroy of free iomage and addr when close window need to create function for closing window 
 void	init(t_data	*data, char *file)
 {
 	check_file_name(file);
 	check_map_get_x_y(data, file);
 	init_matrix(data, file);
+	data->mlx = mlx_init();
+	if (!data->mlx)
+	{
+		ft_printf("mlx_init error");
+		exit (1);
+	}
+	data->mlx_win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "fdf");
+	if (!data->mlx_win)
+	{
+		ft_printf("mlx_init error");
+		free (data->mlx_win);
+		exit (1);
+	}
+	data->img.mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img.mlx_addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp, &data->img.line_len, &data->img.endian);
 }

@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void	free_matrix(t_x_y_info **matrix, int len)
+void	free_matrix(t_matrix **matrix, int len)
 {
 	int	i;
 
@@ -11,10 +11,4 @@ void	free_matrix(t_x_y_info **matrix, int len)
 		i++;
 	}
 	free(matrix);
-}
-
-void	free_display(t_display *display)
-{
-	free_matrix(display->matrix);
-	free(display);
 }

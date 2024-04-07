@@ -22,7 +22,7 @@ int	ft_atoi_hex(char *hex)
 	return (nb);
 }
 
-void	assign_alt_colour(t_x_y_info *matrix, char **split_line, int len, int i)
+void	assign_alt_colour(t_matrix *matrix, char **split_line, int len, int i)
 {
 	char	**data_split;
 
@@ -46,7 +46,7 @@ void	assign_alt_colour(t_x_y_info *matrix, char **split_line, int len, int i)
 	}
 }
 
-void	init_matrix_data(t_x_y_info *matrix, int fd, int len)
+void	init_matrix_data(t_matrix *matrix, int fd, int len)
 {
 	int		i;
 	char	*line;
@@ -56,7 +56,7 @@ void	init_matrix_data(t_x_y_info *matrix, int fd, int len)
 	line = get_next_line(fd);
 	split_line = ft_split(line, ' ');
 	assign_alt_colour(matrix, split_line, len, i);
-	//free (&line);
+	free (line);
 }
 
 void	init_matrix(t_data *data, char *file)
@@ -66,7 +66,7 @@ void	init_matrix(t_data *data, char *file)
 
 	y = 0;
 	fd = open(file, O_RDONLY);
-	data->matrix = malloc(data->y_axis_len * sizeof(t_x_y_info));
+	data->matrix = malloc(data->y_axis_len * sizeof(t_matrix));
 	if (!data->matrix)
 	{
 		ft_printf("matrix malloc error");//<--------- remove add error handler function
@@ -74,7 +74,7 @@ void	init_matrix(t_data *data, char *file)
 	}
 	while (y < data->y_axis_len)
 	{
-		data->matrix[y] = malloc(data->x_axis_len * sizeof(t_x_y_info));
+		data->matrix[y] = malloc(data->x_axis_len * sizeof(t_matrix));
 		if (!data->matrix)
 		{
 			ft_printf("matrix malloc error");//<--------- remove add error handler function
