@@ -1,0 +1,11 @@
+html, body {
+    background-color: white;
+}
+button {
+    display: inline-block;
+    padding: 8px;
+    color: black;
+    cursor: progress;
+    background-color: white;
+    outline: 0;
+}
