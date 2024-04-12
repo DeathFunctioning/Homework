@@ -1,0 +1,30 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border: 0;
+}
+div {
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    color: rgb(231, 30, 30);
+}
+.full_image {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+#image1 {
+    background-image: url(https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg);
+}
+#image2 {
+    background-image: url(https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg);
+}
+.black_bar {
+    height: 900px;
+    width: 100vw;
+    background-color: black;
+}
