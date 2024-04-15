@@ -1,5 +1,19 @@
 #include "fdf.h"
 
+void	free_array(char **s)
+{
+	int i;
+
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
+}
+
+
 int	ft_atoi_hex(char *hex)
 {
 	int	nb;
@@ -33,9 +47,7 @@ void	assign_alt_colour(t_matrix *matrix, char **split_line, int len, int i)
 			data_split = ft_split(split_line[i], ',');
 			matrix[i].altitude = ft_atoi(data_split[0]);
 			matrix[i].colour = 0x33FF66;//ft_atoi_hex(data_split[1]);
-			free (data_split[0]);
-			free (data_split[1]);
-			free (data_split);
+			free_array(data_split);
 		}
 		else
 		{
@@ -56,6 +68,7 @@ void	init_matrix_data(t_matrix *matrix, int fd, int len)
 	line = get_next_line(fd);
 	split_line = ft_split(line, ' ');
 	assign_alt_colour(matrix, split_line, len, i);
+	free_array(split_line);
 	free (line);
 }
 
