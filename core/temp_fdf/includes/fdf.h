@@ -9,8 +9,9 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
-# define WIDTH 1920	
-# define HEIGHT	1080
+# define WIDTH 2560	
+# define HEIGHT	1440
+
 
 # define STARSHIP_COLOUR 0xEAE243
 # define WHITE_COLOUR 0xFFFFFF
@@ -22,6 +23,9 @@
 
 typedef struct s_matrix
 {
+	int			x;
+	int			y;
+	int			z;
 	int			altitude;
 	int			colour;
 }	t_matrix;
@@ -64,12 +68,13 @@ void	init_matrix(t_data *data, char *file);
 //draw.c
 
 void	img_pix_put(t_img *img, int x, int y, int colour);
+void	isometric(t_matrix *matrix); //not tested
 
 //render.c
 
 int		render(t_data *data);
-void	render_background(t_img *img, int colour);
-void	render_pixel(t_img *img, int x, int y, int colour);
+void	render_map(t_data *data); //not tested 
+void	render_background(t_data *data, int colour);
 
 //test_remove.c
 
