@@ -20,6 +20,8 @@
 # define BITTER_COLOUR 0x8E8E80
 # define TABASCO_COLOUR 0xA02712
 # define CERULEAN_COLOUR 0x2D46D7
+# define GREEN_COLOUR 0x33FF00
+# define BLACK_COLOUR 0x000000
 
 typedef struct s_matrix
 {
@@ -45,19 +47,22 @@ typedef struct s_data
 	void		*mlx_win;
 	int			x_axis_len;
 	int			y_axis_len;
+	int			x_margin;
+	int			y_margin;
+	int			box_len;
 	t_img		img;
 	t_matrix	**matrix;
 
 }	t_data;
 
-//init.c
+//init.c up to date 28/04
 
 void	check_file_name(char *file);
 int		word_count(char *s);
 void	check_map_get_x_y(t_data *data, char *file);
 void	init(t_data *data, char *file);
 
-//matrix.c
+//matrix.c up to date 28/04 need to update assigning color and some error prints
 
 void	free_array(char **s);
 int		ft_atoi_hex(char *hex);
@@ -76,8 +81,19 @@ int		render(t_data *data);
 void	render_map(t_data *data); //not tested 
 void	render_background(t_data *data, int colour);
 
+//event_handler.c
+
+void	close_free_win(t_data *data);
+int		key_handler(int keycode, t_data *data);
+void	free_matrix(t_matrix **matrix, int len);
+
 //test_remove.c
 
 void	print_matrix(t_data *data);
+
+//plot_points.c
+
+void	get_margin(t_data *data);
+void	plot_points(t_data *data);
 
 #endif

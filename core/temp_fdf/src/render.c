@@ -23,12 +23,12 @@ void	render_background(t_data *data, int colour)
 // first try without iso and just get 4 x 4 grid 
 // then i can look at scale and centre 
 // i amlost there should be completed by the weekend 
-void	render_line( )
+/*void	render_line(t_data *data, int x, int y)
 {
 
 
 
-}
+}*/
 
 void	render_map(t_data *data)
 {
@@ -48,12 +48,13 @@ void	render_map(t_data *data)
 		while (x < data->x_axis_len)
 		{
 			//draw down
-			if (y + 1 < data->y_axis_len)
-				render_line function;
+			//if (y + 1 < data->y_axis_len)
+				//render_line function(;
 			//draw across ---->
-			if (x + 1 < data->x_axis_len)
-				render_line function;
-			i++;
+			//if (x + 1 < data->x_axis_len)
+				//render_line function;
+			img_pix_put(&data->img, data->matrix[y][x].x, data->matrix[y][x].y, GREEN_COLOUR);
+			x++;
 		}
 		y++;
 	}
@@ -61,7 +62,7 @@ void	render_map(t_data *data)
 
 int	render(t_data *data)
 {
-	render_background(data, STARSHIP_COLOUR);
+	render_background(data, BLACK_COLOUR);
 	render_map(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.mlx_img, 0, 0);
 	return (0);

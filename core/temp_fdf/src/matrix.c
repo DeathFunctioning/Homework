@@ -45,13 +45,13 @@ void	assign_alt_colour(t_matrix *matrix, char **split_line, int len, int i)
 		if (ft_memchr(((char *)split_line[i]), ',', ft_strlen(split_line[i])))
 		{
 			data_split = ft_split(split_line[i], ',');
-			matrix[i].altitude = ft_atoi(data_split[0]);
-			matrix[i].colour = 0x33FF66;//ft_atoi_hex(data_split[1]);
+			matrix[i].z = ft_atoi(data_split[0]);
+			matrix[i].colour = ft_atoi_hex(data_split[1]);
 			free_array(data_split);
 		}
 		else
 		{
-			matrix[i].altitude = ft_atoi(split_line[i]);
+			matrix[i].z = ft_atoi(split_line[i]);
 			matrix[i].colour = 0x33FF33;
 		}
 		i++;
@@ -96,5 +96,6 @@ void	init_matrix(t_data *data, char *file)
 		init_matrix_data(data->matrix[y], fd, data->x_axis_len);
 		y++;
 	}
+	plot_points(data);
 	close (fd);
 }

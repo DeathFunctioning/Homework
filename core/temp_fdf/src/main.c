@@ -1,8 +1,6 @@
 #include "fdf.h"
 
-//will need to add free aftre distorying window
-
-//need to update key code for mac
+/*
 int	key_handler(int keycode, t_data *data)
 {
 	if (keycode == 65307)
@@ -17,20 +15,19 @@ int	key_handler(int keycode, t_data *data)
 	else
 		ft_printf("keycode = %i\n", keycode);
 	return (0);
-}
+}*/
 int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	if (argc != 2)
+	if (argc == 2)
 	{
-		ft_printf("Only two arguments = ./fdf file.fdf\n");
-		return (1);
+		init(&data, argv[1]);
+		mlx_loop_hook(data.mlx, &render, &data);
+		mlx_hook(data.mlx_win, 2, 1L<<0, key_handler, &data);
+		mlx_loop(data.mlx);
+		return (0);
 	}
-	init(&data, argv[1]);
-//	print_matrix(&data);//<--------------remove <<---------
-	mlx_loop_hook(data.mlx, &render, &data);
-	mlx_hook(data.mlx_win, 2, 1L<<0, key_handler, &data);
-	mlx_loop(data.mlx);
-	return (0);
+	ft_printf("Only two arguments = ./fdf file.fdf\n");
+	return (1);
 }
