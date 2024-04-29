@@ -32,10 +32,6 @@ void	render_background(t_data *data, int colour)
 
 void	render_map(t_data *data)
 {
-	//what do i need to code here?
-	//i need to just draw a simple map by 4 x 4 
-	//then i can build from there
-	//need to set background to black and defaualt colour green
 	//to draw between points
 	//if statement will draw the y axis first then the x axis if < H or W
 	int	y;
@@ -67,4 +63,3 @@ int	render(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.mlx_img, 0, 0);
 	return (0);
 }
-

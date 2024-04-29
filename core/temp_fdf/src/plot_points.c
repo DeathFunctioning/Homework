@@ -18,11 +18,12 @@ void	get_margin(t_data *data)
 		data->box_len = y_box_size;
 	else
 		data->box_len = x_box_size;
-	data->x_margin = (WIDTH - ((data->x_axis_len - 1) * data->box_len)) / 2;
-	data->y_margin = (HEIGHT - ((data->y_axis_len - 1) * data->box_len)) / 2;
+	data->x_margin = 10;//(WIDTH - ((data->x_axis_len - 1) * data->box_len)) / 2;
+	data->y_margin = 10;//(HEIGHT - ((data->y_axis_len - 1) * data->box_len)) / 2;
 	ft_printf("x_margin = %i\n", data->x_margin);//<-----------------------remove
 	ft_printf("box_len = %i\n", data->box_len);//<-----------------------remove
 	ft_printf("y_margin = %i\n", data->y_margin);//<-----------------------remove
+	ft_printf("y_axis= %i\n", data->y_axis_len);//<-----------------------remove
 }
 
 //gets coordants for 2d grid 
@@ -39,8 +40,11 @@ void	plot_points(t_data *data)
 		while (x < data->x_axis_len)
 		{
 			
-			data->matrix[y][x].x = x * data->box_len + data->x_margin;
-			data->matrix[y][x].y = y * data->box_len + data->y_margin;
+			data->matrix[y][x].x = x * 30 + WIDTH / 4;
+			data->matrix[y][x].y = y * 30 + HEIGHT / 4;
+			//data->matrix[y][x].x = x * data->box_len + data->x_margin;
+			//data->matrix[y][x].y = y * data->box_len + data->y_margin;
+			isometric(data, y, x);
 			x++;
 		}
 		y++;

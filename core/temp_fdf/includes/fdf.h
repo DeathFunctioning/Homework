@@ -73,7 +73,7 @@ void	init_matrix(t_data *data, char *file);
 //draw.c
 
 void	img_pix_put(t_img *img, int x, int y, int colour);
-void	isometric(t_matrix *matrix); //not tested
+void	isometric(t_data *data, int y, int i); //not tested
 
 //render.c
 
