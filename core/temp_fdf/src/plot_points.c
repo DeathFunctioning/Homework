@@ -27,6 +27,9 @@ void	get_margin(t_data *data)
 }
 
 //gets coordants for 2d grid 
+//need to fix all this mess need to properlly calculate box lenght that can fit correct and need 
+//may correct position the map in the centre
+//need to fix get Margin/boarder of map 
 void	plot_points(t_data *data)
 {
 	int x;
@@ -40,8 +43,8 @@ void	plot_points(t_data *data)
 		while (x < data->x_axis_len)
 		{
 			
-			data->matrix[y][x].x = x * 30 + WIDTH / 4;
-			data->matrix[y][x].y = y * 30 + HEIGHT / 4;
+			data->matrix[y][x].x = x * 30 + WIDTH / 3;
+			data->matrix[y][x].y = y * 30 + HEIGHT / 3;
 			//data->matrix[y][x].x = x * data->box_len + data->x_margin;
 			//data->matrix[y][x].y = y * data->box_len + data->y_margin;
 			isometric(data, y, x);

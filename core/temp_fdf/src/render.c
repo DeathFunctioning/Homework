@@ -18,22 +18,35 @@ void	render_background(t_data *data, int colour)
 	}
 }
 
-// need to build 
-// need grid spacing and x y z coords in matrix set 
-// first try without iso and just get 4 x 4 grid 
-// then i can look at scale and centre 
-// i amlost there should be completed by the weekend 
-/*void	render_line(t_data *data, int x, int y)
+void	render_y_line(t_data *data, int x, int y)
 {
+	t_coords	cords;
 
+	cords.ax = data->matrix[y][x].x;
+	cords.ay = data->matrix[y][x].y;
+	cords.bx = data->matrix[y + 1][x].x;
+	cords.by = data->matrix[y + 1][x].y;
+	cords.dx = cords.bx - cords.ax;
+	cords.dy = cords.by - cords.ay;
+	check_slope(data, &cords);
+}
 
+void	render_x_line(t_data *data, int x, int y)
+{
+	t_coords	cords;
 
-}*/
+	cords.ax = data->matrix[y][x].x;
+	cords.ay = data->matrix[y][x].y;
+	cords.bx = data->matrix[y][x + 1].x;
+	cords.by = data->matrix[y][x + 1].y;
+	cords.dx = cords.bx - cords.ax;
+	cords.dy = cords.by - cords.ay;
+	check_slope(data, &cords);
+}
 
+//	img_pix_put(&data->img, data->matrix[y][x].x, data->matrix[y][x].y, GREEN_COLOUR);
 void	render_map(t_data *data)
 {
-	//to draw between points
-	//if statement will draw the y axis first then the x axis if < H or W
 	int	y;
 	int	x;
 
@@ -43,13 +56,11 @@ void	render_map(t_data *data)
 		x = 0;
 		while (x < data->x_axis_len)
 		{
-			//draw down
-			//if (y + 1 < data->y_axis_len)
-				//render_line function(;
-			//draw across ---->
-			//if (x + 1 < data->x_axis_len)
-				//render_line function;
-			img_pix_put(&data->img, data->matrix[y][x].x, data->matrix[y][x].y, GREEN_COLOUR);
+			
+			if (y + 1 < data->y_axis_len)
+				render_y_line(data, x, y);
+			if (x + 1 < data->x_axis_len)
+				render_x_line(data, x, y);
 			x++;
 		}
 		y++;

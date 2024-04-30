@@ -17,3 +17,4 @@ void	isometric(t_data *data, int y, int x)
 	data->matrix[y][x].y = (temp + data->matrix[y][x].y) * sin(0.523599) - data->matrix[y][x].z;
 }
 
+

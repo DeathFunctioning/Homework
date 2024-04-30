@@ -23,6 +23,16 @@
 # define GREEN_COLOUR 0x33FF00
 # define BLACK_COLOUR 0x000000
 
+typedef	struct s_coords
+{
+	int			ax;
+	int			ay;
+	int			bx;
+	int			by;
+	int			dy;
+	int			dx;
+}	t_coords;
+
 typedef struct s_matrix
 {
 	int			x;
@@ -73,13 +83,21 @@ void	init_matrix(t_data *data, char *file);
 //draw.c
 
 void	img_pix_put(t_img *img, int x, int y, int colour);
-void	isometric(t_data *data, int y, int i); //not tested
+void	isometric(t_data *data, int y, int i); 
+
+//render_line.c
+
+void	slope_less_than_one(t_data *data, t_coords *cords);
+void	slope_greater_than_one(t_data *data, t_coords *cords);
+void	check_slope(t_data *data, t_coords *cords);
 
 //render.c
 
 int		render(t_data *data);
 void	render_map(t_data *data); //not tested 
 void	render_background(t_data *data, int colour);
+void	render_x_line(t_data *data, int x, int y);
+void	render_y_line(t_data *data, int x, int y);
 
 //event_handler.c
 
