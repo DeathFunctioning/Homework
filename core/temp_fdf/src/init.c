@@ -68,6 +68,7 @@ void	check_map_get_x_y(t_data *data, char *file)
 	while (line)
 	{
 		data->y_axis_len++;
+		free (line);
 		line = get_next_line(fd);
 	}
 	free (line);
