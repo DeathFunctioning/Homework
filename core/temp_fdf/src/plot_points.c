@@ -34,7 +34,9 @@ void	plot_points(t_data *data)
 {
 	int x;
 	int	y;
+	int scale;
 
+	scale = 30;
 	get_margin(data);
 	y = 0;
 	while  (y < data->y_axis_len)
@@ -43,11 +45,15 @@ void	plot_points(t_data *data)
 		while (x < data->x_axis_len)
 		{
 			
-			data->matrix[y][x].x = x * 30 + WIDTH / 3;
-			data->matrix[y][x].y = y * 30 + HEIGHT / 3;
+			data->matrix[y][x].x = x * scale;
+			data->matrix[y][x].y = y * scale;
+			//data->matrix[y][x].x = x * scale + WIDTH / 2 + margin;
+			//data->matrix[y][x].y = y * scale + HEIGHT / 2 + -200;
 			//data->matrix[y][x].x = x * data->box_len + data->x_margin;
 			//data->matrix[y][x].y = y * data->box_len + data->y_margin;
 			isometric(data, y, x);
+			data->matrix[y][x].x += WIDTH / 2;
+			data->matrix[y][x].y += HEIGHT / 2;
 			x++;
 		}
 		y++;

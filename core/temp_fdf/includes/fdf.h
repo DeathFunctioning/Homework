@@ -31,6 +31,8 @@ typedef	struct s_coords
 	int			by;
 	int			dy;
 	int			dx;
+	int			ac;
+	int			bc;
 }	t_coords;
 
 typedef struct s_matrix

@@ -28,9 +28,12 @@ void	render_y_line(t_data *data, int x, int y)
 	cords.by = data->matrix[y + 1][x].y;
 	cords.dx = cords.bx - cords.ax;
 	cords.dy = cords.by - cords.ay;
+	cords.ac = data->matrix[y][x].colour;
+	cords.bc = data->matrix[y + 1][x].colour;
 	check_slope(data, &cords);
 }
-
+// need to added a current point for both render x && y and send it to slope thane to a colour grade that will then 
+// pix put the colour gradent do it after run 
 void	render_x_line(t_data *data, int x, int y)
 {
 	t_coords	cords;
@@ -41,6 +44,8 @@ void	render_x_line(t_data *data, int x, int y)
 	cords.by = data->matrix[y][x + 1].y;
 	cords.dx = cords.bx - cords.ax;
 	cords.dy = cords.by - cords.ay;
+	cords.ac = data->matrix[y][x].colour;
+	cords.bc = data->matrix[y][x + 1].colour;
 	check_slope(data, &cords);
 }
 
