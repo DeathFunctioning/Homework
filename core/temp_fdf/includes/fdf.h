@@ -23,16 +23,34 @@
 # define GREEN_COLOUR 0x33FF00
 # define BLACK_COLOUR 0x000000
 
+typedef struct s_rgb
+{
+	int			ra;
+	int			rb;
+	int			ga;
+	int			gb;
+	int			ba;
+	int			bb;
+	int			r;
+	int			b;
+	int			g;
+	float		t;
+}	t_rgb;
+
 typedef	struct s_coords
 {
 	int			ax;
 	int			ay;
+	int			cx;
+	int			cy;
 	int			bx;
 	int			by;
 	int			dy;
 	int			dx;
 	int			ac;
 	int			bc;
+	int			cc;
+
 }	t_coords;
 
 typedef struct s_matrix
@@ -115,5 +133,10 @@ void	print_matrix(t_data *data);
 
 void	get_margin(t_data *data);
 void	plot_points(t_data *data);
+int		get_cell_size(t_data *data);
+
+//interpolate.c
+
+void	render_grad_line(t_coords *cords, int steps, int c_steps);
 
 #endif

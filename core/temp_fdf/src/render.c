@@ -24,6 +24,8 @@ void	render_y_line(t_data *data, int x, int y)
 
 	cords.ax = data->matrix[y][x].x;
 	cords.ay = data->matrix[y][x].y;
+	cords.cx = data->matrix[y][x].x;
+	cords.cy = data->matrix[y][x].y;
 	cords.bx = data->matrix[y + 1][x].x;
 	cords.by = data->matrix[y + 1][x].y;
 	cords.dx = cords.bx - cords.ax;
@@ -40,6 +42,8 @@ void	render_x_line(t_data *data, int x, int y)
 
 	cords.ax = data->matrix[y][x].x;
 	cords.ay = data->matrix[y][x].y;
+	cords.cx = data->matrix[y][x].x;
+	cords.cy = data->matrix[y][x].y;
 	cords.bx = data->matrix[y][x + 1].x;
 	cords.by = data->matrix[y][x + 1].y;
 	cords.dx = cords.bx - cords.ax;

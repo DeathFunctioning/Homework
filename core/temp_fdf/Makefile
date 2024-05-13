@@ -7,7 +7,7 @@ INCLUDES	= -Iincludes -I$(MLX_DIR) -I$(LIB_DIR)includes/
 
 SRC_DIR		= src/
 SRC_FILES	= main.c init.c matrix.c test_remove.c render.c draw.c \
-			  event_handler.c plot_points.c render_line.c
+			  event_handler.c plot_points.c render_line.c interpolate.c
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 MLX_DIR		= mlx_linux/
