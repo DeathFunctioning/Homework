@@ -24,7 +24,8 @@ void	slope_less_than_one(t_data *data, t_coords *cords)
 			p = p + 2 * abs(cords->dy) - 2 * abs(cords->dx);
 		}
 		render_grad_line(cords, abs(cords->dx), i);
-		img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
+		if (cords->cx < WIDTH || cords->cy < HEIGHT)
+			img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
 	}
 }
 //instead of img_pix_put her i can send it to another fuynction that sets the colour
@@ -53,14 +54,15 @@ void	slope_greater_than_one(t_data *data, t_coords *cords)
 			p = p + 2 * abs(cords->dx) - 2 * abs(cords->dy);
 		}
 		render_grad_line(cords, abs(cords->dy), i);
-		img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
+		if (cords->cx < WIDTH || cords->cy < HEIGHT)
+			img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
 	}
 }
 
 void	check_slope(t_data *data, t_coords *cords)
 {
 	img_pix_put(&data->img, cords->ax, cords->ay, cords->ac);
-	if (abs(cords->dx) > abs(cords->dy))
+	if (abs(cords->dx) >= abs(cords->dy))
 		slope_less_than_one(data, cords);
 	else
 		slope_greater_than_one(data, cords);

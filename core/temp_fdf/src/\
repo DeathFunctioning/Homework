@@ -45,7 +45,7 @@ void	plot_points(t_data *data)
 	int	y;
 	float	cell_size;
 
-	cell_size = 45;// get_cell_size(data); 
+	cell_size = 40;// get_cell_size(data); 
 	ft_printf("cell size= %i\n", cell_size);//<-----------------------remove
 	get_margin(data);
 	y = 0;
@@ -57,9 +57,9 @@ void	plot_points(t_data *data)
 			
 			data->matrix[y][x].x = x * cell_size;
 			data->matrix[y][x].y = y * cell_size;
-			isometric(data, y, x);
 			data->matrix[y][x].x += WIDTH / 3;
-			data->matrix[y][x].y += HEIGHT / 3;	
+			data->matrix[y][x].y += HEIGHT / 3;
+			isometric(data, y, x);
 			x++;
 		}
 		y++;

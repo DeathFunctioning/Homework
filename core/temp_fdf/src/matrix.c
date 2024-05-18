@@ -70,6 +70,7 @@ void	init_matrix_data(t_matrix *matrix, int fd, int len)
 	assign_alt_colour(matrix, split_line, len, i);
 	free_array(split_line);
 	free (line);
+	line = NULL;
 }
 
 void	init_matrix(t_data *data, char *file)

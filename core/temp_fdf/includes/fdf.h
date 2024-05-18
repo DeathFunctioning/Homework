@@ -9,8 +9,8 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
-# define WIDTH 2560	
-# define HEIGHT	1440
+# define WIDTH 1920	
+# define HEIGHT	1080
 
 
 # define STARSHIP_COLOUR 0xEAE243
