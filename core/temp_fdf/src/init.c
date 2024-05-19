@@ -13,7 +13,7 @@ void	check_file_name(char *file)
 	{
 		if (file[start] != cmp[i])
 		{
-			ft_printf("file name error");//remove <--------------------
+			ft_printf("file name error\n");//remove <--------------------
 			exit (1);
 		}
 		start++;
@@ -45,7 +45,7 @@ int	word_count(char *s)
 	}
 	if (wc < 1)
 	{
-		ft_printf("wc error");//remove test <-------------------------------------------------------
+		ft_printf("wc error\n");//remove test <-------------------------------------------------------
 		exit (1);
 	}
 	return (wc + 1);
@@ -59,7 +59,7 @@ void	check_map_get_x_y(t_data *data, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("fd error");//remov <----------------------------------------------------------------
+		ft_printf("fd error\n");//remov <----------------------------------------------------------------
 		exit (1);
 	}
 	line = get_next_line(fd);

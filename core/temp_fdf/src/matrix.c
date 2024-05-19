@@ -67,10 +67,9 @@ void	init_matrix_data(t_matrix *matrix, int fd, int len)
 	i = 0;
 	line = get_next_line(fd);
 	split_line = ft_split(line, ' ');
+	free (line);
 	assign_alt_colour(matrix, split_line, len, i);
 	free_array(split_line);
-	free (line);
-	line = NULL;
 }
 
 void	init_matrix(t_data *data, char *file)
@@ -83,7 +82,7 @@ void	init_matrix(t_data *data, char *file)
 	data->matrix = malloc(data->y_axis_len * sizeof(t_matrix));
 	if (!data->matrix)
 	{
-		ft_printf("matrix malloc error");//<--------- remove add error handler function
+		ft_printf("matrix malloc error\n");//<--------- remove add error handler function
 		exit (1);
 	}
 	while (y < data->y_axis_len)
@@ -91,7 +90,7 @@ void	init_matrix(t_data *data, char *file)
 		data->matrix[y] = malloc(data->x_axis_len * sizeof(t_matrix));
 		if (!data->matrix)
 		{
-			ft_printf("matrix malloc error");//<--------- remove add error handler function
+			ft_printf("matrix malloc error\n");//<--------- remove add error handler function
 			exit (1);
 		}
 		init_matrix_data(data->matrix[y], fd, data->x_axis_len);
