@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/19 19:04:39 by tbaker            #+#    #+#             */
+/*   Updated: 2024/05/19 19:05:55 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -11,7 +23,6 @@
 
 # define WIDTH 1920	
 # define HEIGHT	1080
-
 
 # define STARSHIP_COLOUR 0xEAE243
 # define WHITE_COLOUR 0xFFFFFF
@@ -37,7 +48,7 @@ typedef struct s_rgb
 	float		t;
 }	t_rgb;
 
-typedef	struct s_coords
+typedef struct s_coords
 {
 	int			ax;
 	int			ay;
@@ -103,7 +114,7 @@ void	init_matrix(t_data *data, char *file);
 //draw.c
 
 void	img_pix_put(t_img *img, int x, int y, int colour);
-void	isometric(t_data *data, int y, int i); 
+void	isometric(t_data *data, int y, int i);
 
 //render_line.c
 

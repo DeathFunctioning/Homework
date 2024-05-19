@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 21:22:39 by tbaker            #+#    #+#             */
-/*   Updated: 2023/10/07 17:56:30 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/05/19 19:06:33 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = gnl_read(&left, fd);
-	if(!line)
+	if (!line)
 		gnl_free(&left);
 	return (line);
 }

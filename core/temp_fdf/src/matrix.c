@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/19 18:41:31 by tbaker            #+#    #+#             */
+/*   Updated: 2024/05/19 18:42:54 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	free_array(char **s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -12,7 +24,6 @@ void	free_array(char **s)
 	}
 	free(s);
 }
-
 
 int	ft_atoi_hex(char *hex)
 {
@@ -82,7 +93,7 @@ void	init_matrix(t_data *data, char *file)
 	data->matrix = malloc(data->y_axis_len * sizeof(t_matrix));
 	if (!data->matrix)
 	{
-		ft_printf("matrix malloc error\n");//<--------- remove add error handler function
+		ft_printf("matrix malloc error\n");
 		exit (1);
 	}
 	while (y < data->y_axis_len)
@@ -90,7 +101,7 @@ void	init_matrix(t_data *data, char *file)
 		data->matrix[y] = malloc(data->x_axis_len * sizeof(t_matrix));
 		if (!data->matrix)
 		{
-			ft_printf("matrix malloc error\n");//<--------- remove add error handler function
+			ft_printf("matrix malloc error\n");
 			exit (1);
 		}
 		init_matrix_data(data->matrix[y], fd, data->x_axis_len);

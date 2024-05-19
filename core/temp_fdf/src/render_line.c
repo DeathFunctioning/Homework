@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_line.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/19 18:37:16 by tbaker            #+#    #+#             */
+/*   Updated: 2024/05/19 18:38:12 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	slope_less_than_one(t_data *data, t_coords *cords)
@@ -28,8 +40,11 @@ void	slope_less_than_one(t_data *data, t_coords *cords)
 			img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
 	}
 }
-//instead of img_pix_put her i can send it to another fuynction that sets the colour
-//and put the image for both of the slopes this is all that needs to be done here 
+
+//instead of img_pix_put her i can send it to 
+//another fuynction that sets the colour
+//and put the image for both of the slopes 
+//this is all that needs to be done here 
 void	slope_greater_than_one(t_data *data, t_coords *cords)
 {
 	int	i;
