@@ -21,7 +21,7 @@ char	*gnl_strndup(const char *src, int n)
 	len = gnl_strlen(src);
 	if (len > n)
 		len = n;
-	scopy = (char *)malloc((n + 1) * sizeof(char));
+	scopy = (char *)malloc((len + 1) * sizeof(char));
 	if (!scopy)
 		return (NULL);
 	scopy[len] = '\0';
@@ -53,7 +53,7 @@ int	gnl_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	while (s && s[i])
+	while (s[i])
 		i++;
 	return (i);
 }

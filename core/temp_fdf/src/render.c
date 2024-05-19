@@ -1,4 +1,16 @@
-# include "fdf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/19 18:38:21 by tbaker            #+#    #+#             */
+/*   Updated: 2024/05/19 18:40:25 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
 
 //maybe include j++ loop
 void	render_background(t_data *data, int colour)
@@ -24,6 +36,8 @@ void	render_y_line(t_data *data, int x, int y)
 
 	cords.ax = data->matrix[y][x].x;
 	cords.ay = data->matrix[y][x].y;
+	cords.cx = data->matrix[y][x].x;
+	cords.cy = data->matrix[y][x].y;
 	cords.bx = data->matrix[y + 1][x].x;
 	cords.by = data->matrix[y + 1][x].y;
 	cords.dx = cords.bx - cords.ax;
@@ -32,7 +46,9 @@ void	render_y_line(t_data *data, int x, int y)
 	cords.bc = data->matrix[y + 1][x].colour;
 	check_slope(data, &cords);
 }
-// need to added a current point for both render x && y and send it to slope thane to a colour grade that will then 
+
+// need to added a current point for both render x && y 
+// and send it to slope thane to a colour grade that will then 
 // pix put the colour gradent do it after run 
 void	render_x_line(t_data *data, int x, int y)
 {
@@ -40,6 +56,8 @@ void	render_x_line(t_data *data, int x, int y)
 
 	cords.ax = data->matrix[y][x].x;
 	cords.ay = data->matrix[y][x].y;
+	cords.cx = data->matrix[y][x].x;
+	cords.cy = data->matrix[y][x].y;
 	cords.bx = data->matrix[y][x + 1].x;
 	cords.by = data->matrix[y][x + 1].y;
 	cords.dx = cords.bx - cords.ax;
@@ -49,7 +67,8 @@ void	render_x_line(t_data *data, int x, int y)
 	check_slope(data, &cords);
 }
 
-//	img_pix_put(&data->img, data->matrix[y][x].x, data->matrix[y][x].y, GREEN_COLOUR);
+//	img_pix_put(&data->img, data->matrix[y][x].x, 
+//	data->matrix[y][x].y, GREEN_COLOUR);
 void	render_map(t_data *data)
 {
 	int	y;
@@ -61,7 +80,6 @@ void	render_map(t_data *data)
 		x = 0;
 		while (x < data->x_axis_len)
 		{
-			
 			if (y + 1 < data->y_axis_len)
 				render_y_line(data, x, y);
 			if (x + 1 < data->x_axis_len)

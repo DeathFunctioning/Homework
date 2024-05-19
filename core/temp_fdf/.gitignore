@@ -1,18 +1,18 @@
 # object files
-*.o
+#*.o
 
 # libraries
-*.a
-*.lib
+#*.a
+#*.lib
 
 # excutables
-*.exe
-*.out
-*.bin
+#*.exe
+#*.out
+#*.bin
 
 # bash file
-*.swp
+#*.swp
 
-mlx_temp/
-docs/
-objs/
+#mlx_temp/
+##docs/
+#objs/
