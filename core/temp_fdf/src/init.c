@@ -35,12 +35,10 @@ void	check_file_name(char *file)
 }
 
 //too many lines easy fix can send both i and wc as int 0
-int	word_count(char *s)
+int	word_count(char *s, int i)
 {
-	int	i;
 	int	wc;
 
-	i = 0;
 	wc = 0;
 	while (s[i] == 32)
 		i++;
@@ -67,8 +65,8 @@ int	word_count(char *s)
 
 void	check_map_get_x_y(t_data *data, char *file)
 {
-	char	*line;
-	int		fd;
+	char		*line;
+	int			fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
@@ -77,7 +75,7 @@ void	check_map_get_x_y(t_data *data, char *file)
 		exit (1);
 	}
 	line = get_next_line(fd);
-	data->x_axis_len = word_count(line);
+	data->x_axis_len = word_count(line, 0);
 	data->y_axis_len = 0;
 	while (line)
 	{

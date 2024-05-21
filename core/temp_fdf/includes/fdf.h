@@ -96,14 +96,14 @@ typedef struct s_data
 
 }	t_data;
 
-//init.c up to date 28/04
+//init.c
 
 void	check_file_name(char *file);
-int		word_count(char *s);
+int		word_count(char *s, int i);
 void	check_map_get_x_y(t_data *data, char *file);
 void	init(t_data *data, char *file);
 
-//matrix.c up to date 28/04 need to update assigning color and some error prints
+//matrix.c
 
 void	free_array(char **s);
 int		ft_atoi_hex(char *hex);
@@ -125,7 +125,7 @@ void	check_slope(t_data *data, t_coords *cords);
 //render.c
 
 int		render(t_data *data);
-void	render_map(t_data *data); //not tested 
+void	render_map(t_data *data);
 void	render_background(t_data *data, int colour);
 void	render_x_line(t_data *data, int x, int y);
 void	render_y_line(t_data *data, int x, int y);
@@ -134,15 +134,11 @@ void	render_y_line(t_data *data, int x, int y);
 
 void	close_free_win(t_data *data);
 int		key_handler(int keycode, t_data *data);
+int		close_handler(t_data *data);
 void	free_matrix(t_matrix **matrix, int len);
-
-//test_remove.c
-
-void	print_matrix(t_data *data);
 
 //plot_points.c
 
-void	get_margin(t_data *data);
 void	plot_points(t_data *data);
 int		get_cell_size(t_data *data);
 
