@@ -16,8 +16,11 @@ void	img_pix_put(t_img *img, int x, int y, int colour)
 {
 	char	*pixel;
 
-	pixel = img->mlx_addr + (y * img->line_len + x * (img->bpp / 8));
-	*(int *)pixel = colour;
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		pixel = img->mlx_addr + (y * img->line_len + x * (img->bpp / 8));
+		*(int *)pixel = colour;
+	}
 }
 
 void	isometric(t_data *data, int y, int x)

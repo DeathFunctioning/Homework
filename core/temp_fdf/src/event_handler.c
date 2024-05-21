@@ -26,12 +26,19 @@ int	key_handler(int keycode, t_data *data)
 	if (keycode == 65307)
 	{
 		close_free_win(data);
-		ft_printf("closed window");
+		ft_printf("window closed\n");
 		exit (0);
 	}
 	else
 		ft_printf("keycode = %i\n", keycode);
 	return (0);
+}
+
+int	close_handler(t_data *data)
+{
+	close_free_win(data);
+	ft_printf("window closed\n");
+	exit (0);
 }
 
 void	free_matrix(t_matrix **matrix, int len)

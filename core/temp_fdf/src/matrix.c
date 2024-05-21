@@ -71,22 +71,26 @@ void	assign_alt_colour(t_matrix *matrix, char **split_line, int len, int i)
 
 void	init_matrix_data(t_matrix *matrix, int fd, int len)
 {
-	int		i;
 	char	*line;
 	char	**split_line;
 
-	i = 0;
 	line = get_next_line(fd);
-	split_line = ft_split(line, ' ');
-	free (line);
-	assign_alt_colour(matrix, split_line, len, i);
-	free_array(split_line);
+	if (line)
+	{
+		split_line = ft_split(line, ' ');
+		free (line);
+		if (split_line)
+		{
+			assign_alt_colour(matrix, split_line, len, 0);
+			free_array(split_line);
+		}
+	}
 }
 
 void	init_matrix(t_data *data, char *file)
 {
-	int	y;
-	int	fd;
+	int		y;
+	int		fd;
 
 	y = 0;
 	fd = open(file, O_RDONLY);
@@ -101,12 +105,13 @@ void	init_matrix(t_data *data, char *file)
 		data->matrix[y] = malloc(data->x_axis_len * sizeof(t_matrix));
 		if (!data->matrix)
 		{
+			free_matrix(data->matrix, y);
 			ft_printf("matrix malloc error\n");
 			exit (1);
 		}
 		init_matrix_data(data->matrix[y], fd, data->x_axis_len);
 		y++;
 	}
-	plot_points(data);
 	close (fd);
+	plot_points(data);
 }

@@ -23,6 +23,7 @@ char	*get_next_line(int fd);
 char	*gnl_strjoin(const char *s1, const char *s2, int i, int j);
 char	*gnl_strndup(const char *src, int n);
 int		gnl_strlen(const char *s);
+void	gnl_free(char **s);
 char	*gnl_strchr(const char *src, int c);
 
 #endif
