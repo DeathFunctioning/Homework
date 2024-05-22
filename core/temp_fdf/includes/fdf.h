@@ -136,6 +136,7 @@ void	close_free_win(t_data *data);
 int		key_handler(int keycode, t_data *data);
 int		close_handler(t_data *data);
 void	free_matrix(t_matrix **matrix, int len);
+void	error(char *msg);
 
 //plot_points.c
 

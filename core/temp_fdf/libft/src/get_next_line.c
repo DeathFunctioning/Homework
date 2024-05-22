@@ -118,13 +118,19 @@ char	*gnl_read(char **left, int fd)
 //value between calls
 //If statements checks for valid fd and buffer that contains some chars.
 //returns the next line
+//the if fd == -13 is used to free the static varable by making a second 
+//final call to get next line after the get has been used in my 
+//fdf function 
 char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*left = NULL;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		gnl_free(&left);
 		return (NULL);
+	}
 	line = gnl_read(&left, fd);
 	if (!line)
 	{

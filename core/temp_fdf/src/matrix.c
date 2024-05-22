@@ -97,8 +97,7 @@ void	init_matrix(t_data *data, char *file)
 	data->matrix = malloc(data->y_axis_len * sizeof(t_matrix));
 	if (!data->matrix)
 	{
-		ft_printf("matrix malloc error\n");
-		exit (1);
+		error("matrix malloc error");
 	}
 	while (y < data->y_axis_len)
 	{
@@ -106,12 +105,12 @@ void	init_matrix(t_data *data, char *file)
 		if (!data->matrix)
 		{
 			free_matrix(data->matrix, y);
-			ft_printf("matrix malloc error\n");
-			exit (1);
+			error("matrix malloc error");
 		}
 		init_matrix_data(data->matrix[y], fd, data->x_axis_len);
 		y++;
 	}
+	get_next_line(-13);
 	close (fd);
 	plot_points(data);
 }
