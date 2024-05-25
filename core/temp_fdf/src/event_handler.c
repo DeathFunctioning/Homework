@@ -12,6 +12,12 @@
 
 #include "fdf.h"
 
+void	error(char *msg)
+{
+	ft_printf("%s\n", msg);
+	exit (1);
+}
+
 void	close_free_win(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->mlx_win);
