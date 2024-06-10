@@ -91,6 +91,7 @@ void	pa_till_stack_b_empty(t_list **list_a, t_list **list_b)
 }
 
 //need to make function better return sucks
+//need to fix return value from 1 to exit and print error
 int	get_idx_p(t_list **list, int i)
 {
 	t_list	*temp_list;
