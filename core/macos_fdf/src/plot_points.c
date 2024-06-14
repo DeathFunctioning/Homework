@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:40:34 by tbaker            #+#    #+#             */
-/*   Updated: 2024/05/19 19:04:27 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:08:48 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	get_cell_size(t_data *data)
 	cell_width = (float)WIDTH / (data->x_axis_len - 1 + 2);
 	cell_height = (float)HEIGHT / (data->y_axis_len - 1 + 2);
 	if (cell_width < cell_height)
-		cell_size = cell_width / 2;
+		cell_size = cell_width / 1;
 	else
-		cell_size = cell_height / 2;
+		cell_size = cell_height / 1;
 	return ((int)cell_size);
 }
 
@@ -46,7 +46,7 @@ void	plot_points(t_data *data)
 			data->matrix[y][x].y *= cell_size;
 			isometric(data, y, x);
 			data->matrix[y][x].x += WIDTH / 2;
-			data->matrix[y][x].y += HEIGHT / 2 - 250;
+			data->matrix[y][x].y += HEIGHT / 2 - 500;
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:37:16 by tbaker            #+#    #+#             */
-/*   Updated: 2024/05/19 18:38:12 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:20:19 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,10 @@ void	slope_less_than_one(t_data *data, t_coords *cords)
 			p = p + 2 * abs(cords->dy) - 2 * abs(cords->dx);
 		}
 		render_grad_line(cords, abs(cords->dx), i);
-		if (cords->cx < WIDTH || cords->cy < HEIGHT)
-			img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
+		img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
 	}
 }
 
-//instead of img_pix_put her i can send it to 
-//another fuynction that sets the colour
-//and put the image for both of the slopes 
-//this is all that needs to be done here 
 void	slope_greater_than_one(t_data *data, t_coords *cords)
 {
 	int	i;
@@ -69,8 +64,7 @@ void	slope_greater_than_one(t_data *data, t_coords *cords)
 			p = p + 2 * abs(cords->dx) - 2 * abs(cords->dy);
 		}
 		render_grad_line(cords, abs(cords->dy), i);
-		if (cords->cx < WIDTH || cords->cy < HEIGHT)
-			img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
+		img_pix_put(&data->img, cords->cx, cords->cy, cords->cc);
 	}
 }
 
