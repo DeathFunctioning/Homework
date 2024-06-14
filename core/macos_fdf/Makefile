@@ -28,7 +28,7 @@ $(NAME): $(OBJS) mlx libft
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES) $(MLX_FLAGS) $(LIBFT_FLAGS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 libft:
