@@ -1,0 +1,18 @@
+# object files
+#*.o
+
+# libraries
+#*.a
+#*.lib
+
+# excutables
+#*.exe
+#*.out
+#*.bin
+
+# bash file
+#*.swp
+
+#mlx_temp/
+##docs/
+#objs/
