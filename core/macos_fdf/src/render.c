@@ -6,13 +6,12 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:38:21 by tbaker            #+#    #+#             */
-/*   Updated: 2024/05/19 18:40:25 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:19:52 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//maybe include j++ loop
 void	render_background(t_data *data, int colour)
 {
 	int	i;
@@ -24,7 +23,8 @@ void	render_background(t_data *data, int colour)
 		j = 0;
 		while (j < WIDTH)
 		{
-			img_pix_put(&data->img, j++, i, colour);
+			img_pix_put(&data->img, j, i, colour);
+			j++;
 		}
 		i++;
 	}
@@ -47,9 +47,6 @@ void	render_y_line(t_data *data, int x, int y)
 	check_slope(data, &cords);
 }
 
-// need to added a current point for both render x && y 
-// and send it to slope thane to a colour grade that will then 
-// pix put the colour gradent do it after run 
 void	render_x_line(t_data *data, int x, int y)
 {
 	t_coords	cords;
@@ -67,8 +64,6 @@ void	render_x_line(t_data *data, int x, int y)
 	check_slope(data, &cords);
 }
 
-//	img_pix_put(&data->img, data->matrix[y][x].x, 
-//	data->matrix[y][x].y, GREEN_COLOUR);
 void	render_map(t_data *data)
 {
 	int	y;
@@ -80,10 +75,10 @@ void	render_map(t_data *data)
 		x = 0;
 		while (x < data->x_axis_len)
 		{
-			if (y + 1 < data->y_axis_len)
-				render_y_line(data, x, y);
 			if (x + 1 < data->x_axis_len)
 				render_x_line(data, x, y);
+			if (y + 1 < data->y_axis_len)
+				render_y_line(data, x, y);
 			x++;
 		}
 		y++;

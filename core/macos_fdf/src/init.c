@@ -6,13 +6,12 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:51:54 by tbaker            #+#    #+#             */
-/*   Updated: 2024/05/19 18:55:35 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:03:15 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//check print statements 
 void	check_file_name(char *file)
 {
 	char	*cmp;
@@ -34,7 +33,6 @@ void	check_file_name(char *file)
 	}
 }
 
-//too many lines easy fix can send both i and wc as int 0
 int	word_count(char *s, int i)
 {
 	int	wc;
@@ -87,8 +85,6 @@ void	check_map_get_x_y(t_data *data, char *file)
 	close(fd);
 }
 
-//need to distroy of free iomage and addr when close 
-//window need to create function for closing window 
 void	init(t_data	*data, char *file)
 {
 	check_file_name(file);

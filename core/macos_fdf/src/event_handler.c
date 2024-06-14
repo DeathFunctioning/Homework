@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:51:07 by tbaker            #+#    #+#             */
-/*   Updated: 2024/06/14 18:24:56 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:15:59 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	key_handler(int keycode, t_data *data)
 		ft_printf("window closed\n");
 		exit (0);
 	}
-	else
-		ft_printf("keycode = %i\n", keycode);
 	return (0);
 }
 
