@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:51:54 by tbaker            #+#    #+#             */
-/*   Updated: 2024/06/14 19:03:15 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/15 15:44:56 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	check_file_name(char *file)
 	}
 }
 
+//the wc ++ and i++ should be swap but i would i have to edit to much code 
+//it only counts the 
 int	word_count(char *s, int i)
 {
 	int	wc;

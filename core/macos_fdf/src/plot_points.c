@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:40:34 by tbaker            #+#    #+#             */
-/*   Updated: 2024/06/14 19:08:48 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/15 15:48:10 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	get_cell_size(t_data *data)
 	cell_width = (float)WIDTH / (data->x_axis_len - 1 + 2);
 	cell_height = (float)HEIGHT / (data->y_axis_len - 1 + 2);
 	if (cell_width < cell_height)
-		cell_size = cell_width / 1;
+		cell_size = cell_width;
 	else
-		cell_size = cell_height / 1;
+		cell_size = cell_height;
 	return ((int)cell_size);
 }
 
