@@ -1,21 +1,14 @@
 CC			= gcc
-CFLAGS 		= -Wall -Werror -Wextra
+CFLAGS 		= -Wall -Werror -Wextra -g
 NAME		= push_swap
 INCS		= -I ./includes/
 
 SRC_PATH	= src/
 OBJ_PATH	= obj/
 
-SRC			= push_swap.c \
-			  init.c \
-			  utils.c \
-			  rotate_stack.c \
-			  reverse_rotate_stack.c \
-			  swap_stack.c \
-			  push_stack.c \
-			  error.c \
-			  delete_remove_this.c \
-			  sort.c \
+SRC			= main.c init.c utils.c rotate_stack.c \
+			  reverse_rotate_stack.c swap_stack.c \
+			  push_stack.c error.c sort.c radix_sort.c \
 
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 OBJ			= $(SRC:.c=.o)

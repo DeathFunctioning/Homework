@@ -28,9 +28,6 @@ t_list	*ft_lstnew(t_list **list, int data)
 	new->idx_p = 0;
 	new->idx_v = -1;
 	new->max = 0;
-	new->min = 0;
-	new->target_p = 0;
-	new->cost = 0;
 	return (new);
 }
 

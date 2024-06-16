@@ -46,7 +46,7 @@ void	sort_3(t_list **list)
 	//list_a i could rra if idx_v is at the bottom half of the list 
 	//but i think sorting 5 or 6 lioke this is below the
 	//threshold for operations
-void	sort(t_list **list_a, t_list **list_b)
+void	sort_5(t_list **list_a, t_list **list_b)
 {
 	pb_min_descending_order(list_a, list_b);
 	sort_3(list_a);
@@ -90,7 +90,6 @@ void	pa_till_stack_b_empty(t_list **list_a, t_list **list_b)
 	}
 }
 
-//need to make function better return sucks
 //need to fix return value from 1 to exit and print error
 int	get_idx_p(t_list **list, int i)
 {
