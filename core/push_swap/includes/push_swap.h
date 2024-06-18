@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:50:58 by tbaker            #+#    #+#             */
-/*   Updated: 2024/06/18 15:18:24 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/18 19:29:16 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ typedef struct s_list
 	int				idx_p;
 	int				idx_v;//one off update
 	int				max;//do i need
-	struct s_list	*next; 
+	struct s_list	*next;
 }	t_list;
 
 //	main
+void		free_array(char **array);
 int			parse_string(t_list **list_a, char *s);
-int			main_loop(t_list **list_a, char **argv);
+void		main_loop(t_list **list_a, char **argv, int i);
 void		sort_select(t_list **list_a, t_list **list_b, int argc);
 
 //	init.c
@@ -94,4 +95,7 @@ int			get_idx_p(t_list **list, int i);
 
 void		radix_sort(t_list **list_a, t_list **list_b);
 
+// ft_spilt.c
+
+char		**ft_split(char const *s, char c);
 #endif
