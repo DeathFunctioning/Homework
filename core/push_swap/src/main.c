@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc > 1)
+	if (argc > 2)
 	{
 		main_loop(&stack_a, argv);
 		if (check_sort(&stack_a))
@@ -56,11 +56,18 @@ int	main(int argc, char **argv)
 			sa(&stack_a);
 		else if (argc == 4)
 			sort_3(&stack_a);
+		else if (argc == 5 || argc == 6)
+			sort_5(&stack_a, &stack_b);
 		else
-			sort(&stack_a, &stack_b);
+			radix_sort(&stack_a, &stack_b);
 		free_list(&stack_a);
 		free_list(&stack_b);
 		return (0);
 	}
-	return (-1);
+	if (argc == 2)
+	{
+		write(2, "Error\n", 6);
+		return (-1);
+	}
+	return (0);
 }

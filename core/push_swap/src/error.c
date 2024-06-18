@@ -15,14 +15,15 @@
 void	free_list(t_list **list)
 {
 	t_list	*next_node;
+
 	while (*list)
-		{
-			next_node = (*list)->next;
-			free(*list);
-			*list = next_node;
-		}
-		*list = NULL;//do i need the loop should null both
-		next_node = NULL;
+	{
+		next_node = (*list)->next;
+		free(*list);
+		*list = next_node;
+	}
+	*list = NULL;
+	next_node = NULL;
 }
 
 void	error(t_list **list)
@@ -31,27 +32,6 @@ void	error(t_list **list)
 	write (2, "Error\n", 6);
 	exit (-1);
 }
-
-/*
-void	error(t_list **list)
-{
-	t_list	*next_node;
-	int		flag;
-
-	flag = 1;
-	if (!list || !(*list))
-		flag = 0;
-	while (*list)
-	{
-		next_node = (*list)->next;
-		free(*list);
-		*list = next_node;
-	}
-	*list = NULL;
-	if (flag)
-		write (1, "Error\n", 6);
-	exit (-1);
-}*/
 
 int	ft_isdigit(char *s)
 {

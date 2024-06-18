@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
-# include <stdio.h> //remove test
 
 //data = arg int value
 //ind_p = position in the list from head to tail 
@@ -28,10 +27,7 @@ typedef struct s_list
 	int				idx_p;
 	int				idx_v;//one off update
 	int				max;//do i need
-	int				min;//do i need 
-	int				target_p;
-	int				cost;
-	struct s_list	*next;//should double or cycle the list or just keep it singuler 
+	struct s_list	*next; 
 }	t_list;
 
 //	main
@@ -45,10 +41,6 @@ void		index_assign_value(t_list **list, int i, int min);
 t_list		*ft_lstnew(t_list **list, int data);
 void		ft_lstadd_back(t_list **list, t_list *new);
 int			lst_size_index(t_list **list);
-
-// delete_remove_this.c
-
-void		ft_print_list(t_list *stack_a, t_list *stack_b); //remove test
 
 // utils.c
 
@@ -92,9 +84,13 @@ int			check_sort(t_list **list);
 // sort.c
 
 void		sort_3(t_list **list);
-void		sort(t_list **list_a, t_list **list_b);
+void		sort_5(t_list **list_a, t_list **list_b);
 void		pb_min_descending_order(t_list **list_a, t_list **list_b);
 void		pa_till_stack_b_empty(t_list **list_a, t_list **list_b);
 int			get_idx_p(t_list **list, int i);
+
+// radix_sort.c
+
+void		radix_sort(t_list **list_a, t_list **list_b);
 
 #endif
