@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:48:51 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/09 18:43:59 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:19:38 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ void	main_loop(t_list **stack_a, char **argv)
 	}
 }
 
+void	sort_select(t_list **stack_a, t_list **stack_b, int argc)
+{
+	if (argc == 3)
+		sa(stack_a);
+	else if (argc == 4)
+		sort_3(stack_a);
+	else if (argc == 5 || argc == 6)
+		sort_5(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
+}
+
 //if (i == 1)//this was changed from i = 1 may need to change back 
 //		ft_print_list(stack_a, stack_b);
 int	main(int argc, char **argv)
@@ -52,14 +64,15 @@ int	main(int argc, char **argv)
 		if (check_sort(&stack_a))
 			return (0);
 		index_value(&stack_a, argc - 1, stack_a->data);
-		if (argc == 3)
+		sort_select(&stack_a, &stack_b, argc);
+/*		if (argc == 3)
 			sa(&stack_a);
 		else if (argc == 4)
 			sort_3(&stack_a);
 		else if (argc == 5 || argc == 6)
 			sort_5(&stack_a, &stack_b);
 		else
-			radix_sort(&stack_a, &stack_b);
+			radix_sort(&stack_a, &stack_b);*/
 		free_list(&stack_a);
 		free_list(&stack_b);
 		return (0);
