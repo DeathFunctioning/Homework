@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 16:48:51 by tbaker            #+#    #+#             */
-/*   Updated: 2024/06/18 15:19:38 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:49:31 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ int	main(int argc, char **argv)
 		free_list(&stack_b);
 		return (0);
 	}
-	if (argc == 2)
-	{
-		write(2, "Error\n", 6);
-		return (-1);
-	}
+//	if (argc == 2)
+//	{
+//		write(2, "Error\n", 6);
+//		return (-1);
+//	}
 	return (0);
 }
