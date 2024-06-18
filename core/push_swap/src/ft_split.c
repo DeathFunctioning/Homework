@@ -6,11 +6,11 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:22:40 by tbaker            #+#    #+#             */
-/*   Updated: 2023/08/26 20:25:55 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/18 19:35:41 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 static int	ft_wcount(char const *s, char c)
 {
