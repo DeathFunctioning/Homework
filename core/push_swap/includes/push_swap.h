@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:50:58 by tbaker            #+#    #+#             */
-/*   Updated: 2024/03/09 18:43:46 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:18:24 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_list
 //	main
 
 void		main_loop(t_list **list_a, char **argv);
+void		sort_select(t_list **list_a, t_list **list_b, int argc);
 
 //	init.c
 
