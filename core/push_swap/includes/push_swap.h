@@ -31,8 +31,8 @@ typedef struct s_list
 }	t_list;
 
 //	main
-
-void		main_loop(t_list **list_a, char **argv);
+int			parse_string(t_list **list_a, char *s);
+int			main_loop(t_list **list_a, char **argv);
 void		sort_select(t_list **list_a, t_list **list_b, int argc);
 
 //	init.c
