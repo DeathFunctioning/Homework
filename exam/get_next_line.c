@@ -1,7 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
+#include "get_next_line.h" 
 
 void	ft_strcpy(char *dst, char *src)
 {
