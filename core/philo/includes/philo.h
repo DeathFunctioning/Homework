@@ -8,6 +8,6 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-
+int	ft_data_check(char *argv[]);
 
 #endif
