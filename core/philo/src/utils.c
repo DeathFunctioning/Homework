@@ -1,17 +1,28 @@
 #include "philo.h"
 
+/*
 // need to replace with philo id instead of sending data
 // Could add a mutex lock for writing to terminal 
 void	ft_print_action(char *s, t_data data)
 {
 	printf("%zu %d %s\n", get_current_time(), data->philo[i].id, s)
+}*/
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 int	ft_atoi(char *s)
 {
 	int	nbr;
 	int	sign;
-	
+
 	sign = 1;
 	nbr = 0;
 	while ((*s == 32) || (*s >= 9 && *s <= 13))
@@ -48,7 +59,7 @@ size_t	ft_get_current_time(void)
 {
 	struct timeval	time;
 
-	if(gettimeofday(&time, NULL) == -1)
+	if (gettimeofday(&time, NULL) == -1)
 		write(2, "gettimeofday() error\n", 22);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

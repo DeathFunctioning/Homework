@@ -1,97 +1,69 @@
 #include "philo.h"
 
-// define exit suc3ess and failure define marocs enums 
-// could also create my own printe error function 
-// the i could something like return (ft_error("Forks mallos error));
-// one lining the the if statement would need to create string length
-// if not i have to go and check all my writes and make sure the right length
-int	ft_create_forks(t_data data)
+int	ft_create_forks(t_data *data)
 {
 	int	i;
 
 	i = 0;
-	data->forks = (pthread_mutex_t *)malloc(data->philo_number * sizeof(pthread_mutex_t));
-	if (!data->forks)
-	{
-		write (2, "Forks malloc error\n", 19);
-		return (-1);
-	}
 	while (i < data->philo_number)
 	{
 		if (pthread_mutex_init(&data->forks[i], NULL) == -1)
-		{
-			write(2, "Mutex fork error\n", 17);
-			return (-1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-// Need to move this to the thread create function this is for in
-// build seperate join anmd free function same for forks destiry and free
-int	ft_create_philos_threads(t_data data)
-{
-	int	i;
-
-	i = 0;
-	data->philos = (pthread_mutex_t *)malloc(data->philo_number * sizeof(pthread_mutex_t));
-	if (!data->philos)
-	{
-		write (2, "philos malloc error\n", 20);
-		return (-1);
-	}
-	while (i < data->philo_number)
-	{
-		if (pthread_mutex_init(&data->philos[i], NULL) == -1)
-		{
-			write(2, "Pthread philo error\n", 20);
-			return (-1);
-		}
-		else
-			if(ft_init_philos(t_data data) == EXIT_FAILURE)
-			{
-
-			}
+			return (ft_free_return_failure(data, "Mutex fork error"));
 		i++;
 	}
 	return (0);
 }
 
 // need to check if this write statemen works
-// need to add strlen
-// need to clean all my code and start adding exit failure exit success
-// need to create return_failure instead of exit_failure or -1
-int	ft_free_return_failure(t_data data, char *error_msg)
+int	ft_free_return_failure(t_data *data, char *error_msg)
 {
 	if (data->forks)
 		free(data->forks);
 	if (data->philos)
 		free(data->philos);
-	write (2, &s, ft_strlen(s));
+	write (2, error_msg, ft_strlen(error_msg));
 	write(2, "\n", 1);
-	return (EXIT_FAILURE);
+	return (-1);
 }
 
-int	ft_init_data(t_data data,int argc, char **argv)
+void	ft_init_philos(t_data *data)
 {
+	int	i;
 
-	data->forks = (pthread_mutex_t *)malloc(data->philo_number * sizeof(pthread_mutex_t));
-	data->philos = (pthread_t *)malloc(data->philo_number * sizeof(pthread_t));
-	if (!forks || !philos)
+	i = 0;
+	while (i < data->philo_number)
 	{
-
+		data->philos[i].id = i + 1;
+		data->philos[i].l_fork = &data->forks[i];
+		if (i == 0)
+			data->philos[i].r_fork = &data->forks[data->philo_number - 1];
+		else
+			data->philos[i].r_fork = &data->forks[i - 1];
+		data->philos[i].meals_eaten = 0;
+		//add any other variable needed
+		//will get time at thread creation
+		i++;
 	}
-	data->philo_number = argv[1];
-	data->time_to_die = argv[2];
-	data->time_to_eat = argv[3];
-	data->time_to_sleep = argv[4];
+}
+
+int	ft_init_data(t_data *data, int argc, char *argv[])
+{
+	data->philo_number = ft_atoi(argv[1]);
+	data->time_to_die = ft_atoi(argv[2]);
+	data->time_to_eat = ft_atoi(argv[3]);
+	data->time_to_sleep = ft_atoi(argv[4]);
+	data->sim_end = 0;
 	if (argc == 6)
-		data->meals_to_eat = argv[5];
+		data->meals_to_eat = ft_atoi(argv[5]);
 	else
 		data->meals_to_eat = -1;
-	if (ft_init_forks(data) == -1)
+	data->forks = (pthread_mutex_t *)malloc(data->philo_number * sizeof(pthread_mutex_t));
+	data->philos = (t_philo *)malloc(data->philo_number * sizeof(t_philo));
+	if (!data->forks || !data->philos)
+		return (ft_free_return_failure(data, "Malloc fail"));
+	if (ft_create_forks(data) == -1)
 		return (-1);
+	ft_init_philos(data);
 	if (ft_create_philos_threads(data) == -1)
 		return (-1);
 	return (0);
