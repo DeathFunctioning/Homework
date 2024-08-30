@@ -1,15 +1,17 @@
 # include "philo.h"
 
+// need to remove printf test statements 
+// need to 
 int	main(int argc, char *argv[])
 {
+	t_data	data;	
 
 	if (argc == 5 || argc == 6)
 	{
-		if (ft_data_check(argv))
-			printf("data incorrect\n");
-		printf("hit middle code\n");
+		if (ft_data_check(argv) == -1)
+			return (1);
 		return (0);
 	}
-	printf("the beginning of my new life\n");
+	write (2, "not enough args\n", 17);
 	return (1);
 }

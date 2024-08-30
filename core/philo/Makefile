@@ -9,11 +9,11 @@ CFLAGS		:= -Wall -Wextra -Werror -g -pthread
 RM			:= rm -rf
 
 SRC_DIR		:= ./src
-SRC_FILES	:= philo.c error_handle.c
+SRC_FILES	:= philo.c error_handle.c utils.c
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 BUILD_DIR	:= ./build
-OBJ_FILES	:= philo.o error_handle.o			
+OBJ_FILES	:= philo.o error_handle.o utils.o			
 OBJ			:= $(addprefix $(BUILD_DIR)/, $(OBJ_FILES)) 
 
 all: $(NAME)
