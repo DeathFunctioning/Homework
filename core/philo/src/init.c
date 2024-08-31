@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 11:22:20 by tbaker            #+#    #+#             */
+/*   Updated: 2024/08/31 13:46:58 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "philo.h"
 
 int	ft_create_forks(t_data *data)
@@ -17,10 +28,13 @@ int	ft_create_forks(t_data *data)
 // need to check if this write statemen works
 int	ft_free_return_failure(t_data *data, char *error_msg)
 {
-	if (data->forks)
-		free(data->forks);
-	if (data->philos)
-		free(data->philos);
+	if (data)
+	{
+		if (data->forks)
+			free(data->forks);
+		if (data->philos)
+			free(data->philos);
+	}
 	write (2, error_msg, ft_strlen(error_msg));
 	write(2, "\n", 1);
 	return (-1);
