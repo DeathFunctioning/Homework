@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 12:03:29 by tbaker            #+#    #+#             */
+/*   Updated: 2024/08/31 14:40:12 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -9,6 +21,7 @@
 # include <pthread.h>
 # include "macros.h"
 
+//	Do i need a pointer for the mutexs?ZZ
 typedef struct s_philo
 {
 	pthread_t		thread;

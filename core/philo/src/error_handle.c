@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_handle.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 11:22:09 by tbaker            #+#    #+#             */
+/*   Updated: 2024/08/31 12:59:15 by tbaker           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "philo.h"
 
 //check if philos are between 1 - 200
@@ -13,20 +24,14 @@ int	ft_data_check(char *argv[])
 
 	j = 1;
 	if (ft_atoi(argv[1]) <= 0 || ft_atoi(argv[1]) > 200)
-	{
-		write(2, "Number of philos needs to between 1 - 200\n", 42);
-		return (-1);
-	}
+		return (ft_free_return_failure(NULL, "Number of philos needs to between 1 - 200")); 
 	while (argv[j])
 	{
 		i = 0;
 		while (argv[j][i])
 		{
-			if (argv[j][i] < 48 || argv[j][i] > 58)
-			{
-				write(2, "Please enter postive number only\n", 33); 
-				return (-1);
-			}
+			if (argv[j][i] < 48 || argv[j][i] > 57)
+				return (ft_free_return_failure(NULL, "Error invailed argument postive number required")); 
 			i++;
 		}
 		j++;
