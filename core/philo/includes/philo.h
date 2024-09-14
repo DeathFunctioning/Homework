@@ -21,9 +21,13 @@
 # include <pthread.h>
 # include "macros.h"
 
+typedef struct s_data t_data;
 //	Do i need a pointer for the mutexs?ZZ
+//	Do i need a point to data struct i create in the main 
+//	so i can point back to the varibles in data
 typedef struct s_philo
 {
+	t_data			*data;
 	pthread_t		thread;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
@@ -35,8 +39,10 @@ typedef struct s_philo
 
 typedef struct s_data
 {
+	//this to watch for death: pthread_t		watcher;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
+	pthread			watcher_thread;
 	int				philo_number;
 	int				time_to_die;
 	int				time_to_eat;
