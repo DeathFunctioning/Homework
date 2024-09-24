@@ -22,9 +22,7 @@
 # include "macros.h"
 
 typedef struct s_data t_data;
-//	Do i need a pointer for the mutexs?ZZ
-//	Do i need a point to data struct i create in the main 
-//	so i can point back to the varibles in data
+
 typedef struct s_philo
 {
 	t_data			*data;
@@ -42,7 +40,7 @@ typedef struct s_data
 	//this to watch for death: pthread_t		watcher;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
-	pthread			watcher_thread;
+	pthread_t       watcher_thread;
 	int				philo_number;
 	int				time_to_die;
 	int				time_to_eat;
@@ -67,8 +65,14 @@ int		ft_free_return_failure(t_data *data, char *error_msg);
 
 //	utils.c
 int		ft_strlen(char *s);
-//int		ft_usleep(size_t ms);
+int		ft_usleep(size_t ms);
 size_t	ft_get_current_time(void);
 int		ft_atoi(char *s);
+
+//philo_actions.c
+void    ft_eat(t_philo *philo, t_data *data);
+void    ft_sleep(t_philo *philo, t_data *data);
+void    ft_think(t_philo *philo);
+void    ft_death(t_philo *philo, t_data *data);
 
 #endif

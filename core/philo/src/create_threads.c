@@ -12,9 +12,9 @@
 #include "philo.h"
 
 //need to build real programme
-void	*ft_watcher(void *p)
+void  *ft_watcher(void *p)
 {
-	t_data	*data;
+	t_data  *data;
 
 	data = (t_data *)p;
 	while (1)
@@ -28,39 +28,33 @@ void	*ft_watcher(void *p)
 	return (NULL);
 }
 
-// could add thread for mointoring before first loop 
-// issus with updating values in the curent threads struct 
-// need 
-void	*ft_simulation(void *p)
+//need to build loop for philo rotuine
+//need to do time to eat / time to die comparsion before 
+//philo eats 
+//somethin like if philo is going to die 
+//ft_death
+//increment end simulation to 1 loop stops for all 
+//need to build meals eat function can do after i have built the death function 
+void  *ft_simulation(void *p)
 {
-	//t_data	*data;
+	t_philo *philo;
 
-	//odata = (t_data *)p;
-	t_philo	*philos;
-
-	philos = (t_philo *)p;
-	/*if (philos->id % 2)
-	{
-		philos->meals_eaten = 1;
+	philo = (t_philo *)p;
+	if (philo->id % 2)
 		usleep(5);
-	}*/
-	printf("This is philo id = %d\n", philos->id);
-	//printf("This is philo last_meal = %zu\n", data->philos->last_meal);
 /*	while (data->sim_end == 0)
 	{
-	//	ft_eat(data);// need to be built 
-	//	ft_sleep(data);// need to be built 
-	//	ft_think(data);// need to be built
+	//	ft_eat(philo);// need to be built 
+	//	ft_sleep(philo);// need to be built 
+	//	ft_think(philo);// need to be built
 	}*/
 	return (NULL);
 }
 
 // could add thread for mointoring before first loop 
-// and join it in after the second join loop
-// Would slos need to added it to the data struct to save space
 int	ft_create_philos_threads(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < data->philo_number)
@@ -77,5 +71,5 @@ int	ft_create_philos_threads(t_data *data)
 			return (ft_free_return_failure(data, "Pthread join philo error"));
 		i++;
 	}
-	return (0);
+	return (RETURN_SUCCESS);
 }
