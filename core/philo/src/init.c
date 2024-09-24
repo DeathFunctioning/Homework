@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 #include "philo.h"
 
-int	ft_create_forks(t_data *data)
+int ft_create_forks(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < data->philo_number)
@@ -22,11 +22,11 @@ int	ft_create_forks(t_data *data)
 			return (ft_free_return_failure(data, "Mutex fork error"));
 		i++;
 	}
-	return (0);
+	return (RETURN_SUCCESS);
 }
 
 // need to check if this write statemen works
-int	ft_free_return_failure(t_data *data, char *error_msg)
+int ft_free_return_failure(t_data *data, char *error_msg)
 {
 	if (data)
 	{
@@ -37,12 +37,12 @@ int	ft_free_return_failure(t_data *data, char *error_msg)
 	}
 	write (2, error_msg, ft_strlen(error_msg));
 	write(2, "\n", 1);
-	return (-1);
+	return (RETURN_FAILURE);
 }
 
-void	ft_init_philos(t_data *data)
+void  ft_init_philos(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < data->philo_number)
@@ -60,7 +60,7 @@ void	ft_init_philos(t_data *data)
 	}
 }
 
-int	ft_init_data(t_data *data, int argc, char *argv[])
+int ft_init_data(t_data *data, int argc, char *argv[])
 {
 	data->philo_number = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -76,9 +76,9 @@ int	ft_init_data(t_data *data, int argc, char *argv[])
 	if (!data->forks || !data->philos)
 		return (ft_free_return_failure(data, "Malloc fail"));
 	if (ft_create_forks(data) == -1)
-		return (-1);
+		return (RETURN_FAILURE);
 	ft_init_philos(data);
 	if (ft_create_philos_threads(data) == -1)
-		return (-1);
-	return (0);
+		return (RETURN_FAILURE);
+	return (RETURN_SUCCESS);
 }

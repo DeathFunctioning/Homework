@@ -13,9 +13,9 @@
 
 // need to remove printf test statements 
 // need to 
-void	ft_test(t_data *data)
+void  ft_test(t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < data->philo_number)
@@ -27,9 +27,9 @@ void	ft_test(t_data *data)
 	}
 }
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
-	t_data	data;	
+	t_data  data;	
 
 	if (argc == 5 || argc == 6)
 	{
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 			return (EXIT_FAILURE);
 		if (ft_init_data(&data, argc, argv) == -1)
 			return (EXIT_FAILURE);
-//		ft_test(&data);
+        ft_test(&data);
 		return (EXIT_SUCCESS);
 	}
 	//need to write better error msg
