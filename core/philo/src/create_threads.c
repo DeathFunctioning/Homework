@@ -42,12 +42,12 @@ void  *ft_simulation(void *p)
 	philo = (t_philo *)p;
 	if (philo->id % 2)
 		usleep(5);
-/*	while (data->sim_end == 0)
+	while (philo->data->sim_end == 0)
 	{
-	//	ft_eat(philo);// need to be built 
-	//	ft_sleep(philo);// need to be built 
-	//	ft_think(philo);// need to be built
-	}*/
+		ft_eat(philo, philo->data);// need to be built 
+		ft_sleep(philo, philo->data);// need to be built 
+		ft_think(philo);// need to be built
+	}
 	return (NULL);
 }
 

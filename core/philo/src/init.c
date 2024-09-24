@@ -54,6 +54,7 @@ void  ft_init_philos(t_data *data)
 		else
 			data->philos[i].r_fork = &data->forks[i - 1];
 		data->philos[i].meals_eaten = 0;
+		data->philos[i].required_meals_eaten = 0;
 		//add any other variable needed
 		//will get time at thread creation
 		i++;

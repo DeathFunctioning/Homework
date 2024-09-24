@@ -32,6 +32,7 @@ typedef struct s_philo
 	size_t			last_meal;//use this as start time 
 	int				id;
 	int				meals_eaten;
+	int				required_meals_eaten;
 
 }	t_philo;
 
