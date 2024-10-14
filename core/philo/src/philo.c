@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 			return (EXIT_FAILURE);
 		if (ft_init_data(&data, argc, argv) == -1)
 			return (EXIT_FAILURE);
-        ft_test(&data);
+        //ft_test(&data);
 		return (EXIT_SUCCESS);
 	}
 	//need to write better error msg

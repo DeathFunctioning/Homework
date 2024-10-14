@@ -41,8 +41,12 @@ void  *ft_simulation(void *p)
 
 	philo = (t_philo *)p;
 	if (philo->id % 2)
-		usleep(5);
-	while (philo->data->sim_end == 0)
+    {
+		ft_usleep(10);
+   // printf("here\n");
+	//while (philo->data->sim_end == 0)
+    }
+	while (1)
 	{
 		ft_eat(philo, philo->data);// need to be built 
 		ft_sleep(philo, philo->data);// need to be built 
@@ -60,10 +64,12 @@ int	ft_create_philos_threads(t_data *data)
 	while (i < data->philo_number)
 	{
 		data->philos[i].last_meal = ft_get_current_time();
-		if (pthread_create(&data->philos[i].thread, NULL, &ft_simulation, &data->philos[i]) != 0)
+		if (pthread_create(&data->philos[i].thread, NULL, ft_simulation, &data->philos[i]) != 0)
 			return (ft_free_return_failure(data, "Pthread create philo error"));
 		i++;
 	}
+    if (pthread_create(&data->watcher_thread, NULL, ft_watcher, data) != 0)
+		return (ft_free_return_failure(data, "Pthread create philo error"));
 	i = 0;
 	while (i < data->philo_number)
 	{
@@ -71,5 +77,6 @@ int	ft_create_philos_threads(t_data *data)
 			return (ft_free_return_failure(data, "Pthread join philo error"));
 		i++;
 	}
+    pthread_join(data->watcher_thread, NULL);
 	return (RETURN_SUCCESS);
 }
