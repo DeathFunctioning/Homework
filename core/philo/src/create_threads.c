@@ -40,14 +40,22 @@ void  *ft_simulation(void *p)
 	t_philo *philo;
 
 	philo = (t_philo *)p;
+
+    //remove test 
+    if (!philo || !philo->data)
+    {
+        fprintf(stderr, "philo or data pointing to NULL\n");
+        return (NULL);
+    }
 	if (philo->id % 2)
     {
 		ft_usleep(10);
-   // printf("here\n");
 	//while (philo->data->sim_end == 0)
     }
+    printf("philo %d is starting simulation\n", philo->id);//remove
 	while (1)
 	{
+        printf("test time t0 eat = %d\n", philo->data->time_to_eat);// remove test
 		ft_eat(philo, philo->data);// need to be built 
 		ft_sleep(philo, philo->data);// need to be built 
 		ft_think(philo);// need to be built
@@ -68,8 +76,8 @@ int	ft_create_philos_threads(t_data *data)
 			return (ft_free_return_failure(data, "Pthread create philo error"));
 		i++;
 	}
-    if (pthread_create(&data->watcher_thread, NULL, ft_watcher, data) != 0)
-		return (ft_free_return_failure(data, "Pthread create philo error"));
+//    if (pthread_create(&data->watcher_thread, NULL, ft_watcher, data) != 0)
+//		return (ft_free_return_failure(data, "Pthread create philo error"));
 	i = 0;
 	while (i < data->philo_number)
 	{
@@ -77,6 +85,6 @@ int	ft_create_philos_threads(t_data *data)
 			return (ft_free_return_failure(data, "Pthread join philo error"));
 		i++;
 	}
-    pthread_join(data->watcher_thread, NULL);
+  //  pthread_join(data->watcher_thread, NULL);
 	return (RETURN_SUCCESS);
 }

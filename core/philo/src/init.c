@@ -42,12 +42,12 @@ int ft_free_return_failure(t_data *data, char *error_msg)
 
 void  ft_init_philos(t_data *data)
 {
-    printf("here\n");
 	int i;
 
 	i = 0;
 	while (i < data->philo_number)
 	{
+		data->philos[i].data = data;
 		data->philos[i].id = i + 1;
 		data->philos[i].l_fork = &data->forks[i];
 		if (i == 0)
