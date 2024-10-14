@@ -11,59 +11,51 @@
 /* ************************************************************************** */
 #include "philo.h"
 
-//need to build real programme
-void  *ft_watcher(void *p)
+//need to check philo 
+void    *ft_watcher(void *p)
 {
-	t_data  *data;
+    t_data  *data;
+    int     i;
+    int     j;
 
 	data = (t_data *)p;
-	while (1)
+	while (data->sim_end == 0)
 	{
-		if (data->sim_end != 0)
-		{
-			write (2, "game over man\n", 14);
-			break ;
-		}
+        i = 0;
+        j = 0;
+        while (i < data->philo_number)
+        {
+            if (data->philos[i].required_meals_eaten > 0)
+            {
+                j++;
+                if (j >= data->philo_number)
+                {
+                    data->sim_end++;
+                    break ;
+                }
+            }
+            i++;
+        }
 	}
 	return (NULL);
 }
 
-//need to build loop for philo rotuine
-//need to do time to eat / time to die comparsion before 
-//philo eats 
-//somethin like if philo is going to die 
-//ft_death
-//increment end simulation to 1 loop stops for all 
-//need to build meals eat function can do after i have built the death function 
 void  *ft_simulation(void *p)
 {
 	t_philo *philo;
 
 	philo = (t_philo *)p;
-
-    //remove test 
-    if (!philo || !philo->data)
-    {
-        fprintf(stderr, "philo or data pointing to NULL\n");
-        return (NULL);
-    }
 	if (philo->id % 2)
-    {
-		ft_usleep(10);
-	//while (philo->data->sim_end == 0)
-    }
-    printf("philo %d is starting simulation\n", philo->id);//remove
-	while (1)
+		ft_usleep(2);
+	while (philo->data->sim_end == 0)
 	{
-        printf("test time t0 eat = %d\n", philo->data->time_to_eat);// remove test
-		ft_eat(philo, philo->data);// need to be built 
-		ft_sleep(philo, philo->data);// need to be built 
-		ft_think(philo);// need to be built
+		ft_eat(philo, philo->data);
+		ft_sleep(philo, philo->data);
+		ft_think(philo);
 	}
 	return (NULL);
 }
 
-// could add thread for mointoring before first loop 
 int	ft_create_philos_threads(t_data *data)
 {
 	int i;
@@ -72,12 +64,13 @@ int	ft_create_philos_threads(t_data *data)
 	while (i < data->philo_number)
 	{
 		data->philos[i].last_meal = ft_get_current_time();
-		if (pthread_create(&data->philos[i].thread, NULL, ft_simulation, &data->philos[i]) != 0)
+		if (pthread_create(&data->philos[i].thread, NULL,
+                    ft_simulation, &data->philos[i]) != 0)
 			return (ft_free_return_failure(data, "Pthread create philo error"));
 		i++;
 	}
-//    if (pthread_create(&data->watcher_thread, NULL, ft_watcher, data) != 0)
-//		return (ft_free_return_failure(data, "Pthread create philo error"));
+    if (pthread_create(&data->watcher_thread, NULL, ft_watcher, data) != 0)
+		return (ft_free_return_failure(data, "Pthread create philo error"));
 	i = 0;
 	while (i < data->philo_number)
 	{
@@ -85,6 +78,6 @@ int	ft_create_philos_threads(t_data *data)
 			return (ft_free_return_failure(data, "Pthread join philo error"));
 		i++;
 	}
-  //  pthread_join(data->watcher_thread, NULL);
+    pthread_join(data->watcher_thread, NULL);
 	return (RETURN_SUCCESS);
 }
