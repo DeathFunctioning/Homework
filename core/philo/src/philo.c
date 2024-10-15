@@ -32,6 +32,10 @@ int	main(int argc, char *argv[])
 			pthread_mutex_destroy(&data.forks[i]);
 			i++;
 		}
+		if (data.forks)
+			free(data.forks);
+		if (data.philos)
+			free(data.philos);
 		return (EXIT_SUCCESS);
 	}
 	//need to write better error msg
