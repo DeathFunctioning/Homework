@@ -6,14 +6,14 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:22:20 by tbaker            #+#    #+#             */
-/*   Updated: 2024/08/31 13:46:58 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/15 15:54:03 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
 
-int ft_create_forks(t_data *data)
+int	ft_create_forks(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->philo_number)
@@ -26,7 +26,7 @@ int ft_create_forks(t_data *data)
 }
 
 // need to check if this write statemen works
-int ft_free_return_failure(t_data *data, char *error_msg)
+int	ft_free_return_failure(t_data *data, char *error_msg)
 {
 	if (data)
 	{
@@ -40,9 +40,11 @@ int ft_free_return_failure(t_data *data, char *error_msg)
 	return (RETURN_FAILURE);
 }
 
-void  ft_init_philos(t_data *data)
+//add any other variable needed
+//will get time at thread creation
+void	ft_init_philos(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->philo_number)
@@ -56,13 +58,12 @@ void  ft_init_philos(t_data *data)
 			data->philos[i].r_fork = &data->forks[i - 1];
 		data->philos[i].meals_eaten = 0;
 		data->philos[i].required_meals_eaten = 0;
-		//add any other variable needed
-		//will get time at thread creation
+		data->philos[i].dead = 0;
 		i++;
 	}
 }
 
-int ft_init_data(t_data *data, int argc, char *argv[])
+int	ft_init_data(t_data *data, int argc, char *argv[])
 {
 	data->philo_number = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -74,7 +75,7 @@ int ft_init_data(t_data *data, int argc, char *argv[])
 	else
 		data->meals_to_eat = -1;
 	data->forks = (pthread_mutex_t *)malloc(data->philo_number
-            * sizeof(pthread_mutex_t));
+			* sizeof(pthread_mutex_t));
 	data->philos = (t_philo *)malloc(data->philo_number * sizeof(t_philo));
 	if (!data->forks || !data->philos)
 		return (ft_free_return_failure(data, "Malloc fail"));

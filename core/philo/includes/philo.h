@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 12:03:29 by tbaker            #+#    #+#             */
-/*   Updated: 2024/08/31 14:40:12 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/15 15:57:13 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <pthread.h>
 # include "macros.h"
 
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct s_philo
 {
@@ -33,6 +33,7 @@ typedef struct s_philo
 	int				id;
 	int				meals_eaten;
 	int				required_meals_eaten;
+	int				dead;
 
 }	t_philo;
 
@@ -41,7 +42,7 @@ typedef struct s_data
 	//this to watch for death: pthread_t		watcher;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
-	pthread_t       watcher_thread;
+	pthread_t		watcher_thread;
 	int				philo_number;
 	int				time_to_die;
 	int				time_to_eat;
@@ -54,6 +55,7 @@ typedef struct s_data
 int		ft_data_check(char *argv[]);
 
 //	create_threads
+int		ft_check_dead_or_meals_eaten(t_data *data, int i, int j);
 void	*ft_watcher(void *p);
 void	*ft_simulation(void *p);
 int		ft_create_philos_threads(t_data *data);
@@ -71,9 +73,9 @@ size_t	ft_get_current_time(void);
 int		ft_atoi(char *s);
 
 //philo_actions.c
-void    ft_eat(t_philo *philo, t_data *data);
-void    ft_sleep(t_philo *philo, t_data *data);
-void    ft_think(t_philo *philo);
-void    ft_death(t_philo *philo, t_data *data);
+void	ft_eat(t_philo *philo, t_data *data);
+void	ft_sleep(t_philo *philo, t_data *data);
+void	ft_think(t_philo *philo);
+void	ft_death(t_philo *philo, t_data *data);
 
 #endif
