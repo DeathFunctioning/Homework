@@ -11,14 +11,6 @@
 /* ************************************************************************** */
 #include "philo.h"
 
-/*
-// need to replace with philo id instead of sending data
-// Could add a mutex lock for writing to terminal 
-void	ft_print_action(char *s, t_data data)
-{
-	printf("%zu %d %s\n", get_current_time(), data->philo[i].id, s)
-}*/
-
 int ft_strlen(char *s)
 {
 	int i;

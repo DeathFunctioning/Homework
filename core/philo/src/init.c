@@ -47,6 +47,7 @@ void  ft_init_philos(t_data *data)
 	i = 0;
 	while (i < data->philo_number)
 	{
+		data->philos[i].data = data;
 		data->philos[i].id = i + 1;
 		data->philos[i].l_fork = &data->forks[i];
 		if (i == 0)
@@ -54,6 +55,7 @@ void  ft_init_philos(t_data *data)
 		else
 			data->philos[i].r_fork = &data->forks[i - 1];
 		data->philos[i].meals_eaten = 0;
+		data->philos[i].required_meals_eaten = 0;
 		//add any other variable needed
 		//will get time at thread creation
 		i++;
@@ -71,7 +73,8 @@ int ft_init_data(t_data *data, int argc, char *argv[])
 		data->meals_to_eat = ft_atoi(argv[5]);
 	else
 		data->meals_to_eat = -1;
-	data->forks = (pthread_mutex_t *)malloc(data->philo_number * sizeof(pthread_mutex_t));
+	data->forks = (pthread_mutex_t *)malloc(data->philo_number
+            * sizeof(pthread_mutex_t));
 	data->philos = (t_philo *)malloc(data->philo_number * sizeof(t_philo));
 	if (!data->forks || !data->philos)
 		return (ft_free_return_failure(data, "Malloc fail"));
