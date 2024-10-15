@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:22:32 by tbaker            #+#    #+#             */
-/*   Updated: 2024/08/31 14:14:33 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/15 13:57:33 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -14,9 +14,9 @@
 // need to add destroy mutexs for forks and whatever other mutex i create
 // need to build the watcher thread to check meals eaten and for philos death :
 // need to free allocate memery?? for forks and philos if sucessful 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_data  data;
+	t_data	data;
 	int		i;//remove
 
 	i = 0;
