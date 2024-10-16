@@ -33,7 +33,6 @@ typedef struct s_philo
 	int				id;
 	int				meals_eaten;
 	int				required_meals_eaten;
-	int				dead;
 
 }	t_philo;
 
@@ -44,18 +43,24 @@ typedef struct s_data
 	pthread_mutex_t	*forks;
 	pthread_t		watcher_thread;
 	int				philo_number;
-	int				time_to_die;
+    size_t			time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				meals_to_eat;
 	int				sim_end;
+	int				philo_eaten;
+	size_t			base_time;
+
 }	t_data;
+
+//  philo.c
+void    ft_free_destroy_mutex(t_data *data);
 
 //	error_handle.c
 int		ft_data_check(char *argv[]);
 
 //	create_threads
-int		ft_check_dead_or_meals_eaten(t_data *data, int i, int j);
+int		ft_check_dead_or_meals_eaten(t_data *data, int i);
 void	*ft_watcher(void *p);
 void	*ft_simulation(void *p);
 int		ft_create_philos_threads(t_data *data);
@@ -67,6 +72,7 @@ int		ft_init_data(t_data *data, int argc, char *argv[]);
 int		ft_free_return_failure(t_data *data, char *error_msg);
 
 //	utils.c
+void	ft_print_action(t_philo *philo, char *s);
 int		ft_strlen(char *s);
 int		ft_usleep(size_t ms);
 size_t	ft_get_current_time(void);

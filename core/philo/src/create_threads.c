@@ -11,19 +11,35 @@
 /* ************************************************************************** */
 #include "philo.h"
 
-int	ft_check_dead_or_meals_eaten(t_data *data, int i, int j)
+int	ft_check_dead_or_meals_eaten(t_data *data, int i)
 {
 	while (i < data->philo_number)
 	{
-		if (data->philos[i].required_meals_eaten > 0)
+		if ((ft_get_current_time() - data->philos[i].last_meal) > data->time_to_die)
+		{
+			data->sim_end++;
+			printf("test philo %d died\n", data->philos[i].id);
+			return (RETURN_SUCCESS);
+		}
+		if (data->philo_eaten == data->philo_number)
+		{
+			data->sim_end++;
+			return (RETURN_SUCCESS);
+		}
+/*		if (data->philos[i].required_meals_eaten > 0)
 		{
 			j++;
-			if (j >= data->philo_number || data->philos[i].dead > 0)
+			if (j >= data->philo_number)
 			{
 				data->sim_end++;
 				return (RETURN_SUCCESS);
 			}
-		}
+		}*/
+	/*	if (data->philos_eaten == data->philo_number)
+		{
+			data->sim_end++;
+			return (RETURN_SUCCESS);
+		}*/
 		i++;
 	}
 	return (RETURN_FAILURE);
@@ -37,7 +53,7 @@ void	*ft_watcher(void *p)
 	data = (t_data *)p;
 	while (data->sim_end == 0)
 	{
-		if (ft_check_dead_or_meals_eaten(data, 0, 0) == 0)
+		if (ft_check_dead_or_meals_eaten(data, 0) == 0)
 			return (NULL);
 	}
 	return (NULL);
@@ -50,7 +66,7 @@ void	*ft_simulation(void *p)
 
 	philo = (t_philo *)p;
 	if (philo->id % 2)
-		ft_usleep(2);
+		ft_usleep(10);
 	while (philo->data->sim_end == 0)
 	{
 		if (philo->data->sim_end == 0)
