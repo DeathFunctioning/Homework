@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:21:55 by tbaker            #+#    #+#             */
-/*   Updated: 2024/10/15 16:19:03 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/17 15:52:48 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -15,10 +15,11 @@ int	ft_check_dead_or_meals_eaten(t_data *data, int i)
 {
 	while (i < data->philo_number)
 	{
-		if ((ft_get_current_time() - data->philos[i].last_meal) > data->time_to_die)
+		if ((ft_get_current_time() - data->philos[i].last_meal)
+			>= data->time_to_die)
 		{
 			data->sim_end++;
-			printf("test philo %d died\n", data->philos[i].id);
+			ft_print_action(&data->philos[i], "died");
 			return (RETURN_SUCCESS);
 		}
 		if (data->philo_eaten == data->philo_number)
@@ -26,26 +27,11 @@ int	ft_check_dead_or_meals_eaten(t_data *data, int i)
 			data->sim_end++;
 			return (RETURN_SUCCESS);
 		}
-/*		if (data->philos[i].required_meals_eaten > 0)
-		{
-			j++;
-			if (j >= data->philo_number)
-			{
-				data->sim_end++;
-				return (RETURN_SUCCESS);
-			}
-		}*/
-	/*	if (data->philos_eaten == data->philo_number)
-		{
-			data->sim_end++;
-			return (RETURN_SUCCESS);
-		}*/
 		i++;
 	}
 	return (RETURN_FAILURE);
 }
 
-//need to check philo 
 void	*ft_watcher(void *p)
 {
 	t_data	*data;
@@ -55,18 +41,18 @@ void	*ft_watcher(void *p)
 	{
 		if (ft_check_dead_or_meals_eaten(data, 0) == 0)
 			return (NULL);
+		ft_usleep(10);
 	}
 	return (NULL);
 }
 
-// if added can remove help prevent unwant actions i could add condition in the eat function 
 void	*ft_simulation(void *p)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)p;
 	if (philo->id % 2)
-		ft_usleep(10);
+		ft_usleep(5);
 	while (philo->data->sim_end == 0)
 	{
 		if (philo->data->sim_end == 0)
@@ -75,6 +61,7 @@ void	*ft_simulation(void *p)
 			ft_sleep(philo, philo->data);
 		if (philo->data->sim_end == 0)
 			ft_think(philo);
+		ft_usleep(5);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 12:03:29 by tbaker            #+#    #+#             */
-/*   Updated: 2024/10/15 15:57:13 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/17 16:05:08 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
 # include <sys/time.h>
 # include <pthread.h>
 # include "macros.h"
@@ -29,7 +28,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
-	size_t			last_meal;//use this as start time 
+	size_t			last_meal;
 	int				id;
 	int				meals_eaten;
 	int				required_meals_eaten;
@@ -38,12 +37,12 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	//this to watch for death: pthread_t		watcher;
 	t_philo			*philos;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_lock;
 	pthread_t		watcher_thread;
 	int				philo_number;
-    size_t			time_to_die;
+	size_t			time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				meals_to_eat;
@@ -54,7 +53,7 @@ typedef struct s_data
 }	t_data;
 
 //  philo.c
-void    ft_free_destroy_mutex(t_data *data);
+void	ft_free_destroy_mutex(t_data *data);
 
 //	error_handle.c
 int		ft_data_check(char *argv[]);

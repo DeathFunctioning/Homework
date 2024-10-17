@@ -5,7 +5,7 @@ INCLUDES	:= -I $(INC_DIR)
 
 CC			:= gcc
 # remove fsanitize
-CFLAGS		:= -Wall -Wextra -Werror -g -pthread -fsanitize=address 
+CFLAGS		:= -Wall -Wextra -Werror -g -pthread 
 
 RM			:= rm -rf
 
