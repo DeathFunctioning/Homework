@@ -11,6 +11,12 @@
 /* ************************************************************************** */
 #include "philo.h"
 
+void	ft_print_action(t_philo *philo, char *s)
+{
+	//maybe add print lock here
+	printf("%zums %d %s\n", (ft_get_current_time() - philo->data->base_time), philo->id, s);
+}
+
 int	ft_strlen(char *s)
 {
 	int	i;

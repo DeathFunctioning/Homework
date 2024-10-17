@@ -19,15 +19,20 @@
 void	ft_eat(t_philo *philo, t_data *data)
 {
 	pthread_mutex_lock(philo->r_fork);
-	printf("%zu %d has taken a left fork\n", ft_get_current_time(), philo->id);
+	ft_print_action(philo, "has taken a left fork");
+//	printf("%zu %d has taken a left fork\n", ft_get_current_time(), philo->id);
 	pthread_mutex_lock(philo->l_fork);
-	printf("%zu %d has taken a right fork\n", ft_get_current_time(), philo->id);
+	ft_print_action(philo, "has taken a right fork");
+//	printf("%zu %d has taken a right fork\n", ft_get_current_time(), philo->id);
 	philo->last_meal = ft_get_current_time();
 	philo->meals_eaten++;
-	printf("%zu %d is eating\n", ft_get_current_time(), philo->id);
-	if (data->meals_to_eat > 0 && philo->meals_eaten >= data->meals_to_eat)
-		philo->required_meals_eaten++;
+	ft_print_action(philo, "is eating");
+//	printf("%zu %d is eating\n", ft_get_current_time(), philo->id);
 	ft_usleep(data->time_to_eat);
+	if (data->meals_to_eat > 0 && philo->meals_eaten == data->meals_to_eat)
+		//philo->required_meals_eaten++;
+		//may hit race conditoion may need to lock
+		philo->data->philo_eaten++;
 //	if (data->meals_to_eat > 0 && philo->meals_eaten >= data->meals_to_eat)
 //		philo->required_meals_eaten++;
 	pthread_mutex_unlock(philo->l_fork);
@@ -36,11 +41,13 @@ void	ft_eat(t_philo *philo, t_data *data)
 
 void	ft_sleep(t_philo *philo, t_data *data)
 {
-	printf("%zu %d is sleeping\n", ft_get_current_time(), philo->id);
+	ft_print_action(philo, "is sleeping");
+//	printf("%zu %d is sleeping\n", ft_get_current_time(), philo->id);
 	ft_usleep(data->time_to_sleep);
 }
 
 void	ft_think(t_philo *philo)
 {
-	printf("%zu %d is thinking\n", ft_get_current_time(), philo->id);
+	ft_print_action(philo, "is sleeping");
+	//printf("%zu %d is thinking\n", ft_get_current_time(), philo->id);
 }

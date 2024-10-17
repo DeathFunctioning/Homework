@@ -28,13 +28,14 @@ int	ft_create_forks(t_data *data)
 // need to check if this write statemen works
 int	ft_free_return_failure(t_data *data, char *error_msg)
 {
-	if (data)
+	/*if (data)
 	{
 		if (data->forks)
 			free(data->forks);
 		if (data->philos)
 			free(data->philos);
-	}
+	}*/
+	ft_free_destroy_mutex(data);
 	write (2, error_msg, ft_strlen(error_msg));
 	write(2, "\n", 1);
 	return (RETURN_FAILURE);
@@ -58,7 +59,6 @@ void	ft_init_philos(t_data *data)
 			data->philos[i].r_fork = &data->forks[i - 1];
 		data->philos[i].meals_eaten = 0;
 		data->philos[i].required_meals_eaten = 0;
-		data->philos[i].dead = 0;
 		i++;
 	}
 }
@@ -70,6 +70,8 @@ int	ft_init_data(t_data *data, int argc, char *argv[])
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
 	data->sim_end = 0;
+	data->philo_eaten = 0;
+	data->base_time = ft_get_current_time();
 	if (argc == 6)
 		data->meals_to_eat = ft_atoi(argv[5]);
 	else
