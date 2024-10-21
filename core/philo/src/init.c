@@ -23,14 +23,17 @@ int	ft_create_forks(t_data *data)
 		i++;
 	}
 	if (pthread_mutex_init(&data->print_lock, NULL) == -1)
+	{
+		ft_destroy_mutex(data);
 		return (ft_free_return_failure(data, "Mutex fork error"));
+	}
 	return (RETURN_SUCCESS);
 }
 
 int	ft_free_return_failure(t_data *data, char *error_msg)
 {
 	if (data)
-		ft_free_destroy_mutex(data);
+		ft_free(data);
 	write (2, error_msg, ft_strlen(error_msg));
 	write(2, "\n", 1);
 	return (RETURN_FAILURE);

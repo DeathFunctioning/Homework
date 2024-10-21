@@ -53,7 +53,8 @@ typedef struct s_data
 }	t_data;
 
 //  philo.c
-void	ft_free_destroy_mutex(t_data *data);
+void	ft_destroy_mutex(t_data *data);
+void	ft_free(t_data *data);
 
 //	error_handle.c
 int		ft_data_check(char *argv[]);
@@ -78,9 +79,10 @@ size_t	ft_get_current_time(void);
 int		ft_atoi(char *s);
 
 //philo_actions.c
+int		ft_one_philo(t_philo *philo, t_data *data);
 void	ft_eat(t_philo *philo, t_data *data);
 void	ft_sleep(t_philo *philo, t_data *data);
-void	ft_think(t_philo *philo);
+void	ft_think(t_philo *philo, t_data *data);
 void	ft_death(t_philo *philo, t_data *data);
 
 #endif

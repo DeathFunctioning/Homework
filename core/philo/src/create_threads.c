@@ -16,7 +16,7 @@ int	ft_check_dead_or_meals_eaten(t_data *data, int i)
 	while (i < data->philo_number)
 	{
 		if ((ft_get_current_time() - data->philos[i].last_meal)
-			>= data->time_to_die)
+			> data->time_to_die)
 		{
 			data->sim_end++;
 			ft_print_action(&data->philos[i], "died");
@@ -52,16 +52,21 @@ void	*ft_simulation(void *p)
 
 	philo = (t_philo *)p;
 	if (philo->id % 2)
-		ft_usleep(5);
+		ft_usleep(10);
 	while (philo->data->sim_end == 0)
 	{
-		if (philo->data->sim_end == 0)
-			ft_eat(philo, philo->data);
-		if (philo->data->sim_end == 0)
-			ft_sleep(philo, philo->data);
-		if (philo->data->sim_end == 0)
-			ft_think(philo);
-		ft_usleep(5);
+		if (philo->data->sim_end != 0)
+			return (NULL);
+		ft_eat(philo, philo->data);
+		if (philo->data->sim_end != 0)
+			return (NULL);
+		ft_sleep(philo, philo->data);
+		if (philo->data->sim_end != 0)
+			return (NULL);
+		ft_think(philo, philo->data);
+		if (philo->data->sim_end != 0)
+			return (NULL);
+		ft_usleep(10);
 	}
 	return (NULL);
 }
