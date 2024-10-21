@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:22:20 by tbaker            #+#    #+#             */
-/*   Updated: 2024/10/15 15:54:03 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/17 15:57:51 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -22,27 +22,20 @@ int	ft_create_forks(t_data *data)
 			return (ft_free_return_failure(data, "Mutex fork error"));
 		i++;
 	}
+	if (pthread_mutex_init(&data->print_lock, NULL) == -1)
+		return (ft_free_return_failure(data, "Mutex fork error"));
 	return (RETURN_SUCCESS);
 }
 
-// need to check if this write statemen works
 int	ft_free_return_failure(t_data *data, char *error_msg)
 {
-	/*if (data)
-	{
-		if (data->forks)
-			free(data->forks);
-		if (data->philos)
-			free(data->philos);
-	}*/
-	ft_free_destroy_mutex(data);
+	if (data)
+		ft_free_destroy_mutex(data);
 	write (2, error_msg, ft_strlen(error_msg));
 	write(2, "\n", 1);
 	return (RETURN_FAILURE);
 }
 
-//add any other variable needed
-//will get time at thread creation
 void	ft_init_philos(t_data *data)
 {
 	int	i;

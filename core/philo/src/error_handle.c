@@ -6,17 +6,11 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:22:09 by tbaker            #+#    #+#             */
-/*   Updated: 2024/10/15 14:38:03 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/17 15:55:44 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
 
-//check if philos are between 1 - 200
-//checks if args from 1 - 5 if the string contains only chars from 
-// 0 - 9 
-// need to remove printf 
-// need to error check if atoi is not equal to 0 for all args except for
-// argv 6 number of times a philo must eat 
 int	ft_data_check(char *argv[])
 {
 	int	i;

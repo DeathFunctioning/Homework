@@ -6,15 +6,17 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:22:52 by tbaker            #+#    #+#             */
-/*   Updated: 2024/10/15 14:28:45 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/17 15:59:59 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
 
 void	ft_print_action(t_philo *philo, char *s)
 {
-	//maybe add print lock here
-	printf("%zums %d %s\n", (ft_get_current_time() - philo->data->base_time), philo->id, s);
+	pthread_mutex_lock(&philo->data->print_lock);
+	printf("%zums %d %s\n", (ft_get_current_time() - philo->data->base_time),
+		philo->id, s);
+	pthread_mutex_unlock(&philo->data->print_lock);
 }
 
 int	ft_strlen(char *s)
