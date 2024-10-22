@@ -6,7 +6,7 @@
 /*   By: tbaker <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 11:21:55 by tbaker            #+#    #+#             */
-/*   Updated: 2024/10/17 15:52:48 by tbaker           ###   ########.fr       */
+/*   Updated: 2024/10/22 17:42:43 by tbaker           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "philo.h"
@@ -41,7 +41,7 @@ void	*ft_watcher(void *p)
 	{
 		if (ft_check_dead_or_meals_eaten(data, 0) == 0)
 			return (NULL);
-		ft_usleep(10);
+		ft_usleep(5);
 	}
 	return (NULL);
 }
@@ -52,7 +52,7 @@ void	*ft_simulation(void *p)
 
 	philo = (t_philo *)p;
 	if (philo->id % 2)
-		ft_usleep(10);
+		ft_usleep(5);
 	while (philo->data->sim_end == 0)
 	{
 		if (philo->data->sim_end != 0)
@@ -66,7 +66,7 @@ void	*ft_simulation(void *p)
 		ft_think(philo, philo->data);
 		if (philo->data->sim_end != 0)
 			return (NULL);
-		ft_usleep(10);
+		ft_usleep(5);
 	}
 	return (NULL);
 }
