@@ -15,8 +15,9 @@
 
 int	main(int argc, char *argv[])
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	c;
 
 	i = 0;
 	if (argc > 1)
@@ -27,7 +28,8 @@ int	main(int argc, char *argv[])
 			j = 0;
 			while (argv[i][j])
 			{
-				putchar(toupper(argv[i][j]));
+				c = toupper(argv[i][j]);
+				std::cout << c;
 				j++;
 			}
 			i++;
