@@ -3,6 +3,7 @@
 int	main(void)
 {
 	std::string userInput;
+	PhoneBook phoneBook;
 
 	std::cout << "Enter ADD to add contacted" << std::endl;
 	std::cout << "Enter SEARCH to search for contacted" << std::endl;
@@ -12,9 +13,9 @@ int	main(void)
 		std::cout << "Enter option: ";
 		std::cin  >> userInput;
 		if (userInput == "ADD")
-			Contact testContact;
+			phoneBook.addContact(Contact());
 		else if (userInput == "SEARCH")
-			std::cout << "SEARCH function selected" << std::endl;
+			phoneBook.displayContacts();
 		else if (userInput == "EXIT")
 			break ;
 		else
