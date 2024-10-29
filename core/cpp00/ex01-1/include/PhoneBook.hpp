@@ -21,13 +21,14 @@
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-		displayContacts(Contact Contacts);
+		displayContacts(Contact& Contacts);
+		addContacts(Contact& Contacts);
 
 
 	private:
 		static const int MAX_CONTACTS = 8;
 		contact contats[MAX_CONTACTS];
-		int	i;
+		int	numberOfContacts;
  };
 
 #endif
