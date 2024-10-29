@@ -13,22 +13,22 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-# include "contact.hpp"
+# include "Contact.hpp"
 # include <iostream>
 # include <string>
 
  class PhoneBook{
 	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-		displayContacts(Contact& Contacts);
-		addContacts(Contact& Contacts);
+		PhoneBook();
+		void displayContacts(void);
+		void addContacts(void);
 
 
 	private:
 		static const int MAX_CONTACTS = 8;
-		contact contats[MAX_CONTACTS];
+		Contact contacts[MAX_CONTACTS];
 		int	numberOfContacts;
+		int	indexPosition;
  };
 
 #endif

@@ -12,7 +12,9 @@
 
 #include "Contact.hpp"
 
-Contact::Contact(void)
+Contact::Contact(void) {}
+
+void Contact::inputContact(void)
 {
 	std::cout << "Enter fist name: ";
 	std::cin >> this->firstName;
@@ -24,19 +26,6 @@ Contact::Contact(void)
 	std::cin >> this->phoneNumber;
 	std::cout << "Enter darkest secret: ";
 	std::cin >> this->darkestSecret;
-
-	return ;
-}
-
-// remove deconstructor just for test 
-// will build search function in PhoneBook class
-Contact::~Contact(void)
-{
-	std::cout << this->firstName << std::endl;
-	std::cout << this->lastName << std::endl;
-	std::cout << this->nickname << std::endl;
-	std::cout << this->phoneNumber << std::endl;
-	std::cout << this->darkestSecret << std::endl;
 
 	return ;
 }

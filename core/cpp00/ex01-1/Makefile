@@ -9,7 +9,7 @@ CXXFLAGS	:= -Wall -Wextra -Werror -g -std=c++98
 RM			:= rm -rf
 
 SRC_DIR		:= ./src
-SRC_FILES	:= main.cpp Contact.cpp 
+SRC_FILES	:= main.cpp Contact.cpp PhoneBook.cpp
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 BUILD_DIR	:= ./build
@@ -21,7 +21,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $@ $(INCLUDE)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC_DIR)*.hpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC_DIR)%.hpp
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
 

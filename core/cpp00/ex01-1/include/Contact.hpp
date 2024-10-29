@@ -14,6 +14,7 @@
 #define CONTACT_HPP
 
 # include <iostream>
+# include <string>
 
 class Contact{
 
@@ -24,7 +25,7 @@ class Contact{
 		std::string	phoneNumber;
 		std::string	darkestSecret;
 		Contact(void);
-		~Contact(void);
+		void inputContact(void);
 };
 
 #endif

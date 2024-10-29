@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MAIN_HPP
+#define MAIN_HPP
 
 # include <iostream>
 # include <string>
-//# include "PhoneBook.hpp"
+# include "PhoneBook.hpp"
 # include "Contact.hpp"
 
 #endif

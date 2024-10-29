@@ -13,7 +13,7 @@ int	main(void)
 		std::cout << "Enter option: ";
 		std::cin  >> userInput;
 		if (userInput == "ADD")
-			phoneBook.addContact(Contact());
+			phoneBook.addContacts();
 		else if (userInput == "SEARCH")
 			phoneBook.displayContacts();
 		else if (userInput == "EXIT")
