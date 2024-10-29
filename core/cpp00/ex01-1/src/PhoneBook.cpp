@@ -1,33 +1,43 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
-{
-	return ;
-}
+//test for displaying list of current contacts added 
+//will update for peroper formating later once this is working 
+//also need to add meber function to selcet and diplay contacts once list has been displayed 
+//i think i need to remove darkest secret and phone number ?
+PhoneBook::PhoneBook() : numberOfContacts(0), indexPosition(0) {
 
-PhoneBook::~PhoneBook(void)
-{
-	return ;
-}
+}	
 
-void	displayContacts(Contact& Contacts)
+void	PhoneBook::displayContacts(void)
 {
+	int	i;
 
-	
-	for (i = 0; i < numberOfContacts; i++;)
+	for (i = 0; i < numberOfContacts; i++)
 	{
-		std::cout << "["i +1"]" << " |";
-		std::cout << Contacts[i].firstName << " |";
-		std::cout << Contacts[i].lastName << " |";
-		std::cout << Contacts[i].nickname << " |";
-		std::cout << Contacts[i].phoneNumber << " |";
-		std::cout << Contacts[i].darkestSecret << " |";
+		std::cout << "[" << i << "]" << " |";
+		std::cout << this->contacts[i].firstName << " |";
+		std::cout << this->contacts[i].lastName << " |";
+		std::cout << this->contacts[i].nickname << " |";
+		std::cout << this->contacts[i].phoneNumber << " |";
+		std::cout << this->contacts[i].darkestSecret << " |" << std::endl;
 	}
 	return ;
 }
 
-void	addContacts(Contact& Contacts)
+void	PhoneBook::addContacts(void)
 {
-
-
+	if (indexPosition < MAX_CONTACTS)
+	{
+		contacts[indexPosition].inputContact();
+		indexPosition++;
+		if(numberOfContacts < MAX_CONTACTS)
+			numberOfContacts++;
+	}
+	else
+	{
+		indexPosition = 0;
+		contacts[indexPosition].inputContact();
+		indexPosition++;
+	}
+	return ;
 }
