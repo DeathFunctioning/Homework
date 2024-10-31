@@ -6,6 +6,35 @@
 //i think i need to remove darkest secret and phone number ?
 PhoneBook::PhoneBook() : numberOfContacts(0), indexPosition(0) {}	
 
+void	PhoneBook::selectContact(void)
+{
+	std::string indexValue;
+	int			nbr;
+
+	std::cout << "Enter index to view contact information: ";
+	while (true)
+	{
+		std::getline(std::cin, indexValue);
+		// maybe i just cin the or i just check the first char in the string ignoring white space if not between 0 and 7 return false if its in range atoi the string might have check the string.length is only 1 bite first then check if between 0 - 7 and less than number contacts not very modulor but will work in the case
+		// i will look at it tommorow need to sleep
+		if (need build function that checks the line for valid intergeri and ruturns a bool)
+		{
+			if (nbr >= 0 && nbr < numberOfContacts)
+				break ;
+			else
+				std::cout << "Index out of range please try again: ";
+		}
+		else
+			std::cout << "Incorrect input. Please enter index value: ";
+	}
+	std::cout << this->contacts[nbr].firstName << std::endl;
+	std::cout << this->contacts[nbr].lastName << std::endl;
+	std::cout << this->contacts[nbr].nickname << std::endl;
+	std::cout << this->contacts[nbr].phoneNumber << std::endl;
+	std::cout << this->contacts[nbr].darkestSecret << std::endl;
+return ;
+}
+
 void	PhoneBook::displayContacts(void)
 {
 

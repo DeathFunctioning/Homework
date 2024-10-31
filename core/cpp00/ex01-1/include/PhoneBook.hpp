@@ -16,12 +16,14 @@
 # include "Contact.hpp"
 # include <iostream>
 # include <string>
+# include <limits>
 
  class PhoneBook{
 	public:
 		PhoneBook();
 		void displayContacts(void);
 		void addContacts(void);
+		void selectContact(void);
 
 
 	private:
