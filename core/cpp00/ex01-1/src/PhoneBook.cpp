@@ -11,13 +11,26 @@ void	PhoneBook::displayContacts(void)
 
 	for (int i = 0; i < numberOfContacts; i++)
 	{
-		std::cout << "[" << i << "]" << " |";
+		std::cout << "Index: [" << i << "]" << "|";
 		if (this->contacts[i].firstName.length() > 10)
 			std::cout << this->contacts[i].firstName.substr(0,9) << "." << "|";
+		else if (this->contacts[i].firstName.length() < 10)
+			std::cout << this->contacts[i].firstName.append(10 - contacts[i].firstName.length(), ' ') << "|";
 		else
 			std::cout << this->contacts[i].firstName << "|";
-		std::cout << this->contacts[i].lastName << "|";
-		std::cout << this->contacts[i].nickname << "|";
+		if (this->contacts[i].lastName.length() > 10)
+			std::cout << this->contacts[i].lastName.substr(0,9) << "." << "|";
+		else if (this->contacts[i].lastName.length() < 10)
+			std::cout << this->contacts[i].lastName.append(10 - contacts[i].lastName.length(), ' ') << "|";
+		else
+			std::cout << this->contacts[i].lastName << "|";
+		if (this->contacts[i].nickname.length() > 10)
+			std::cout << this->contacts[i].nickname.substr(0,9) << ".";
+		else if (this->contacts[i].nickname.length() < 10)
+			std::cout << this->contacts[i].nickname.append(10 - contacts[i].nickname.length(), ' ');
+		else
+			std::cout << this->contacts[i].nickname;
+		std::cout << std::endl;
 	}
 	return ;
 }
