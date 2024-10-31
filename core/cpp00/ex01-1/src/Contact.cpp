@@ -16,16 +16,29 @@ Contact::Contact(void) {}
 
 void Contact::inputContact(void)
 {
-	std::cout << "Enter fist name: ";
-	std::cin >> this->firstName;
+//	std::getline(std::cin, "need to clear buffer");
+
+//	std::cin.sync();
+
+	std::cout << "Enter first name: ";
+	std::getline(std::cin, this->firstName);
+	//std::getline(std::cin >> std::ws, this->firstName);
+
 	std::cout << "Enter last name: ";
-	std::cin >> this->lastName;
+	std::getline(std::cin, this->lastName);
+
+	//std::cin >> this->lastName;
 	std::cout << "Enter nickname: ";
-	std::cin >> this->nickname;
+	std::getline(std::cin, this->nickname);
+
+	//std::cin >> this->nickname;
 	std::cout << "Enter phone number: ";
-	std::cin >> this->phoneNumber;
+	std::getline(std::cin, this->phoneNumber);
+
+	//std::cin >> this->phoneNumber;
 	std::cout << "Enter darkest secret: ";
-	std::cin >> this->darkestSecret;
+	std::getline(std::cin, this->darkestSecret);
+	//std::cin >> this->darkestSecret;
 
 	return ;
 }
