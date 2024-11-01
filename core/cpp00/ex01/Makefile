@@ -9,7 +9,7 @@ CXXFLAGS	:= -Wall -Wextra -Werror -g -std=c++98
 RM			:= rm -rf
 
 SRC_DIR		:= ./src
-SRC_FILES	:= PhoneBook.cpp PhoneBook.class.cpp Contact.class.cpp
+SRC_FILES	:= main.cpp Contact.cpp PhoneBook.cpp
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 BUILD_DIR	:= ./build
