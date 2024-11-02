@@ -22,7 +22,7 @@ bool	PhoneBook::checkIndexValue(std::string indexValue)
 {
 	if (indexValue.length() == 1)
 	{
-		if (indexValue.at(0) <= '0' && indexValue.at(0) >= '7')
+		if (indexValue.at(0) >= '0' && indexValue.at(0) <= '7')
 			return (true);
 		else
 		   return (false);	
@@ -36,6 +36,7 @@ void	PhoneBook::selectContact(void)
 	std::string indexValue;
 	int			nbr;
 
+    nbr = -1;
 //	std::cout << "Enter index to view contact information: ";
 	while (true)
 	{
@@ -44,26 +45,33 @@ void	PhoneBook::selectContact(void)
 		// maybe i just cin the or i just check the first char in the string ignoring white space if not between 0 and 7 return false if its in range atoi the string might have check the string.length is only 1 bite first then check if between 0 - 7 and less than number contacts not very modulor but will work in the case
 		// i will look at it tommorow need to sleep
 		// I NEED TO CHANGE atoi to handle errors and incorrect values 
-		if (!checkIndexValue(indexValue))
+		if (checkIndexValue(indexValue))
 			nbr = atoi(indexValue.c_str());// need to add error handling 
 		else
 			std::cout << "Incorrect input.  ";
 		//if (need build function that checks the line for valid intergeri and ruturns a bool)
 		//{
 		if (nbr >= 0 && nbr < numberOfContacts)
-			break ;
+        {
+	        std::cout << this->contacts[nbr].firstName << std::endl;
+	        std::cout << this->contacts[nbr].lastName << std::endl;
+	        std::cout << this->contacts[nbr].nickname << std::endl;
+	        std::cout << this->contacts[nbr].phoneNumber << std::endl;
+	        std::cout << this->contacts[nbr].darkestSecret << std::endl;
+	        return ;
+        }
 		else
 			std::cout << "Index out of range. ";
 		//}
 		//else
 		//	std::cout << "Incorrect input.  ";
 	}
-	std::cout << this->contacts[nbr].firstName << std::endl;
-	std::cout << this->contacts[nbr].lastName << std::endl;
-	std::cout << this->contacts[nbr].nickname << std::endl;
-	std::cout << this->contacts[nbr].phoneNumber << std::endl;
-	std::cout << this->contacts[nbr].darkestSecret << std::endl;
-	return ;
+//	std::cout << this->contacts[nbr].firstName << std::endl;
+//	std::cout << this->contacts[nbr].lastName << std::endl;
+//	std::cout << this->contacts[nbr].nickname << std::endl;
+//	std::cout << this->contacts[nbr].phoneNumber << std::endl;
+//	std::cout << this->contacts[nbr].darkestSecret << std::endl;
+//	return ;
 }
 
 void	PhoneBook::displayContacts(void)
