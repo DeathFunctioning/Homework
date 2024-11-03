@@ -14,17 +14,50 @@
 
 PhoneBook::PhoneBook() : numberOfContacts(0), indexPosition(0) {}	
 
-bool	PhoneBook::checkIndexValue(std::string indexValue)
+static bool	PhoneBook::stringIsSpace(const std::string& string)
 {
-	if (indexValue.length() == 1)
+	int i;
+
+	i = 0;
+	while(isWhiteSpace(string.at(i))
 	{
-		if (indexValue.at(0) >= '0' && indexValue.at(0) <= '7')
-			return (true);
-		else
-		   return (false);	
+		if ((string.at(i) < 9 && string.at(i) > 13) || string.at(i) != 32)
+			return (false);
+		i++;
 	}
-	else
-		return (false);
+	return (true);
+}
+
+bool	PhoneBook::isWhiteSpace(char c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (true);
+	return (false);
+}
+
+bool	PhoneBook::checkIndexValue(std::string& indexValue)
+{
+	int	i;
+
+	i = 0;
+	while (isWhiteSpace(indexValue.at(i)) && i < numberOfContacts) 
+			i++;
+	while (i < numberOfContacts) 
+	{
+		if (indexValue.at(i) == '+' || indexValue.at(i) == '-')
+		{
+			if (indexValue.at(i) == '+')
+				i++;
+			else
+				return (false);	
+		}
+		if (indexValue.at(i) >= '0' && indexValue.at(i) <= '9')
+			i++;
+		else
+			return (false);
+		i++;
+	}
+		return (true);
 }
 
 void	PhoneBook::selectContact(void)
@@ -53,7 +86,7 @@ void	PhoneBook::selectContact(void)
 				std::cout << "Index out of range. ";
 		}
 		else
-			std::cout << "Incorrect input.  ";
+			std::cout << "Incorrect input. Please enter positve number. ";
 	}
 }
 

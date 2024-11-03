@@ -18,7 +18,7 @@ void Contact::inputContact(void)
 {
 	std::cout << "Enter first name: ";
 	std::getline(std::cin, firstName);
-	while (firstName.empty())
+	while (firstName.empty() || PhoneBook::stringIsSpace(firstName))
 	{
 		std::cout << "You entered empty string" << std::endl;
 		std::cout << "Enter first name: ";

@@ -25,7 +25,9 @@
 		void displayContacts(void);
 		void addContacts(void);
 		void selectContact(void);
-		bool checkIndexValue(std::string indexValue);
+		bool checkIndexValue(std::string& indexValue);
+		static bool stringIsSpace(const std::string& string);
+		bool isWhiteSpace(char c);
 
 	private:
 		static const int MAX_CONTACTS = 8;
