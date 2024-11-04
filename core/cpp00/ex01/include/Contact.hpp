@@ -15,7 +15,6 @@
 
 # include <iostream>
 # include <string>
-# include "PhoneBook.hpp"
 
 class Contact{
 
@@ -27,6 +26,10 @@ class Contact{
 		std::string	darkestSecret;
 		Contact(void);
 		void inputContact(void);
+
+	private:
+		void _assignInput(std::string& var, const char* txt);
+		bool _stringIsEmpty(std::string& input);
 };
 
 #endif

@@ -1,5 +1,4 @@
 /* ************************************************************************** */
-o
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
@@ -30,7 +29,12 @@ int	main(void)
 		if (userInput == "ADD")
 			phoneBook.addContacts();
 		else if (userInput == "SEARCH")
-			phoneBook.displayContacts();
+		{
+			if (phoneBook.numberOfContacts > 0)
+				phoneBook.displayContacts();
+			else
+				std::cout << "No contacts added" << std::endl;
+		}
 		else if (userInput == "EXIT")
 			break ;
 		else

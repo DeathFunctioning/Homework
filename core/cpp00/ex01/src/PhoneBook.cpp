@@ -14,20 +14,6 @@
 
 PhoneBook::PhoneBook() : numberOfContacts(0), indexPosition(0) {}	
 
-static bool	PhoneBook::stringIsSpace(const std::string& string)
-{
-	int i;
-
-	i = 0;
-	while(isWhiteSpace(string.at(i))
-	{
-		if ((string.at(i) < 9 && string.at(i) > 13) || string.at(i) != 32)
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
 bool	PhoneBook::isWhiteSpace(char c)
 {
 	if ((c >= 9 && c <= 13) || c == 32)
@@ -37,12 +23,16 @@ bool	PhoneBook::isWhiteSpace(char c)
 
 bool	PhoneBook::checkIndexValue(std::string& indexValue)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (isWhiteSpace(indexValue.at(i)) && i < numberOfContacts) 
-			i++;
-	while (i < numberOfContacts) 
+	while (isWhiteSpace(indexValue.at(i)) && i < indexValue.length()) 
+	{
+		i++;
+		if (i == indexValue.length())
+			return (false);
+	}
+	while (i < indexValue.length()) 
 	{
 		if (indexValue.at(i) == '+' || indexValue.at(i) == '-')
 		{
@@ -70,16 +60,22 @@ void	PhoneBook::selectContact(void)
 	{
 		std::cout << "Enter index to view contact information: ";
 		std::getline(std::cin, indexValue);
+		while (indexValue.empty())
+		{
+			std::cout << "Empty string entered. ";
+			std::cout << "Enter index to view contact information: ";
+			std::getline(std::cin, indexValue);
+		}
 		if (checkIndexValue(indexValue))
 		{
 			nbr = atoi(indexValue.c_str()); 
 			if (nbr >= 0 && nbr < numberOfContacts)
        		 {
-	       		 std::cout << contacts[nbr].firstName << std::endl;
-	       		 std::cout << contacts[nbr].lastName << std::endl;
-	       		 std::cout << contacts[nbr].nickname << std::endl;
-				 std::cout << contacts[nbr].phoneNumber << std::endl;
-				 std::cout << contacts[nbr].darkestSecret << std::endl;
+	       		 std::cout << "First name: " << contacts[nbr].firstName << std::endl;
+	       		 std::cout << "Last name: " << contacts[nbr].lastName << std::endl;
+	       		 std::cout << "Nickname: " << contacts[nbr].nickname << std::endl;
+				 std::cout << "Phone Number: " << contacts[nbr].phoneNumber << std::endl;
+				 std::cout << "Darkest secret: " << contacts[nbr].darkestSecret << std::endl;
 				 return ;
 			 }
 			else
@@ -95,7 +91,7 @@ void	PhoneBook::displayContacts(void)
 
 	for (int i = 0; i < numberOfContacts; i++)
 	{
-		std::cout << "Index: [" << i << "]" << "|";
+		std::cout << "Index: [" << i << "] " << "|";
 		if (contacts[i].firstName.length() > 10)
 			std::cout << contacts[i].firstName.substr(0,9) << "." << "|";
 		else if (contacts[i].firstName.length() < 10)
