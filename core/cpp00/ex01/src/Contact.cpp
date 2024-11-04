@@ -14,52 +14,98 @@
 
 Contact::Contact(void) {}
 
+bool Contact::_stringIsEmpty(std::string& input)
+{
+	if (input.empty())
+		return (true);
+	for (size_t i = 0; i < input.length(); i++)
+	{
+		if (!std::isspace(input.at(i)))
+			return (false);
+	}
+	return (true);
+}
+
+void	Contact::_assignInput(std::string& var, const char* txt)
+{
+	while (true)
+	{
+		std::cout << txt;
+		std::getline(std::cin, var);
+		if (_stringIsEmpty(var))
+			std::cout << "Empty string entered. ";
+		else
+			break ;
+	}
+}
+
 void Contact::inputContact(void)
 {
-	std::cout << "Enter first name: ";
-	std::getline(std::cin, this->firstName);
-	while (this->firstName.empty())
-	{
-		std::cout << "You entered empty string" << std::endl;
-		std::cout << "Enter first name: ";
-		std::getline(std::cin, this->firstName);
-	}
-
-	std::cout << "Enter last name: ";
-	std::getline(std::cin, this->lastName);
-	while (this->lastName.empty())
-	{
-		std::cout << "You entered empty string" << std::endl;
-		std::cout << "Enter last name: ";
-		std::getline(std::cin, this->lastName);
-	}
-
-	std::cout << "Enter nickname: ";
-	std::getline(std::cin, this->nickname);
-	while (this->nickname.empty())
-	{
-		std::cout << "You entered empty string" << std::endl;
-		std::cout << "Enter nickname: ";
-		std::getline(std::cin, this->nickname);
-	}
-
-	std::cout << "Enter phone number: ";
-	std::getline(std::cin, this->phoneNumber);
-	while (this->phoneNumber.empty())
-	{
-		std::cout << "You entered empty string" << std::endl;
-		std::cout << "Enter phone number: ";
-		std::getline(std::cin, this->phoneNumber);
-	}
-
-	std::cout << "Enter darkest secret: ";
-	std::getline(std::cin, this->darkestSecret);
-	while (this->darkestSecret.empty())
-	{
-		std::cout << "You entered empty string" << std::endl;
-		std::cout << "Enter darkest secret: ";
-		std::getline(std::cin, this->darkestSecret);
-	}
-
+	_assignInput(firstName, "Enter first name: ");
+	_assignInput(lastName, "Enter last name: ");
+	_assignInput(phoneNumber, "Enter phone number: ");
+	_assignInput(nickname, "Enter nickname: ");
+	_assignInput(darkestSecret, "Enter darkest secret: ");
 	return ;
 }
+
+/* void Contact::inputContact(void)
+{
+	while (true)
+	{
+		std::cout << "Enter first name: ";
+		std::getline(std::cin, firstName);
+		if (stringIsEmpty(firstName))
+			std::cout << "Empty string entered. ";
+		else
+			break ;
+	}
+//	std::cout << "Enter first name: ";
+//	std::getline(std::cin, firstName);
+	_assignInput(firstName, "Enter first name: ");
+	_assignInput(lastName, "Enter last name: ");
+	_assignInput(phoneNumber, "Enter phone number: ");
+	_assignInput(nickname, "Enter nickname: ");
+	_assignInput(darkestSecret, "Enter darkest secret: ");
+
+	while (true)
+	{
+		std::cout << "Enter last name: ";
+		std::getline(std::cin, lastName);
+		if (stringIsEmpty(lastName))
+			std::cout << "Empty string entered. ";
+		else
+			break ;
+	}
+
+	while (true)
+	{
+		std::cout << "Enter nickname: ";
+		std::getline(std::cin, nickname);
+		if (stringIsEmpty(nickname))
+			std::cout << "Empty string entered. ";
+		else
+			break ;
+	}
+
+	while (true)
+	{
+		std::cout << "Enter phone number: ";
+		std::getline(std::cin, phoneNumber);
+		if (stringIsEmpty(phoneNumber))
+			std::cout << "Empty string entered. ";
+		else
+			break ;
+	}
+
+	while (true)
+	{
+		std::cout << "Enter darkest secret: ";
+		std::getline(std::cin, darkestSecret);
+		if (stringIsEmpty(darkestSecret))
+			std::cout << "Empty string entered. ";
+		else
+			break ;
+	}
+	return ;
+}*/
