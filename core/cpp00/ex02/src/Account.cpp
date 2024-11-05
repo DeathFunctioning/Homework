@@ -1,16 +1,20 @@
 #include "Account.hpp"
 #include <iostream>
 
+int Account::_nbAccounts  = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposists  = 0;
+int Account::_totalNbWIthdrawals  = 0;
+
 Account::Account(int initial_deposit)
 {
-	static int index;
-
-	index = 0;
-
-	_accountIndex = index++;
+	_accountIndex = _nbAccounts;
 	_amount = intital_deposit;
 	_nbDepoists = 0;
 	_nbWithdrawals = 0;
+    _nbAccounts++;
+	_totalAmount += _amount;
+	_totalNbDeposists++;//does it count the inital depoist
 
 	std::cout << _displayTimeStamp() << " " << "index:" << _accountIndex 
 	<< ";" << "amount:" << _amount << ";" << "created" << std::endl;
@@ -18,22 +22,22 @@ Account::Account(int initial_deposit)
 
 static int	getNbAccounts(void)
 {
-	return();
+	return(_nbAccounts);
 }
 
 static int	getTotalAmount(void)
 {
-	return();
+	return(_totalAmount);
 }
 
 static int	getNbDeposits(void)
 {
-	return();
+	return(_totalNbDeposits);
 }
 
 static int	getNbWithdrawals(void)
 {
-	return();
+	return(_totalNbWithdrawals);
 }
 
 static void	displayAccountInfos(void)
@@ -84,5 +88,5 @@ Account::~Account(void)
 {
 	std::cout << _displayTimeStamp() << " index:" << _accountIndex 
 	<< ";" << "amount:" << _amount << ";" << "closed" << std::endl;
-
+	_nbAccounts--;
 }
