@@ -9,7 +9,7 @@ CXXFLAGS	:= -Wall -Wextra -Werror -g -std=c++98
 RM			:= rm -rf
 
 SRC_DIR		:= ./src
-SRC_FILES	:= test.cpp Account.cpp
+SRC_FILES	:= tests.cpp Account.cpp
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 BUILD_DIR	:= ./build
@@ -21,7 +21,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $@ $(INCLUDE)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC_DIR)%.hpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp 
 	@mkdir -p $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(INCLUDE)
 
@@ -36,3 +36,5 @@ fclean: clean
 	@echo "fclean"
 
 re: fclean all
+
+##$(INC_DIR)%.hpp
