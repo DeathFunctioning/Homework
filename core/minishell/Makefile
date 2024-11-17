@@ -1,31 +1,30 @@
 NAME		:= minishell
 
-INC_DIR		:= ./include/
+INC_DIR		:= include/
 INCLUDE		:= -I $(INC_DIR) 
 
 C			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror -g
+LDFLAGS		:= -lreadline
 
 RM			:= rm -rf
 
-SRC_DIR		:= ./src
+SRC_DIR		:= src
 SRC_FILES	:= main.c
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
-BUILD_DIR	:= ./build
+BUILD_DIR	:= build
 OBJ_FILES	:= $(SRC_FILES:.c=.o)
 OBJ			:= $(addprefix $(BUILD_DIR)/, $(OBJ_FILES)) 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(C) $(CFLAGS) $(OBJ) -o $@ $(INCLUDE)
+	$(C) $(CFLAGS) $(INCLUDE) $(OBJ) -o $@ $(LDFLAGS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c 
 	@mkdir -p $(BUILD_DIR)
-	$(C) $(CFLAGS) -c $< -o $@ $(INCLUDE)
-
-.PHONY: all clean fclean re
+	$(C) $(CFLAGS) $(INCLUDE)-c $< -o $@ 
 
 clean:
 	$(RM) $(BUILD_DIR)/
@@ -36,3 +35,5 @@ fclean: clean
 	@echo "fclean"
 
 re: fclean all
+
+.PHONY: all clean fclean re

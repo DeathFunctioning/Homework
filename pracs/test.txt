@@ -1,0 +1,6 @@
+exec.c
+makefile_stuff
+README.md
+test.c
+test.txt
+vim_prac
