@@ -27,6 +27,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'               " Gruvbox colorscheme
 Plug 'tpope/vim-sensible'            " A sensible Vim configuration
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Syntax highlighting
+Plug 'preservim/nerdtree'
+
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 call plug#end()
 
